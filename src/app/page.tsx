@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Disc, ArrowRight } from "lucide-react";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 export default function Home() {
   return (
@@ -150,7 +152,10 @@ export default function Home() {
           Button
           <ArrowRight />
         </Button>
-        <div className="bg-gradient-retro-wave"></div>
+        <div>
+          <Label htmlFor="something">Input</Label>
+          <Input id="something" className="w-full" placeholder="Type something..." />
+        </div>
       </div>
     </div>
   );
