@@ -165,6 +165,7 @@ export default function Home() {
             placeholder="Type in cm..."
             label="Masukan panjang kontolmu"
             icon={<User />}
+            // prefix="+62"
           />
           <Input
             id="something"
