@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Disc, ArrowRight } from "lucide-react";
+import { Disc, ArrowRight, User } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
@@ -152,9 +152,21 @@ export default function Home() {
           Button
           <ArrowRight />
         </Button>
-        <div>
-          <Label htmlFor="something">Input</Label>
-          <Input id="something" className="w-full" placeholder="Type something..." />
+        <div className="flex flex-col gap-2">
+          <Input
+            id="something"
+            className="w-full"
+            placeholder="Type in cm..."
+            label="Masukan panjang kontolmu"
+            icon={<User />}
+          />
+          <Input
+            id="something"
+            className="w-full"
+            placeholder="Type in cm..."
+            label="Masukan panjang kontolmu"
+            error="Kurang panjang"
+          />
         </div>
       </div>
     </div>
