@@ -1,6 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Disc, ArrowRight, User } from "lucide-react";
-import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 
 export default function Home() {
@@ -167,6 +173,18 @@ export default function Home() {
             label="Masukan panjang kontolmu"
             error="Kurang panjang"
           />
+        </div>
+        <div className="w-full h-100">
+          <Select>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Theme" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="light">Light</SelectItem>
+              <SelectItem value="dark">Dark</SelectItem>
+              <SelectItem value="system">System</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
     </div>
