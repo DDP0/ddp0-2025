@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Disc, ArrowRight, User } from "lucide-react";
 import {
@@ -8,8 +9,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/useToast";
 
 export default function Home() {
+  const toast = useToast();
   return (
     <div className="bg-black text-white font-josefin-sans px-20 py-10 max-lg:px-18 max-md:px-12 max-sm:px-6">
       <div className=" flex flex-col gap-4">
@@ -127,7 +130,11 @@ export default function Home() {
         </div>
         {/* <Button className="">Primary</Button> */}
         {/* <div className="absolute top-20 w-full h-100 rounded-2xl bg-border p-[1px]"> */}
-        <div className="absolute glass top-20 w-full h-100 rounded-2xl border border-card-disabled p-[1px]"></div>
+        <div className="sticky top-0 glass z-10 w-full h-20 rounded-2xl bg-border p-[1px]">
+          <div className="w-full h-full flex  justify-center items-center rounded-2xl bg-card">
+            <p>Ibaratnya ini navbar</p>
+          </div>
+        </div>
         <Button className="w-full">
           <Disc />
           Button
@@ -175,7 +182,7 @@ export default function Home() {
             error="Kurang panjang"
           />
         </div>
-        <div className="w-full h-100">
+        <div className="w-full">
           <Select>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Theme" />
@@ -187,6 +194,51 @@ export default function Home() {
             </SelectContent>
           </Select>
         </div>
+        <Button
+          className="w-full"
+          variant={"kiwi"}
+          onClick={() => toast.show("success", "Kontolmu sudah panjang")}
+        >
+          <Disc />
+          Toast success
+          <ArrowRight />
+        </Button>
+        <Button
+          className="w-full"
+          variant={"kiwi"}
+          onClick={() => toast.show("info", "Kontolmu sudah panjang")}
+        >
+          <Disc />
+          Toast Info
+          <ArrowRight />
+        </Button>
+        <Button
+          className="w-full"
+          variant={"kiwi"}
+          onClick={() => toast.show("warning", "Kontolmu sudah panjang")}
+        >
+          <Disc />
+          Toast Warning
+          <ArrowRight />
+        </Button>
+        <Button
+          className="w-full"
+          variant={"kiwi"}
+          onClick={() => toast.show("error", "Kontolmu sudah panjang")}
+        >
+          <Disc />
+          Toast Error
+          <ArrowRight />
+        </Button>
+        <Button
+          className="w-full"
+          variant={"kiwi"}
+          onClick={() => toast.show("loading", "Kontolmu sudah panjang")}
+        >
+          <Disc />
+          Toast Loader
+          <ArrowRight />
+        </Button>
       </div>
     </div>
   );

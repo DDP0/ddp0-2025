@@ -34,11 +34,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </div>
           )}
           {prefix && (
-            <div className="absolute z-10 left-3 md:mt-0 top-1/2 transform -translate-y-1/2 flex items-center gap-1">
+            <div className="absolute z-10 left-3 md:mt-0 top-1/2 transform -translate-y-1/2 flex items-center gap-1.5">
               <span className="text-neutral-100 font-sans text-sm">
                 {prefix}
               </span>
-              <div className="h-4 w-[1px] bg-neutral-900 dark:bg-neutral-100"></div>
+              <div className="h-4 w-[1px] bg-neutral-100 "></div>
             </div>
           )}
           <input
