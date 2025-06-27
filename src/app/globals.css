@@ -403,3 +403,7 @@ body {
     @apply bg-background text-foreground;
   }
 }
+body {
+  background: var(--color-component-frame);
+  color: var(--color-neutral-50);
+}
