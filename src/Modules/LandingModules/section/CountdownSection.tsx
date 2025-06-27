@@ -4,7 +4,7 @@ import { ChevronRight, Search } from "lucide-react";
 
 const CountdownSection = () => {
   return (
-    <section className="relative md:aspect-video flex flex-col gap-6 md:gap-8 justify-center items-center font-josefin-sans overflow-x-clip">
+    <section className="relative max-md:mb-24 md:aspect-video flex flex-col gap-6 md:gap-8 justify-center items-center font-josefin-sans overflow-x-clip">
       <div className="w-1/6 aspect-square rounded-full blur-3xl absolute -left-24 top-1/2 -translate-y-2/3 bg-gradient-retro-button max-md:hidden" />
       <div className="w-1/6 aspect-square rounded-full blur-3xl absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 bg-[#18357A] max-md:hidden" />
       <img
