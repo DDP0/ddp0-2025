@@ -130,11 +130,6 @@ export default function Home() {
         </div>
         {/* <Button className="">Primary</Button> */}
         {/* <div className="absolute top-20 w-full h-100 rounded-2xl bg-border p-[1px]"> */}
-        <div className="sticky top-0 glass z-10 w-full h-20 rounded-2xl bg-border p-[1px]">
-          <div className="w-full h-full flex  justify-center items-center rounded-2xl bg-card">
-            <p>Ibaratnya ini navbar</p>
-          </div>
-        </div>
         <Button className="w-full">
           <Disc />
           Button
