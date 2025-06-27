@@ -149,8 +149,8 @@
   --color-component-error: #d53636;
   --background-image-component-border: linear-gradient(
     35deg,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.4)
+    rgba(255, 255, 255, 0.15) 33.61%,
+    rgba(255, 255, 255, 0.3) 89.19%
   );
 
   --color-card: #101010;
@@ -394,4 +394,5 @@ body {
 body {
   background: var(--color-component-frame);
   color: var(--color-neutral-50);
+  font-family: var(--font-josefin-sans), var(--font-sans), sans-serif;
 }
