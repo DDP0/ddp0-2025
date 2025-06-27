@@ -1,4 +1,10 @@
+import CountdownSection from "./section/CountdownSection";
+
 const LandingModules = () => {
-  return <main>This is landing</main>;
+  return (
+    <main>
+      <CountdownSection />
+    </main>
+  );
 };
 export default LandingModules;
