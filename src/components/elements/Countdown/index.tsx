@@ -18,22 +18,22 @@ const BlockTime: React.FC<ComponentPropsWithoutRef<"div"> & CountdownProps> = ({
     <div className="flex flex-col items-center gap-2">
       <span
         className={cn(
-          "inline-block font-bold text-[#0E191C] dark:text-[#FFFFFF] text-xs sm:text-base opacity-90",
+          "inline-block font-bold text-[#0E191C] dark:text-[#FFFFFF] text-xs md:text-base opacity-90",
           classNameType
         )}
       >
         {type}
       </span>
-      <div className="p-[1px] sm:p-[1px] rounded-[11px] bg-gradient">
+      <div className="p-[1px] md:p-[1px] rounded-[11px] bg-gradient">
         <div
           className={cn(
-            "flex justify-center items-center w-[64px] h-[64px] sm:w-[82px] sm:h-[82px] border border-border/20 rounded-xl bg-neutral-500/20",
+            "flex justify-center items-center w-[64px] h-[64px] md:w-[82px] md:h-[82px] border border-border/20 rounded-xl bg-neutral-500/20",
             classNameBlock
           )}
         >
           <span
             className={cn(
-              "inline-block font-unbounded font-semibold text-h4 md:text-h3 text-[#0E191C] dark:text-[#FFFFFF]",
+              "inline-block font-unbounded font-semibold text-2xl md:text-h3 text-[#0E191C] dark:text-[#FFFFFF]",
               classNameType
             )}
           >
@@ -47,14 +47,14 @@ const BlockTime: React.FC<ComponentPropsWithoutRef<"div"> & CountdownProps> = ({
 
 const DotTime = () => {
   return (
-    <div className="flex flex-col gap-3 pt-4 sm:pt-7">
+    <div className="flex flex-col gap-3 pt-4 md:pt-7">
       {/* Gradient border */}
-      <div className="w-1 h-1 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r flex items-center justify-center">
-        <div className="w-[3px] h-[3px] sm:w-[6px] sm:h-[6px] rounded-full bg-[#0E191C] dark:bg-[#F7F5FE]"></div>
+      <div className="w-1 h-1 md:w-2 md:h-2 rounded-full bg-gradient-to-r flex items-center justify-center">
+        <div className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] rounded-full bg-[#0E191C] dark:bg-[#F7F5FE]"></div>
       </div>
 
-      <div className="w-1 h-1 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r flex items-center justify-center">
-        <div className="w-[3px] h-[3px] sm:w-[6px] sm:h-[6px] rounded-full bg-[#0E191C] dark:bg-[#F7F5FE]"></div>
+      <div className="w-1 h-1 md:w-2 md:h-2 rounded-full bg-gradient-to-r flex items-center justify-center">
+        <div className="w-[3px] h-[3px] md:w-[6px] md:h-[6px] rounded-full bg-[#0E191C] dark:bg-[#F7F5FE]"></div>
       </div>
     </div>
   );
@@ -144,7 +144,7 @@ const Countdown = ({
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="flex items-center gap-1 sm:gap-4">
+      <div className="flex items-center gap-1 md:gap-4">
         <BlockTime
           classNameBlock={classNameBlock}
           classNameType={classNameType}
@@ -179,16 +179,16 @@ const Countdown = ({
         />
       </div>
       {displayDate && (
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-1 md:gap-2">
           <Timer
             className={cn(
-              "w-[14px] h-[14px] sm:w-[18px] sm:h-[18px] text-[#0E191C] dark:text-[#FFFFFF]",
+              "w-[14px] h-[14px] md:w-[18px] md:h-[18px] text-[#0E191C] dark:text-[#FFFFFF]",
               classNameType
             )}
           />
           <span
             className={cn(
-              "inline-block text-xs sm:text-base font-bold pt-[2px] sm:pt-0 text-[#0E191C] dark:text-[#FFFFFF]",
+              "inline-block text-xs md:text-base font-bold pt-[2px] md:pt-0 text-[#0E191C] dark:text-[#FFFFFF]",
               classNameType
             )}
           >{`${dateTime.date}, ${dateTime.time.split(" ")[0]} WIB`}</span>
