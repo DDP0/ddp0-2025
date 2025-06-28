@@ -1,9 +1,8 @@
 "use client";
 import { useSession } from "@/hooks/useSession";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
 import Loader from "./elements/Loader";
-import RegistFillDetails from "@/Modules/RegistModules/FillDetails";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -18,22 +17,35 @@ export function ProtectedRoute({
 }: ProtectedRouteProps) {
   const { isAuthenticated, isLoading, user } = useSession();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
+    if (isLoading) return;
+
+    if (!isAuthenticated) {
       router.push(redirectTo);
+      return;
     }
-  }, [isAuthenticated, isLoading, router, redirectTo, user]);
+
+    if (user && user.fillDetails === false && pathname !== "/register/form") {
+      router.push("/register/form");
+      return;
+    }
+
+    if (user && user.fillDetails === true && pathname !== "/dashboard") {
+      router.push("/dashboard");
+    }
+  }, [isAuthenticated, isLoading, user, router, redirectTo, pathname]);
 
   if (isLoading) {
     return fallback || <Loader />;
   }
 
-  if (!isAuthenticated) {
-    return null; // Will redirect via useEffect
-  }
-  if (user && user?.fillDetails === false) {
-    return <RegistFillDetails />;
+  if (
+    !isAuthenticated ||
+    (user && user.fillDetails === false && pathname !== "/register/form")
+  ) {
+    return null;
   }
 
   return <>{children}</>;

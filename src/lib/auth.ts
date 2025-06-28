@@ -6,9 +6,6 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
-  emailAndPassword: {
-    enabled: true,
-  },
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -16,7 +13,7 @@ export const auth = betterAuth({
     },
   },
   session: {
-    expiresIn: 60 * 60 * 24 * 7, // 7 days
+    expiresIn: 60 * 60 * 24 * 30, // 30 days
     updateAge: 60 * 60 * 24, // 1 day
   },
   user: {
