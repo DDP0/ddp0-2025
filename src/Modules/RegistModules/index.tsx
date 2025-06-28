@@ -4,7 +4,7 @@ import { Google } from "@/components/icons/Google";
 import Link from "next/link";
 import { useToast } from "@/hooks/useToast";
 import { authClient } from "@/lib/auth-client";
-import Image from "next/image";
+import Background from "./Background";
 
 const RegistrationModules = () => {
   const toast = useToast();
@@ -22,12 +22,12 @@ const RegistrationModules = () => {
     }
   };
   return (
-    <main className="relative min-h-screen flex flex-col gap-6 max-lg:gap-5 max-md:gap-4 max-sm:gap-2.5 justify-center items-center px-120 max-lg:px-25 max-md:px-20 max-sm:px-8 font-josefin-sans bg-blend-overlay">
+    <main className="relative h-screen overflow-hidden flex flex-col gap-6 max-lg:gap-5 max-md:gap-4 max-sm:gap-2.5 justify-center items-center px-120 max-lg:px-25 max-md:px-20 max-sm:px-8 font-josefin-sans bg-blend-overlay">
       <h1 className="text-h4 max-lg:text-h5 max-md:text-headline">
         Selamat datang di DDP-0!
       </h1>
-      <div className="w-full rounded-xl p-[1px] bg-component-border">
-        <div className="w-full rounded-xl flex flex-col gap-6 max-lg:gap-5 max-md:gap-4 max-sm:gap-3 bg-card glass p-16 max-lg:p-14 max-md:p-10 max-sm:px-8 max-sm:py-6">
+      <div className="relative w-full rounded-xl p-[1px] bg-component-border">
+        <div className="w-full rounded-xl flex flex-col gap-6 bg-card glass p-16 max-lg:p-14 max-md:p-10 max-sm:px-8 max-sm:py-12">
           <h4 className="text-h4 max-sm:text-h5-mobile text-center">
             Registration
           </h4>
@@ -46,23 +46,7 @@ const RegistrationModules = () => {
           </p>
         </div>
       </div>
-      {/* <Background /> */}
-      <div className="absolute top-0 -right-[10%] aspect-[967/515] w-[967px] max-sm:w-[500px] animate-pulse">
-        <Image
-          src="./aurora.svg"
-          alt="Background"
-          layout="fill"
-          className="object-contain"
-        />
-      </div>
-      <div className="absolute -left-[200px] -bottom-[100px] aspect-[967/515] w-[967px] max-sm:w-[500px] animate-pulse">
-        <Image
-          src="./aurora2.svg"
-          alt="Background"
-          layout="fill"
-          className="object-contain"
-        />
-      </div>
+      <Background />
     </main>
   );
 };

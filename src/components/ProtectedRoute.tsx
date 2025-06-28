@@ -2,6 +2,7 @@
 import { useSession } from "@/hooks/useSession";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Loader from "./elements/Loader";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -24,13 +25,7 @@ export function ProtectedRoute({
   }, [isAuthenticated, isLoading, router, redirectTo]);
 
   if (isLoading) {
-    return (
-      fallback || (
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="loader"></div>
-        </div>
-      )
-    );
+    return fallback || <Loader />;
   }
 
   if (!isAuthenticated) {
