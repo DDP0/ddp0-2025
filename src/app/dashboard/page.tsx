@@ -1,7 +1,8 @@
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import DashboardContent from "./DashboardContent";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+
   return (
     <ProtectedRoute>
       <DashboardContent />

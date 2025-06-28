@@ -1,8 +1,9 @@
-// import Background from "@/Modules/RegistModules/Background";
+import Background from "@/Modules/RegistModules/Background";
 const Loader = () => {
   return (
-    <div className="h-screen overflow-hidden relative flex items-center justify-center">
+    <div className="min-h-screen overflow-hidden relative flex items-center justify-center">
       <div className="loader"></div>
+      <Background />
     </div>
   );
 };

@@ -8,6 +8,17 @@ interface User {
   email: string;
   image?: string | null;
   emailVerified: boolean;
+  fillDetails?: boolean;
+  role?: string | null;
+  gender?: string | null;
+  NPM?: string | null;
+  idLine?: string | null;
+  idDiscord?: string | null;
+  buktiMasuk?: string | null;
+  buktiShare?: string | null;
+  jalurMasuk?: string | null;
+  jurusan?: string | null;
+  asalSekolah?: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
