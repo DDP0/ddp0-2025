@@ -14,7 +14,7 @@ const RegistrationModules = () => {
       toast.show("loading", "Sedang mengalihkan ke Google");
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "/profile", // Redirect to profile after successful sign up
+        callbackURL: "/dashboard", // Redirect to dashboard after successful sign up
       });
     } catch (error) {
       console.error("Google sign up error:", error);
