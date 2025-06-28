@@ -43,23 +43,23 @@ export function useSession() {
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const getSession = async () => {
-      try {
-        const response = await authClient.getSession();
-        if (response.data) {
-          setSession(response.data);
-        } else {
-          setSession(null);
-        }
-      } catch (error) {
-        console.error("Failed to get session:", error);
+  const getSession = async () => {
+    try {
+      const response = await authClient.getSession();
+      if (response.data) {
+        setSession(response.data);
+      } else {
         setSession(null);
-      } finally {
-        setIsLoading(false);
       }
-    };
+    } catch (error) {
+      console.error("Failed to get session:", error);
+      setSession(null);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
+  useEffect(() => {
     getSession();
   }, []);
 
@@ -78,5 +78,6 @@ export function useSession() {
     isLoading,
     isAuthenticated: !!session,
     signOut,
+    refreshSession: getSession,
   };
 }

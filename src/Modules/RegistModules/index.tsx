@@ -6,7 +6,11 @@ import { useToast } from "@/hooks/useToast";
 import { authClient } from "@/lib/auth-client";
 import Background from "./Background";
 
-const RegistrationModules = () => {
+const RegistrationModules = ({
+  isRegisterPage,
+}: {
+  isRegisterPage: boolean;
+}) => {
   const toast = useToast();
 
   const handleGoogleSignUp = async () => {
@@ -14,7 +18,7 @@ const RegistrationModules = () => {
       toast.show("loading", "Sedang mengalihkan ke Google");
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "/dashboard", // Redirect to dashboard after successful sign up
+        callbackURL: isRegisterPage ? "/register" : "/dashboard", // Redirect to dashboard after successful sign up
       });
     } catch (error) {
       console.error("Google sign up error:", error);
@@ -29,18 +33,20 @@ const RegistrationModules = () => {
       <div className="relative w-full rounded-xl p-[1px] bg-component-border">
         <div className="w-full rounded-xl flex flex-col gap-6 bg-card glass p-16 max-lg:p-14 max-md:p-10 max-sm:px-8 max-sm:py-12">
           <h4 className="text-h4 max-sm:text-h5-mobile text-center">
-            Registration
+            {isRegisterPage
+              ? "Registration"
+              : "Login"}
           </h4>
           <Button className="w-full" onClick={handleGoogleSignUp}>
             <Google size="size-6 max-sm:size-4" />
             Lanjutkan dengan Google
           </Button>
           <p className="text-center text-base max-sm:text-sm">
-            Sudah memiliki akun?{" "}
-            <Link href={"/"}>
+            {isRegisterPage ? "Sudah memiliki akun?" : "Belum memiliki akun?"}
+            <Link href={isRegisterPage ? "/login" : "/register"}>
               {" "}
               <span className="bg-clip-text text-transparent bg-gradient-kiwi">
-                Masuk sekarang
+                {isRegisterPage ? "Masuk" : "Daftar"}
               </span>
             </Link>
           </p>

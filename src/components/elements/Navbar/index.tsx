@@ -10,7 +10,6 @@ import { data } from "./const";
 
 const Navbar = () => {
   const router = useRouter();
-  const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [isMenuOpen, setMenuOpen] = React.useState(false);
   const { user, signOut, isAuthenticated, isLoading } = useSession();
 
@@ -21,17 +20,15 @@ const Navbar = () => {
     if (isAuthenticated) {
       router.push("/dashboard");
     } else {
-      router.push("/regist");
+      router.push("/login");
     }
     setMenuOpen(false);
-    setLoggedIn(true);
     return;
   };
   const handleLogout = () => {
     signOut();
     router.push("/");
     setMenuOpen(false);
-    setLoggedIn(false);
   };
 
   return (

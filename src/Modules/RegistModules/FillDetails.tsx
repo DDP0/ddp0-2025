@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import Background from "./Background";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { registFillDetailsSchema } from "@/model/user.schema";
 import { useToast } from "@/hooks/useToast";
+import { useRouter } from "next/navigation";
 
 const jalurMasuk = [
   { value: "SNBP", label: "SNBP" },
@@ -33,6 +35,7 @@ const Gender = [
 ];
 
 const RegistFillDetails = () => {
+  const router = useRouter();
   const { show, dismiss } = useToast();
   const [namaLengkap, setNamaLengkap] = useState("");
   const [npm, setNpm] = useState("");
@@ -44,7 +47,6 @@ const RegistFillDetails = () => {
   const [jurusan, setJurusan] = useState(jurusanList[0]);
   const [gender, setGender] = useState(Gender[0]);
   const [asalSekolah, setAsalSekolah] = useState("");
-
   const handleSubmit = async () => {
     const toastId = show("loading", "Sedang memproses data...");
     const formData = {
@@ -82,6 +84,7 @@ const RegistFillDetails = () => {
       return;
     }
     show("success", "Registrasi berhasil!");
+    router.push("/dashboard");
   };
 
   return (
