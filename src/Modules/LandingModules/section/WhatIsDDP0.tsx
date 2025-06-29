@@ -34,9 +34,9 @@ const images: { src: string; alt: string }[] = [
 export default function WhatIsDDP0() {
   return (
     <section className="flex flex-col justify-center gap-13 my-16">
-      <div className="flex flex-col lg:flex-row justify-center items-center gap-12 w-full px-4 lg:px-0">
-        <div className="flex flex-col gap-12 lg:gap-14 px-10 w-117 lg:px-0">
-          <h1 className="font-josefin-sans text-h1-mobile lg:text-h1 text-center lg:text-left">
+      <div className="flex flex-col relative lg:flex-row justify-center items-center gap-12 w-full px-4">
+        <div className="flex flex-col gap-12 lg:gap-14 px-10 w-100 md:w-160 lg:w-117 lg:px-0">
+          <h1 className="font-josefin-sans text-h1-mobile md:text-h1 text-center lg:text-left">
             What Is{" "}
             <span className="bg-gradient-retro-wave bg-clip-text text-transparent">
               DDP-0?
@@ -61,12 +61,12 @@ export default function WhatIsDDP0() {
       <img
         src="/Subtract.svg"
         alt="subtract"
-        className="w-full h-full -translate-y-1/2 lg:hidden"
+        className="absolute w-full h-full translate-y-1/2 md:translate-y-3/8 -z-10 lg:hidden"
       />
       <img
         src="/Subtract-lg.svg"
         alt="subtract"
-        className="w-full h-full -translate-y-1/4 invisible lg:visible"
+        className="absolute w-full h-full translate-y-1/2 -z-10 invisible lg:visible"
       />
 
     </section>

@@ -20,27 +20,27 @@ const Slider: React.FC<SliderProps> = ({ initialImages }) => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row-reverse justify-center items-center gap-3">
-      <div className="w-82 h-45 lg:w-141 lg:h-92 bg-gradient-kiwi p-[2px] rounded-lg">
+    <div className="flex flex-col lg:flex-row-reverse justify-center items-center gap-3 px-2">
+      <div className="w-82 h-45 md:w-145 md:h-80 lg:w-141 lg:h-92 bg-gradient-kiwi p-[2px] rounded-lg">
         <img
           src={images[0].src}
           alt={images[0].alt}
           className="object-cover w-full h-full rounded-lg"
         />
       </div>
-      <div className="overflow-hidden w-82 lg:h-91 lg:w-39">
+      <div className="overflow-hidden w-82 lg:h-91 md:w-145 lg:w-39">
         <div className="flex lg:flex-col gap-3 w-max infinite-scroll">
           {[...images.slice(1), ...images.slice(1)].map((img, i) => (
             <div
               key={i + 1}
-              className="w-17 h-11 lg:w-39 lg:h-25 bg-gradient-kiwi p-[2px] rounded-lg"
+              className="w-17 h-11 md:w-26 md:h-20 lg:w-39 lg:h-25 bg-gradient-kiwi p-[2px] rounded-lg"
               onClick={() => swap((i % (images.length - 1)) + 1)}
             >
               <img
                 src={img.src}
                 alt={img.alt}
                 loading="lazy"
-                className="object-cover w-full h-full rounded-lg"
+                className="object-cover w-full h-full rounded-lg hover:brightness-90"
               />
             </div>
           ))}
@@ -49,6 +49,10 @@ const Slider: React.FC<SliderProps> = ({ initialImages }) => {
       <style>{`
         .infinite-scroll {
           animation: infinite-scroll-horizontal 10s linear infinite;
+        }
+
+        .infinite-scroll:hover {
+          animation-play-state: paused;
         }
 
         @media (min-width: 1024px) {
