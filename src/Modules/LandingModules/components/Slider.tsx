@@ -20,21 +20,21 @@ const Slider: React.FC<SliderProps> = ({ initialImages }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center gap-3">
-      <div className="w-82 h-45 bg-gradient-kiwi p-[2px] rounded-lg">
+    <div className="flex flex-col lg:flex-row-reverse justify-center items-center gap-3">
+      <div className="w-82 h-45 lg:w-141 lg:h-92 bg-gradient-kiwi p-[2px] rounded-lg">
         <img
           src={images[0].src}
           alt={images[0].alt}
           className="object-cover w-full h-full rounded-lg"
         />
       </div>
-      <div className="overflow-hidden w-82">
-        <div className="flex gap-3 w-max infinite-scroll">
+      <div className="overflow-hidden w-82 lg:h-91 lg:w-39">
+        <div className="flex lg:flex-col gap-3 w-max infinite-scroll">
           {[...images.slice(1), ...images.slice(1)].map((img, i) => (
             <div
               key={i + 1}
-              className="w-17 h-11 bg-gradient-kiwi p-[2px] rounded-lg"
-              onClick={() => swap((i % 6) + 1)}
+              className="w-17 h-11 lg:w-39 lg:h-25 bg-gradient-kiwi p-[2px] rounded-lg"
+              onClick={() => swap((i % (images.length - 1)) + 1)}
             >
               <img
                 src={img.src}
@@ -48,16 +48,32 @@ const Slider: React.FC<SliderProps> = ({ initialImages }) => {
       </div>
       <style>{`
         .infinite-scroll {
-          animation: infinite-scroll 10s linear infinite;
+          animation: infinite-scroll-horizontal 10s linear infinite;
         }
 
-        @keyframes infinite-scroll {
+        @media (min-width: 1024px) {
+            .infinite-scroll {
+              animation: infinite-scroll-vertical 10s linear infinite;
+            }
+          }
+
+        @keyframes infinite-scroll-horizontal {
           0% {
             transform: translateX(0);
           }
           100% {
             transform: translateX(calc(-50% - 6px));
-          }`}</style>
+          }
+        }
+
+        @keyframes infinite-scroll-vertical {
+          0% {
+          transform: translateY(0);
+          }
+          100% {
+          transform: translateY(calc(-50% - 6px));
+          }
+        }`}</style>
     </div>
   );
 };

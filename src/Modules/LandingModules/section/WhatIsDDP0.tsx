@@ -34,30 +34,41 @@ const images: { src: string; alt: string }[] = [
 export default function WhatIsDDP0() {
   return (
     <section className="flex flex-col justify-center gap-13 my-16">
-      <div className="flex flex-col justify-center gap-12 w-full px-4">
-        <h1 className="font-josefin-sans text-h1-mobile text-center">
-          What Is{" "}
-          <span className="bg-gradient-retro-wave bg-clip-text text-transparent">
-            DDP-0?
-          </span>
-        </h1>
-
-        <div className="px-4">
-          <p className="text-headline-mobile font-josefin-sans text-center">
-            DDP-0 adalah program pembekalan dari COSMIC 2024 untuk
-            memperkenalkan konsep dasar pemrograman kepada mahasiswa baru CSUI
-            2025, sebagai bekal menghadapi perkuliahan di Fasilkom UI
-          </p>
-          <br />
-          <p className="text-headline-mobile font-josefin-sans text-center">
-            Melalui program ini, mahasiswa baru CSUI 2025 diharapkan dapat
-            membangun fondasi yang kuat dan lebih percaya diri menghadapi dunia
-            pemrograman di bangku kuliah.
-          </p>
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-12 w-full px-4 lg:px-0">
+        <div className="flex flex-col gap-12 lg:gap-14 px-10 w-117 lg:px-0">
+          <h1 className="font-josefin-sans text-h1-mobile lg:text-h1 text-center lg:text-left">
+            What Is{" "}
+            <span className="bg-gradient-retro-wave bg-clip-text text-transparent">
+              DDP-0?
+            </span>
+          </h1>
+          <div>
+            <p className="text-headline-mobile lg:text-h5 font-josefin-sans text-center lg:text-left">
+              DDP-0 adalah program pembekalan dari COSMIC 2024 untuk
+              memperkenalkan konsep dasar pemrograman kepada mahasiswa baru CSUI
+              2025, sebagai bekal menghadapi perkuliahan di Fasilkom UI
+            </p>
+            <br />
+            <p className="text-headline-mobile lg:text-h5 font-josefin-sans text-center lg:text-left">
+              Melalui program ini, mahasiswa baru CSUI 2025 diharapkan dapat
+              membangun fondasi yang kuat dan lebih percaya diri menghadapi
+              dunia pemrograman di bangku kuliah.
+            </p>
+          </div>
         </div>
+        <Slider initialImages={images} />
       </div>
-      <Slider initialImages={images} />
-      <img src="/Subtract.svg" alt="subtract" className="w-full h-full -translate-y-1/2"/>
+      <img
+        src="/Subtract.svg"
+        alt="subtract"
+        className="w-full h-full -translate-y-1/2 lg:hidden"
+      />
+      <img
+        src="/Subtract-lg.svg"
+        alt="subtract"
+        className="w-full h-full -translate-y-1/4 invisible lg:visible"
+      />
+
     </section>
   );
 }
