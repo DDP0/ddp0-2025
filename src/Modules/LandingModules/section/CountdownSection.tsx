@@ -22,10 +22,10 @@ const CountdownSection = () => {
         alt="buwlan"
         className="absolute w-1/4 left-0 -translate-x-1/2 translate-y-1/3 max-md:hidden"
       />
-      <h1 className="text-h2 md:text-h1">Countdown</h1>
+      <h1 className="text-h2 md:text-h1 z-10">Countdown</h1>
       <div className="flex flex-col gap-4 items-center border border-border/20 rounded-3xl bg-gradient-to-r from-islan-milde-500/20 to-aurora-green-500/20 backdrop-blur-md px-8 md:px-20 py-6 md:py-8">
         <h1 className="text-h5 opacity-80">Kelompok Mentoring</h1>
-        <Countdown targetDate={new Date("July 28, 2025 23:59:59")} />
+        <Countdown targetDate={new Date("June 29, 2025 23:59:59")} />
         <h1 className="opacity-80">28 Jul 2025, 23:59 WIB</h1>
         <Button>
           <Search />
