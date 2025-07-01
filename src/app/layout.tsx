@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Josefin_Sans, Spectral } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-import Footer from "@/components/elements/Footer";
-
+import Navbar from "@/components/elements/Navbar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -39,9 +38,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${josefinSans.variable} ${spectral.variable} antialiased`}
       >
-        <main>{children}</main>
+        <main>
+          <Navbar />
+          {children}
+        </main>
         <Toaster />
-        <Footer />
       </body>
     </html>
   );

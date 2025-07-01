@@ -130,11 +130,11 @@ export default function Home() {
         </div>
         {/* <Button className="">Primary</Button> */}
         {/* <div className="absolute top-20 w-full h-100 rounded-2xl bg-border p-[1px]"> */}
-        <div className="sticky top-0 glass z-10 w-full h-20 rounded-2xl bg-border p-[1px]">
-          <div className="w-full h-full flex  justify-center items-center rounded-2xl bg-card">
-            <p>Ibaratnya ini navbar</p>
-          </div>
+        {/* <div className="sticky top-0 glass z-10 w-full h-20 rounded-2xl bg-border p-[1px]"> */}
+        <div className="w-full h-20 z-10 sticky top-0 flex  justify-center items-center rounded-2xl glass border border-neutral-50">
+          <p>Ibaratnya ini navbar</p>
         </div>
+        {/* </div> */}
         <Button className="w-full">
           <Disc />
           Button
@@ -239,6 +239,19 @@ export default function Home() {
           Toast Loader
           <ArrowRight />
         </Button>
+        <div
+          className="w-full h-50 rounded-xl glass"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(154, 231, 184, 0.30) 0.39%, rgba(118, 118, 118, 0.30) 100.53%)",
+            boxShadow:
+              "0px 48px 100px 0px rgba(255, 255, 255, 0.15) inset, 0px 4px 8px 0px rgba(0, 0, 0, 0.05), 0px 16px 32px 0px rgba(0, 0, 0, 0.05), 0px 32px 64px 0px rgba(0, 0, 0, 0.10)",
+            backdropFilter: "blur(10px)",
+          }}
+        ></div>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="loader"></div>
+        </div>
       </div>
     </div>
   );

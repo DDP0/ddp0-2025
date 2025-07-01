@@ -1,9 +1,9 @@
-import CountdownSection from "./section/CountdownSection";
+import FAQPage from "./section/Faq";
 
 const LandingModules = () => {
   return (
-    <main>
-      <CountdownSection />
+    <main className="flex flex-col">
+      <FAQPage />
     </main>
   );
 };
