@@ -122,7 +122,7 @@ export default function FAQPage() {
       </div>
 
       {/* Orange gradient on bottom right */}
-      <div className="absolute bottom-5 right-0 translate-x-1/2 w-64 h-64 bg-islan-milde-500 rounded-full blur-3xl pointer-events-none z-0 animate-pulse"></div>
+      <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-64 h-64 bg-islan-milde-500 rounded-full blur-3xl pointer-events-none z-0 animate-pulse"></div>
 
       {/* Content */}
       <div className="relative z-10 px-8 py-12 lg:px-20 lg:py-16">
