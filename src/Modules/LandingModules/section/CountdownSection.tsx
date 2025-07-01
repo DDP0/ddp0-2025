@@ -9,7 +9,7 @@ const CountdownSection = () => {
       <div className="w-1/6 aspect-square rounded-full blur-3xl absolute -left-24 top-1/2 -translate-y-2/3 bg-gradient-retro-button max-md:hidden" />
       <div className="w-1/6 aspect-square rounded-full blur-3xl absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 bg-[#18357A] max-md:hidden" />
 
-      <div className="absolute bottom-0 max-md:hidden w-full h-full">
+      <div className="absolute bottom-0 max-md:hidden w-full h-full animate-pulse">
         <Image src="/swirl.webp" alt="swirl" fill />
       </div>
       <div className="w-[30rem] absolute bottom-0 translate-y-1/2 md:hidden">

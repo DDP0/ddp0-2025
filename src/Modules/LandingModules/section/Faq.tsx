@@ -110,7 +110,7 @@ export default function FAQPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden font-josefin-sans">
+    <div className="min-h-screen text-white relative font-josefin-sans">
       {/* Background moon image */}
       <div className="absolute aspect-square w-[38rem] max-lg:w-[25rem] max-sm:w-[15rem] bottom-0 left-0">
         <Image
@@ -122,14 +122,14 @@ export default function FAQPage() {
       </div>
 
       {/* Orange gradient on bottom right */}
-      <div className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-64 h-64 bg-islan-milde-500 rounded-full blur-3xl pointer-events-none z-0 animate-pulse"></div>
+      <div className="absolute bottom-5 right-0 translate-x-1/2 w-64 h-64 bg-islan-milde-500 rounded-full blur-3xl pointer-events-none z-0 animate-pulse"></div>
 
       {/* Content */}
       <div className="relative z-10 px-8 py-12 lg:px-20 lg:py-16">
         {/* Desktop Layout */}
         <div className="hidden lg:flex lg:gap-16 lg:items-start max-w-7xl mx-auto ">
           {/* Left side - Header */}
-          <div className="lg:w-1/3 lg:sticky lg:top-16">
+          <div className="lg:w-1/3">
             <div className="relative">
               {/* Rounded gradient background for FAQs text */}
               <div className="absolute -inset-8 bg-gradient-retro-wave rounded-full blur-[150px] animate-pulse"></div>
