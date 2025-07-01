@@ -21,7 +21,8 @@ const josefinSans = Josefin_Sans({
 
 const spectral = Spectral({
   variable: "--font-spectral",
-  weight: "600",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {

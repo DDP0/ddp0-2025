@@ -1,5 +1,3 @@
-import { Instagram } from "lucide-react";
-
 const Footer = () => {
   return (
     <footer className="flex relative z-50 max-md:gap-4 max-md:flex-col justify-between items-center px-16 py-8 bg-black">
