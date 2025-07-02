@@ -1,8 +1,8 @@
-import DashboardContent from "./DashboardContent";
+import DashboardModules from "@/Modules/DashboardModules";
 
 export default async function DashboardPage() {
 
   return (
-      <DashboardContent />
+      <DashboardModules />
   );
 }

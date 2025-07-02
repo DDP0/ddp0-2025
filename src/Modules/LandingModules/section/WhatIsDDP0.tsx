@@ -33,7 +33,7 @@ const images: { src: string; alt: string }[] = [
 
 export default function WhatIsDDP0() {
   return (
-    <section className="flex flex-col justify-center gap-13 my-16">
+    <section className="relative flex flex-col justify-center gap-13 my-16">
       <div className="flex flex-col relative lg:flex-row justify-center items-center gap-12 w-full px-4">
         <div className="flex flex-col gap-12 lg:gap-14 px-10 w-100 md:w-160 lg:w-117 lg:px-0">
           <h1 className="font-josefin-sans text-h1-mobile md:text-h1 text-center lg:text-left">
@@ -68,7 +68,6 @@ export default function WhatIsDDP0() {
         alt="subtract"
         className="absolute w-full h-full translate-y-1/2 -z-10 invisible lg:visible"
       />
-
     </section>
   );
 }
