@@ -1,4 +1,5 @@
 import Slider from "../components/Slider";
+import Image from "next/image";
 
 const images: { src: string; alt: string }[] = [
   {
@@ -58,16 +59,13 @@ export default function WhatIsDDP0() {
         </div>
         <Slider initialImages={images} />
       </div>
-      <img
-        src="/Subtract.svg"
-        alt="subtract"
-        className="absolute w-full h-full translate-y-1/2 md:translate-y-3/8 -z-10 lg:hidden"
-      />
-      <img
-        src="/Subtract-lg.svg"
-        alt="subtract"
-        className="absolute w-full h-full translate-y-1/2 -z-10 invisible lg:visible"
-      />
+
+      <div className="absolute w-full h-full translate-y-1/2 md:translate-y-3/8 -z-10 lg:hidden">
+        <Image src="/Subtract.svg" alt="subtract" fill />
+      </div>
+      <div className="absolute w-full h-full translate-y-1/2 -z-10 invisible lg:visible">
+        <Image src="/Subtract-lg.svg" alt="subtract" fill />
+      </div>
     </section>
   );
 }
