@@ -1,5 +1,6 @@
 import Image from "next/image";
 import TimelineCard from "../components/TimelineCard";
+import TimelineCardMobile from "../components/TimelineCardMobile";
 
 const timelineEntries = [
   [
@@ -52,8 +53,9 @@ const timelineEntries = [
 
 function DesktopTimeline() {
   return (
-    <div className="relative border pt-[5vh] pr-[7vw]">
+    <div className="relative pt-[5vh] pr-[7vw]">
       <img src="/TimelineDesktopTree.png" alt=""/>
+      
       <div className="absolute top-[9%] left-[9%]">
         <TimelineCard lines={timelineEntries[0]}/>
       </div>
@@ -87,7 +89,7 @@ function DesktopTimeline() {
       </div>
 
       <div className="absolute top-[11%] left-[84.25%]">
-        <TimelineCard lines={timelineEntries[7]}/>
+        <TimelineCard lines={timelineEntries[8]}/>
       </div>
     </div>
   )
@@ -96,8 +98,44 @@ function DesktopTimeline() {
 
 function MobileTimeline() {
   return (
-    <div>
-      mobile timeline
+    <div className="relative">
+      <img src="/TimelineMobileTree.png" alt=""/>
+
+      <div className="absolute top-[7.5%] left-[63%]">
+        <TimelineCardMobile lines={timelineEntries[0]}/>
+      </div>
+
+      <div className="absolute top-[14.5%] left-[32%]">
+        <TimelineCardMobile lines={timelineEntries[1]}/>
+      </div>
+
+      <div className="absolute top-[30%] left-[67%]">
+        <TimelineCardMobile lines={timelineEntries[2]}/>
+      </div>
+
+      <div className="absolute top-[38.5%] left-[34%]">
+        <TimelineCardMobile lines={timelineEntries[3]}/>
+      </div>
+
+      <div className="absolute top-[54%] left-[60%]">
+        <TimelineCardMobile lines={timelineEntries[4]}/>
+      </div>
+
+      <div className="absolute top-[60.75%] left-[33%]">
+        <TimelineCardMobile lines={timelineEntries[5]}/>
+      </div>
+
+      <div className="absolute top-[74.5%] left-[21.5%]">
+        <TimelineCardMobile lines={timelineEntries[6]}/>
+      </div>
+
+      <div className="absolute top-[84%] left-[46.5%]">
+        <TimelineCardMobile lines={timelineEntries[7]}/>
+      </div>
+
+      <div className="absolute top-[92.75%] left-[50%]">
+        <TimelineCardMobile lines={timelineEntries[8]}/>
+      </div>
     </div>
   )
 }
@@ -106,7 +144,8 @@ function MobileTimeline() {
 export default function Timeline() {
   return (
     <div>
-      <DesktopTimeline/>
+      {/* <DesktopTimeline/> */}
+      <MobileTimeline/>
     </div>
   )
 }
