@@ -42,7 +42,7 @@ export default function RootLayout({
       >
         <main>
           <Navbar />
-          {children}
+          <div className="pt-20">{children}</div>
           <Footer />
         </main>
         <Toaster />

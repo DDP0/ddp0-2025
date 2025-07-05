@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/useToast";
+import TestimonialCard from "@/components/elements/TestimonialsCard";
 
 export default function Home() {
   const toast = useToast();
@@ -252,6 +253,7 @@ export default function Home() {
         <div className="min-h-screen flex items-center justify-center">
           <div className="loader"></div>
         </div>
+        <TestimonialCard/>
       </div>
     </div>
   );
