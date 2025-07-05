@@ -53,7 +53,7 @@ const timelineEntries = [
 
 function DesktopTimeline() {
   return (
-    <div className="relative pt-[5vh] pr-[7vw]">
+    <div className="relative pt-[5vh] pr-[7vw] max-md:hidden">
       <img src="/TimelineDesktopTree.png" alt=""/>
       
       <div className="absolute top-[9%] left-[9%]">
@@ -98,7 +98,7 @@ function DesktopTimeline() {
 
 function MobileTimeline() {
   return (
-    <div className="relative">
+    <div className="relative md:hidden">
       <img src="/TimelineMobileTree.png" alt=""/>
 
       <div className="absolute top-[7.5%] left-[63%]">
@@ -144,7 +144,7 @@ function MobileTimeline() {
 export default function Timeline() {
   return (
     <div>
-      {/* <DesktopTimeline/> */}
+      <DesktopTimeline/>
       <MobileTimeline/>
     </div>
   )
