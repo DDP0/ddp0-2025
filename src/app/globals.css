@@ -401,22 +401,22 @@ body {
   font-family: var(--font-josefin-sans), var(--font-sans), sans-serif;
 }
 
-.animate-start-float{
+.animate-start-float {
   animation: star-float 6s ease-in-out infinite;
 }
-.animate-star-drift{
+.animate-star-drift {
   animation: star-drift 8s ease-in-out infinite;
 }
-.animate-star-twinkle{
+.animate-star-twinkle {
   animation: star-twinkle 2s ease-in-out infinite;
 }
-.animate-star-orbit{
+.animate-star-orbit {
   animation: star-orbit 10s linear infinite;
 }
-.animate-star-pulse{
+.animate-star-pulse {
   animation: star-pulse 3s ease-in-out infinite;
 }
-.animate-constellation-move{
+.animate-constellation-move {
   animation: constellation-move 12s ease-in-out infinite;
 }
 
@@ -613,7 +613,7 @@ body {
 
 @keyframes marquee {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
   100% {
     transform: translateX(-50%);
@@ -622,4 +622,31 @@ body {
 
 .animate-marquee {
   animation: marquee 35s linear infinite;
+  display: flex;
+}
+
+/* Enhanced marquee animation with better browser support */
+.animate-marquee-enhanced {
+  animation: marquee-enhanced 35s linear infinite;
+  display: flex;
+  width: fit-content;
+  will-change: transform;
+}
+
+@keyframes marquee-enhanced {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Ensure smooth animation */
+.animate-marquee,
+.animate-marquee-enhanced {
+  animation: marquee 35s linear infinite;
+  -webkit-animation: marquee 35s linear infinite;
+  -moz-animation: marquee 35s linear infinite;
+  -o-animation: marquee 35s linear infinite;
 }

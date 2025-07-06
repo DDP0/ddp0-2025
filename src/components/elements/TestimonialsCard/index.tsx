@@ -1,7 +1,17 @@
 import React from "react";
 import Image from "next/image";
 
-const TestimonialCard = ({ img, name, desc, testimony }: any) => {
+const TestimonialCard = ({
+  img,
+  name,
+  desc,
+  testimony,
+}: {
+  img: string;
+  name: string;
+  desc: string;
+  testimony: string;
+}) => {
   return (
     <div className="relative max-w-md w-full scale-[0.95] sm:scale-100 transition-transform duration-300 ease-in-out">
       {/* Main Card */}

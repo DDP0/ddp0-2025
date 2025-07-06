@@ -60,12 +60,15 @@ const TestimonyPage = () => {
         Testimony
       </h1>
 
-      <div className="relative w-full overflow-hidden z-10 pb-24">
-        <div className="flex animate-marquee gap-8 sm:gap-16 w-max px-4">
-          {[...testimonies, ...testimonies].map((item, idx) => (
+      <div className="relative w-full z-10 pb-24">
+        <div
+          className="flex animate-marquee gap-8 sm:gap-16"
+          style={{ width: "max-content" }}
+        >
+          {[...testimonies, ...testimonies, ...testimonies].map((item, idx) => (
             <div
               key={idx}
-              className="w-[280px] sm:w-[300px] md:w-[320px] flex-shrink-0"
+              className="w-[280px] hover:scale-110 sm:w-[300px] duration-1000 md:w-[320px] flex-shrink-0"
             >
               <TestimonialCard {...item} />
             </div>
