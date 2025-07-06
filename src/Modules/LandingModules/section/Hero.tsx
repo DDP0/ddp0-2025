@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { UserPlus } from "lucide-react";
 import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[120vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[120vh] max-sm:min-h-[140vh] flex items-center justify-center overflow-hidden">
       <div className="absolute right-0 bottom-0 w-64 h-64 lg:w-180 lg:h-180 z-20">
         <div className="relative w-full h-full">
           <Image
@@ -39,7 +38,7 @@ const Hero = () => {
         <div className="absolute bottom-1/2 right-1/6 w-1 h-1 bg-white rounded-full opacity-80 shadow-[0_0_4px_rgba(255,255,255,0.5)]" />
 
         <svg
-          className="absolute top-24 right-1/3 w-48 h-36 opacity-70 drop-shadow-[0_0_2px_rgba(255,255,255,0.3)]"
+          className="absolute animate-star-orbit top-24 right-1/3 w-48 h-36 opacity-70 drop-shadow-[0_0_2px_rgba(255,255,255,0.3)]"
           viewBox="0 0 192 144"
         >
           <defs>
@@ -67,7 +66,7 @@ const Hero = () => {
         </svg>
 
         <svg
-          className="absolute top-1/3 right-1/4 w-36 h-30 opacity-60 drop-shadow-[0_0_2px_rgba(255,255,255,0.2)]"
+          className="absolute animate-constellation-move top-1/3 right-1/4 w-36 h-30 opacity-60 drop-shadow-[0_0_2px_rgba(255,255,255,0.2)]"
           viewBox="0 0 144 120"
         >
           <defs>
