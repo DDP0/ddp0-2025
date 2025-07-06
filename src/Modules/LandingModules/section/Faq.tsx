@@ -110,7 +110,7 @@ export default function FAQPage() {
   ];
 
   return (
-    <div className="min-h-screen text-white relative font-josefin-sans">
+    <section className="min-h-screen text-white relative font-josefin-sans">
       {/* Background moon image */}
       <div className="absolute aspect-square w-[38rem] max-lg:w-[25rem] max-sm:w-[15rem] bottom-0 left-0">
         <Image
@@ -188,6 +188,6 @@ export default function FAQPage() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

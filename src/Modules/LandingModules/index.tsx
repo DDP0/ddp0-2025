@@ -2,10 +2,12 @@ import CountdownSection from "./section/CountdownSection";
 import FAQPage from "./section/Faq";
 import TestimonyPage from "./section/Testimony";
 import WhatIsDDP0 from "./section/WhatIsDDP0";
+import Hero from "./section/Hero";
 
 const LandingModules = () => {
   return (
-    <main className="flex flex-col overflow-hidden">
+    <main className="flex flex-col gap-40 overflow-hidden">
+      <Hero />
       <WhatIsDDP0 />
       <CountdownSection />
       <TestimonyPage />
