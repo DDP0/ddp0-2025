@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "@/hooks/useSession";
 import { useRouter, usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Loader from "./elements/Loader";
 
 interface ProtectedRouteProps {
@@ -18,34 +18,25 @@ export function ProtectedRoute({
   const { isAuthenticated, isLoading, user } = useSession();
   const router = useRouter();
   const pathname = usePathname();
+  const [redirecting, setRedirecting] = useState(false);
 
   useEffect(() => {
     if (isLoading) return;
 
     if (!isAuthenticated) {
-      router.push(redirectTo);
+      setRedirecting(true);
+      router.replace(redirectTo);
       return;
     }
 
     if (user && user.fillDetails === false && pathname !== "/register/form") {
-      router.push("/register/form");
-      return;
-    }
-
-    if (user && user.fillDetails === true && pathname !== "/dashboard") {
-      router.push("/dashboard");
+      setRedirecting(true);
+      router.replace("/register/form");
     }
   }, [isAuthenticated, isLoading, user, router, redirectTo, pathname]);
 
-  if (isLoading) {
+  if (isLoading || redirecting) {
     return fallback || <Loader />;
-  }
-
-  if (
-    !isAuthenticated ||
-    (user && user.fillDetails === false && pathname !== "/register/form")
-  ) {
-    return null;
   }
 
   return <>{children}</>;

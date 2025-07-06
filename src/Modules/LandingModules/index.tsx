@@ -5,7 +5,7 @@ import Hero from "./section/Hero";
 
 const LandingModules = () => {
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col gap-40">
       <Hero/>
       <WhatIsDDP0 />
       <CountdownSection />

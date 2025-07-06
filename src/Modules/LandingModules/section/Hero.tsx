@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -97,7 +98,7 @@ const Hero = () => {
           <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-4">
               <h1 className="text-h1-mobile md:text-h2 lg:text-h1 font-josefin-sans leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
-                <span className="relative inline-block w-full">
+                <span className="relative inline-block w-full max-sm:w-[90%]">
                   <span
                     className="bg-gradient-retro-wave bg-clip-text text-transparent whitespace-pre-line"
                     style={{
@@ -127,19 +128,21 @@ const Hero = () => {
             </div>
 
             <div className="pt-4 flex justify-center lg:justify-start">
-              <Button
-                variant="retro"
-                size="lg"
-                className="text-bodyLarge-mobile md:text-bodyLarge font-semibold px-16 py-4 min-w-[220px] drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:drop-shadow-[0_6px_16px_rgba(0,0,0,0.4)] transition-all duration-300"
-              >
-                <Image
-                  src="./card.svg"
-                  alt="Background"
-                  width={25}
-                  height={25}
-                />
-                <p className="font-josefin-sans">Register Now</p>
-              </Button>
+              <Link href="/register">
+                <Button
+                  variant="retro"
+                  size="lg"
+                  className="text-bodyLarge-mobile md:text-bodyLarge font-semibold px-16 py-4 min-w-[220px] drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:drop-shadow-[0_6px_16px_rgba(0,0,0,0.4)] transition-all duration-300"
+                >
+                  <Image
+                    src="./card.svg"
+                    alt="Background"
+                    width={25}
+                    height={25}
+                  />
+                  Register Now
+                </Button>
+              </Link>
             </div>
           </div>
           <div className="hidden lg:block" />
