@@ -18,7 +18,12 @@ export async function middleware(request: NextRequest) {
 
   try {
     // Use cookies to check authentication status instead of Better Auth API
-    const sessionToken = request.cookies.get("better-auth.session_token");
+    const isDev = process.env.NODE_ENV === "development";
+
+    const sessionToken = isDev
+      ? request.cookies.get("better-auth.session_token")
+      : request.cookies.get("__Secure-better-auth.session_token") ||
+        request.cookies.get("better-auth.session_token");
     const isAuthenticated = !!sessionToken;
 
     console.log("🔍 Auth status:", {
