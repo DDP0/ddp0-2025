@@ -10,8 +10,10 @@ const LandingModules = () => {
     <main className="flex flex-col gap-40 overflow-hidden">
       <Hero />
       <WhatIsDDP0 />
-      <Timeline />
-      <CountdownSection />
+      <div>
+        <Timeline />
+        <CountdownSection />
+      </div>
       <TestimonyPage />
       <FAQPage />
     </main>
