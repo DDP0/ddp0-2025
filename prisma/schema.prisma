@@ -57,6 +57,8 @@ model User {
   updatedAt     DateTime @updatedAt
   accounts Account[]
   sessions Session[]
+  kelompokUsers KelompokUser[]
+  submissions   Submisi[]
 
   @@map("user")
 }
@@ -107,4 +109,61 @@ model Verification {
 
   @@unique([identifier, value])
   @@map("verification")
+}
+
+enum TipeTugas {
+  Lab
+  Quiz
+}
+
+model Kelompok {
+  id        String     @id @default(cuid())
+  name      String
+  users     KelompokUser[]
+  tugas     Tugas[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model KelompokUser {
+  id         String   @id @default(cuid())
+  userId     String
+  kelompokId String
+  isMentor   Boolean  @default(false)
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kelompok   Kelompok @relation(fields: [kelompokId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, kelompokId])
+}
+
+model Tugas {
+  id          String     @id @default(cuid())
+  title       String
+  description String
+  tipe        TipeTugas
+  linkTugas   String
+  kelompokId  String
+
+  kelompok    Kelompok   @relation(fields: [kelompokId], references: [id], onDelete: Cascade)
+  submissions Submisi[]
+
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Submisi {
+  id        String   @id @default(cuid())
+  userId    String
+  tugasId   String
+  link      String
+  nilai     Int?     // Nilai opsional
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tugas     Tugas    @relation(fields: [tugasId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, tugasId])
 }
