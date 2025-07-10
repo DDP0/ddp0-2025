@@ -113,7 +113,8 @@ model Verification {
 
 enum TipeTugas {
   Lab
-  Quiz
+  TP
+  MINIQUIZ
 }
 
 model Kelompok {
