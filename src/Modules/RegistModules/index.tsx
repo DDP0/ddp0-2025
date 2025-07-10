@@ -21,7 +21,7 @@ const RegistrationModules = ({
       await authClient.signIn.social({
         provider: "google",
         callbackURL: isMentor
-          ? "/mentor"
+          ? "/mentor/form"
           : isRegisterPage
           ? "/register/form"
           : "/dashboard", // Redirect to dashboard after successful sign up

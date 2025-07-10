@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { registFillDetailsSchema } from "../../../model/user.schema";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
+import { mentorSchema } from "@/model/mentor.schema";
+import { MENTOR_EMAIL } from "./const";
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,7 +21,11 @@ export async function POST(request: NextRequest) {
 
     // Parse and validate the request body
     const body = await request.json();
-    const validation = registFillDetailsSchema.safeParse(body);
+    const params = request.nextUrl.searchParams;
+    const isMentor = params.get("mentor") === "true";
+    const validation = isMentor
+      ? mentorSchema.safeParse(body)
+      : registFillDetailsSchema.safeParse(body);
 
     if (!validation.success) {
       return NextResponse.json(
@@ -28,6 +34,13 @@ export async function POST(request: NextRequest) {
           details: validation.error.errors,
         },
         { status: 400 }
+      );
+    }
+
+    if (isMentor && !MENTOR_EMAIL.includes(session.user.email)) {
+      return NextResponse.json(
+        { error: "Unauthorized - You are not allowed to register as a mentor" },
+        { status: 403 }
       );
     }
 
@@ -50,16 +63,27 @@ export async function POST(request: NextRequest) {
         id: session.user.id,
       },
       data: {
+        role: isMentor ? "Mentor" : "User",
         name: validatedData.namaLengkap,
         NPM: validatedData.npm,
         idLine: validatedData.idLine,
         idDiscord: validatedData.idDiscord,
-        buktiMasuk: validatedData.screenshotBuktiMasuk,
-        buktiShare: validatedData.screenshotBuktiShareIG,
-        jalurMasuk: validatedData.jalurMasuk,
-        jurusan: validatedData.jurusan,
-        gender: validatedData.gender,
-        asalSekolah: validatedData.asalSekolah,
+        buktiMasuk:
+          "screenshotBuktiMasuk" in validatedData
+            ? validatedData.screenshotBuktiMasuk
+            : null,
+        buktiShare:
+          "screenshotBuktiShareIG" in validatedData
+            ? validatedData.screenshotBuktiShareIG
+            : null,
+        jalurMasuk:
+          "jalurMasuk" in validatedData ? validatedData.jalurMasuk : null,
+        jurusan: "jurusan" in validatedData ? validatedData.jurusan : null,
+        gender: "gender" in validatedData ? validatedData.gender || null : null,
+        asalSekolah:
+          "asalSekolah" in validatedData
+            ? validatedData.asalSekolah || null
+            : null,
         fillDetails: true,
       },
     });
