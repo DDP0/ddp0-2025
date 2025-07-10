@@ -10,7 +10,7 @@ import RegistFillDetails from "@/Modules/MentorModules/FormMentor";
 const Page = () => {
   const router = useRouter();
   const { show } = useToast();
-  const { user, isLoading, isAuthenticated } = useSession();
+  const { isLoading, isAuthenticated } = useSession();
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {

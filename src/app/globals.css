@@ -399,6 +399,7 @@ body {
   background: var(--color-component-frame);
   color: var(--color-neutral-50);
   font-family: var(--font-josefin-sans), var(--font-sans), sans-serif;
+  scroll-behavior: smooth;
 }
 
 .animate-start-float {
@@ -650,3 +651,4 @@ body {
   -moz-animation: marquee 35s linear infinite;
   -o-animation: marquee 35s linear infinite;
 }
+
