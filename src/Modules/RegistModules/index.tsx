@@ -26,11 +26,11 @@ const RegistrationModules = ({
     }
   };
   return (
-    <main className="relative h-screen overflow-hidden flex flex-col gap-6 max-lg:gap-5 max-md:gap-4 max-sm:gap-2.5 justify-center items-center px-120 max-lg:px-25 max-md:px-20 max-sm:px-8 font-josefin-sans bg-blend-overlay">
+    <main className="relative h-screen overflow-hidden flex flex-col gap-6 max-lg:gap-5 max-md:gap-4 max-sm:gap-2.5 justify-center items-center max-sm:px-8 font-josefin-sans bg-blend-overlay">
       <h1 className="text-h4 max-lg:text-h5 max-md:text-headline">
         Selamat datang di DDP-0!
       </h1>
-      <div className="relative w-full rounded-xl p-[1px] bg-component-border">
+      <div className="relative w-[45%] max-lg:w-[70%] max-md:w-[80%] max-sm:w-full rounded-xl p-[1px] bg-component-border">
         <div className="w-full rounded-xl flex flex-col gap-6 bg-card glass p-16 max-lg:p-14 max-md:p-10 max-sm:px-8 max-sm:py-12">
           <h4 className="text-h4 max-sm:text-h5-mobile text-center">
             {isRegisterPage ? "Registration" : "Login"}
