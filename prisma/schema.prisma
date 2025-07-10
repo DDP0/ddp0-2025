@@ -63,6 +63,15 @@ model User {
   @@map("user")
 }
 
+model ALLOWED_EMAIL{
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("allowed_email")
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -112,7 +121,7 @@ model Verification {
 }
 
 enum TipeTugas {
-  Lab
+  LAB
   TP
   MINIQUIZ
 }
