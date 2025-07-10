@@ -158,6 +158,7 @@ model Submisi {
   tugasId   String
   link      String
   nilai     Int?     // Nilai opsional
+  feedback  String? 
 
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   tugas     Tugas    @relation(fields: [tugasId], references: [id], onDelete: Cascade)
@@ -166,4 +167,11 @@ model Submisi {
   updatedAt DateTime @updatedAt
 
   @@unique([userId, tugasId])
+}
+
+model notification{
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  link      String?
 }
