@@ -387,6 +387,32 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.data-\[state\=active\]\:border-retro-wave {
+  &[data-state="active"] {
+    border-image: linear-gradient(
+        100deg,
+        rgb(201, 155, 219) 0%,
+        rgb(65, 110, 183) 100%
+      )
+      1;
+    border-image-slice: 1;
+  }
+}
+
+.data-\[state\=active\]\:before\:bg-tabs {
+    &[data-state="active"] {
+        &::before {
+            content: var(--tw-content);
+            background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    ),
+    linear-gradient(180deg, #c99bdb 0%, #416eb7 100%);
+        }
+    }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -653,4 +679,3 @@ html {
   -moz-animation: marquee 35s linear infinite;
   -o-animation: marquee 35s linear infinite;
 }
-
