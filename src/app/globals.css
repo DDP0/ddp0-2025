@@ -413,6 +413,17 @@ body {
     }
 }
 
+@media (min-width: 1024px) {
+  .data-\[state\=active\]\:before\:bg-tabs[data-state="active"]::before {
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.4) 100%
+      ),
+      linear-gradient(100deg, #c99bdb 0%, #416eb7 100%);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
