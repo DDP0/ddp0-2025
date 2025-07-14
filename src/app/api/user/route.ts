@@ -105,3 +105,44 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+export async function PATCH(request: NextRequest) {
+  try {
+    const session = await auth.api.getSession({
+      headers: request.headers,
+    });
+
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const body = await request.json();
+
+    const updatedUser = await prisma.user.update({
+      where: { id: session.user.id },
+      data: {
+        name: body.namaLengkap,
+        NPM: body.npm,
+        idLine: body.idLine,
+        idDiscord: body.idDiscord,
+        buktiMasuk: body.screenshotBuktiMasuk,
+        buktiShare: body.screenshotBuktiShareIG,
+        jalurMasuk: body.jalurMasuk,
+        jurusan: body.jurusan,
+        gender: body.gender,
+        asalSekolah: body.asalSekolah,
+      },
+    });
+
+    return NextResponse.json(
+      { message: "User profile updated", user: updatedUser },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("PATCH /api/dashboard error:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
