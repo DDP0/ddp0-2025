@@ -11,7 +11,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"; 
+} from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -37,14 +37,16 @@ const Gender = [
 function ViewProfile({ toggle }: { toggle: () => void }) {
   const { user } = useSession();
   return (
-    <div className="relative min-h-screen flex justify-center w-full overflow-hidden font-josefin-sans">
-      <div className="flex flex-col gap-1 max-sm:gap-6">
+    <div className="relative w-full flex justify-center overflow-hidden font-josefin-sans">
+      <div className="w-full flex flex-col gap-1 max-sm:gap-6">
         <div className="flex items-center justify-between">
-          <h4 className="text-h4 max-lg:text-h4-mobile">
-            Profile
-          </h4>
+          <h4 className="text-h4 max-lg:text-h4-mobile">Profile</h4>
           <Button variant="blue" onClick={toggle}>
-            <img src="Edit.svg" alt="Edit Icon" className="w-6 h-6 max-lg:w-4 max-lg:h-4" />
+            <img
+              src="Edit.svg"
+              alt="Edit Icon"
+              className="w-6 h-6 max-lg:w-4 max-lg:h-4"
+            />
             <span>Edit</span>
           </Button>
         </div>
@@ -102,7 +104,14 @@ function ViewProfile({ toggle }: { toggle: () => void }) {
               <Label>
                 <span>Jurusan</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                  {user?.jurusan}
+                  {/* {user?.jurusan} */}
+                  {user?.jurusan ? (
+                    <span>
+                      {jurusanList.find((j) => j.value === user.jurusan)?.label}
+                    </span>
+                  ) : (
+                    <span className="text-muted-foreground">Belum diisi</span>
+                  )}
                 </div>
               </Label>
             </div>
@@ -208,8 +217,8 @@ function EditProfile({ toggle }: { toggle: () => void }) {
   if (!user) return <div>Loading user data...</div>;
 
   return (
-    <div className="relative min-h-screen flex justify-center w-full overflow-hidden font-josefin-sans">
-      <div className="flex flex-col gap-8 max-sm:gap-6">
+    <div className="relative flex justify-center w-full overflow-hidden font-josefin-sans">
+      <div className="w-full flex flex-col gap-8 max-sm:gap-6">
         <div className="flex flex-col gap-1">
           <h4 className="text-h4 max-lg:text-h5 max-sm:text-headline-mobile">
             Edit Profile
