@@ -12,7 +12,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const jalurMasuk = [
@@ -36,8 +35,18 @@ const Gender = [
 
 function ViewProfile({ toggle }: { toggle: () => void }) {
   const { user } = useSession();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <div className="relative w-full flex justify-center overflow-hidden font-josefin-sans">
+    <div
+      className={`relative w-full flex justify-center overflow-hidden font-josefin-sans transition-all duration-500 transform ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      }`}
+    >
       <div className="w-full flex flex-col gap-1 max-sm:gap-6">
         <div className="flex items-center justify-between">
           <h4 className="text-h4 max-lg:text-h4-mobile">Profile</h4>
@@ -51,20 +60,52 @@ function ViewProfile({ toggle }: { toggle: () => void }) {
           </Button>
         </div>
         <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-12 max-sm:gap-0">
-          <div className="flex flex-col gap-6 max-sm:mb-6">
-            <Label>
-              <span>Nama Lengkap</span>
-              <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                {user?.name}
-              </div>
-            </Label>
-            <Label>
-              <span>NPM</span>
-              <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                {user?.NPM}
-              </div>
-            </Label>
-            <div className="grid grid-cols-2 gap-6 w-full">
+          <div
+            className={`flex flex-col gap-6 max-sm:mb-6 transition-all duration-700 transform ${
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-8"
+            }`}
+            style={{ transitionDelay: "100ms" }}
+          >
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
+              <Label>
+                <span>Nama Lengkap</span>
+                <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
+                  {user?.name}
+                </div>
+              </Label>
+            </div>
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "300ms" }}
+            >
+              <Label>
+                <span>NPM</span>
+                <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
+                  {user?.NPM}
+                </div>
+              </Label>
+            </div>
+            <div
+              className={`grid grid-cols-2 gap-6 w-full transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
               <Label>
                 <span>ID Line</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
@@ -78,21 +119,53 @@ function ViewProfile({ toggle }: { toggle: () => void }) {
                 </div>
               </Label>
             </div>
-            <Label>
-              <span>Screenshot Bukti Masuk Fasilkom (Gdrive)</span>
-              <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                {user?.buktiMasuk}
-              </div>
-            </Label>
-            <Label>
-              <span>Screenshot Bukti Share Instagram (Gdrive)</span>
-              <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                {user?.buktiShare}
-              </div>
-            </Label>
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "500ms" }}
+            >
+              <Label>
+                <span>Screenshot Bukti Masuk Fasilkom (Gdrive)</span>
+                <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
+                  {user?.buktiMasuk}
+                </div>
+              </Label>
+            </div>
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "600ms" }}
+            >
+              <Label>
+                <span>Screenshot Bukti Share Instagram (Gdrive)</span>
+                <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
+                  {user?.buktiShare}
+                </div>
+              </Label>
+            </div>
           </div>
-          <div className="flex flex-col gap-6">
-            <div>
+          <div
+            className={`flex flex-col gap-6 transition-all duration-700 transform ${
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-8"
+            }`}
+            style={{ transitionDelay: "200ms" }}
+          >
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "300ms" }}
+            >
               <Label>
                 <span>Jalur Masuk</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
@@ -100,7 +173,14 @@ function ViewProfile({ toggle }: { toggle: () => void }) {
                 </div>
               </Label>
             </div>
-            <div>
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
               <Label>
                 <span>Jurusan</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
@@ -115,7 +195,14 @@ function ViewProfile({ toggle }: { toggle: () => void }) {
                 </div>
               </Label>
             </div>
-            <div>
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "500ms" }}
+            >
               <Label>
                 <span>Gender</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
@@ -123,12 +210,21 @@ function ViewProfile({ toggle }: { toggle: () => void }) {
                 </div>
               </Label>
             </div>
-            <Label>
-              <span>Asal Sekolah</span>
-              <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                {user?.asalSekolah}
-              </div>
-            </Label>
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "600ms" }}
+            >
+              <Label>
+                <span>Asal Sekolah</span>
+                <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
+                  {user?.asalSekolah}
+                </div>
+              </Label>
+            </div>
           </div>
         </div>
       </div>
@@ -138,8 +234,8 @@ function ViewProfile({ toggle }: { toggle: () => void }) {
 
 function EditProfile({ toggle }: { toggle: () => void }) {
   const { user } = useSession();
-  const router = useRouter();
   const { show, dismiss } = useToast();
+  const [isVisible, setIsVisible] = useState(false);
 
   // State
   const [namaLengkap, setNamaLengkap] = useState("");
@@ -154,6 +250,10 @@ function EditProfile({ toggle }: { toggle: () => void }) {
   const [asalSekolah, setAsalSekolah] = useState("");
 
   // Update state ketika user sudah tersedia
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   useEffect(() => {
     if (user) {
       setNamaLengkap(user.name ?? "");
@@ -217,7 +317,11 @@ function EditProfile({ toggle }: { toggle: () => void }) {
   if (!user) return <div>Loading user data...</div>;
 
   return (
-    <div className="relative flex justify-center w-full overflow-hidden font-josefin-sans">
+    <div
+      className={`relative flex justify-center w-full overflow-hidden font-josefin-sans transition-all duration-500 transform ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      }`}
+    >
       <div className="w-full flex flex-col gap-8 max-sm:gap-6">
         <div className="flex flex-col gap-1">
           <h4 className="text-h4 max-lg:text-h5 max-sm:text-headline-mobile">
@@ -226,20 +330,52 @@ function EditProfile({ toggle }: { toggle: () => void }) {
         </div>
 
         <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-12 max-sm:gap-0">
-          <div className="flex flex-col gap-6 max-sm:mb-6">
-            <Input
-              label="Nama Lengkap"
-              value={namaLengkap}
-              onChange={(e) => setNamaLengkap(e.target.value)}
-              placeholder="Enter your name"
-            />
-            <Input
-              label="NPM"
-              value={npm}
-              onChange={(e) => setNpm(e.target.value)}
-              placeholder="Enter your NPM"
-            />
-            <div className="grid grid-cols-2 gap-6 w-full">
+          <div
+            className={`flex flex-col gap-6 max-sm:mb-6 transition-all duration-700 transform ${
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-8"
+            }`}
+            style={{ transitionDelay: "100ms" }}
+          >
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
+              <Input
+                label="Nama Lengkap"
+                value={namaLengkap}
+                onChange={(e) => setNamaLengkap(e.target.value)}
+                placeholder="Enter your name"
+              />
+            </div>
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "300ms" }}
+            >
+              <Input
+                label="NPM"
+                value={npm}
+                onChange={(e) => setNpm(e.target.value)}
+                placeholder="Enter your NPM"
+              />
+            </div>
+            <div
+              className={`grid grid-cols-2 gap-6 w-full transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
               <Input
                 label="ID Line"
                 value={idLine}
@@ -253,22 +389,54 @@ function EditProfile({ toggle }: { toggle: () => void }) {
                 placeholder="Enter your ID Discord"
               />
             </div>
-            <Input
-              label="Screenshot Bukti Masuk (Gdrive)"
-              value={screenshotBuktiMasuk}
-              onChange={(e) => setScreenshotBuktiMasuk(e.target.value)}
-              placeholder="Enter Gdrive link"
-            />
-            <Input
-              label="Screenshot Bukti Share Instagram (Gdrive)"
-              value={screenshotBuktiShareIG}
-              onChange={(e) => setScreenshotBuktiShareIG(e.target.value)}
-              placeholder="Enter Gdrive link"
-            />
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "500ms" }}
+            >
+              <Input
+                label="Screenshot Bukti Masuk (Gdrive)"
+                value={screenshotBuktiMasuk}
+                onChange={(e) => setScreenshotBuktiMasuk(e.target.value)}
+                placeholder="Enter Gdrive link"
+              />
+            </div>
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "600ms" }}
+            >
+              <Input
+                label="Screenshot Bukti Share Instagram (Gdrive)"
+                value={screenshotBuktiShareIG}
+                onChange={(e) => setScreenshotBuktiShareIG(e.target.value)}
+                placeholder="Enter Gdrive link"
+              />
+            </div>
           </div>
 
-          <div className="flex flex-col gap-6">
-            <div>
+          <div
+            className={`flex flex-col gap-6 transition-all duration-700 transform ${
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-8"
+            }`}
+            style={{ transitionDelay: "200ms" }}
+          >
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "300ms" }}
+            >
               <Label className="mb-2">Jalur Masuk</Label>
               <Select value={jalur} onValueChange={setJalur}>
                 <SelectTrigger className="w-full">
@@ -284,7 +452,14 @@ function EditProfile({ toggle }: { toggle: () => void }) {
               </Select>
             </div>
 
-            <div>
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
               <Label className="mb-2">Jurusan</Label>
               <div className="grid grid-cols-3 max-lg:grid-cols-2 gap-3">
                 {jurusanList.map((item) => (
@@ -294,10 +469,10 @@ function EditProfile({ toggle }: { toggle: () => void }) {
                       e.preventDefault();
                       setJurusan(item);
                     }}
-                    className={`rounded-xl py-2 border-2 text-base ${
+                    className={`rounded-xl py-2 border-2 text-base transition-all duration-300 hover:scale-105 ${
                       jurusan.value === item.value
                         ? "border-[#C99BDB] bg-clip-text bg-gradient-retro-wave text-transparent"
-                        : "border-neutral-100"
+                        : "border-neutral-100 hover:border-[#C99BDB]/50"
                     }`}
                   >
                     {item.label}
@@ -306,7 +481,14 @@ function EditProfile({ toggle }: { toggle: () => void }) {
               </div>
             </div>
 
-            <div>
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "500ms" }}
+            >
               <Label className="mb-2">Gender</Label>
               <div className="grid grid-cols-3 max-lg:grid-cols-2 gap-3">
                 {Gender.map((item) => (
@@ -316,10 +498,10 @@ function EditProfile({ toggle }: { toggle: () => void }) {
                       e.preventDefault();
                       setGender(item);
                     }}
-                    className={`rounded-xl py-2 border-2 text-base ${
+                    className={`rounded-xl py-2 border-2 text-base transition-all duration-300 hover:scale-105 ${
                       gender.value === item.value
                         ? "border-[#C99BDB] bg-clip-text bg-gradient-retro-wave text-transparent"
-                        : "border-neutral-100"
+                        : "border-neutral-100 hover:border-[#C99BDB]/50"
                     }`}
                   >
                     {item.label}
@@ -328,16 +510,30 @@ function EditProfile({ toggle }: { toggle: () => void }) {
               </div>
             </div>
 
-            <Input
-              label="Asal Sekolah"
-              value={asalSekolah}
-              onChange={(e) => setAsalSekolah(e.target.value)}
-              placeholder="Enter your school name"
-            />
+            <div
+              className={`transition-all duration-500 transform ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "600ms" }}
+            >
+              <Input
+                label="Asal Sekolah"
+                value={asalSekolah}
+                onChange={(e) => setAsalSekolah(e.target.value)}
+                placeholder="Enter your school name"
+              />
+            </div>
           </div>
         </div>
 
-        <div className="flex w-full justify-end max-lg:justify-center gap-2">
+        <div
+          className={`flex w-full justify-end max-lg:justify-center gap-2 transition-all duration-500 transform ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+          style={{ transitionDelay: "700ms" }}
+        >
           <Button onClick={toggle}>Cancel</Button>
           <Button variant="blue" onClick={handleSubmit}>
             Save
@@ -350,14 +546,29 @@ function EditProfile({ toggle }: { toggle: () => void }) {
 
 export default function ProfileTabs() {
   const [isEditing, setIsEditing] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const editToggle = () => {
-    setIsEditing((prev) => !prev);
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIsEditing((prev) => !prev);
+      setIsAnimating(false);
+    }, 150); // Half of the animation duration
   };
 
-  return isEditing ? (
-    <EditProfile toggle={editToggle} />
-  ) : (
-    <ViewProfile toggle={editToggle} />
+  return (
+    <div className="relative">
+      <div
+        className={`transition-opacity duration-300 ${
+          isAnimating ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        {isEditing ? (
+          <EditProfile toggle={editToggle} />
+        ) : (
+          <ViewProfile toggle={editToggle} />
+        )}
+      </div>
+    </div>
   );
 }
