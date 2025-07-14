@@ -8,13 +8,11 @@ type Props = {
 };
 
 export default function SidebarMobile({ totalNilai }: Props) {
-  const { session, user, isLoading, isAuthenticated, signOut, refreshSession } =
-    useSession();
-
+  const { user } = useSession();
   const router = useRouter();
 
   return (
-    <div className="w-fit h-fit rounded-lg glass shadow-xl border-[#ffffff59] border-1">
+    <div className="w-full h-fit rounded-lg glass shadow-xl border-[#ffffff59] border-1">
       <div className="flex flex-row p-4 gap-4 items-center">
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShvHT9P_015G_hmfucUiqW7fuw4Ht1hkEdBQ&s"
@@ -31,9 +29,9 @@ export default function SidebarMobile({ totalNilai }: Props) {
         </div>
       </div>
       <TabsList>
-        <TabsTrigger value="tab1" onClick={() => router.push("/dashboard")}>Home</TabsTrigger>
-        <TabsTrigger value="tab2" onClick={() => router.push("/dashboard/profile")}>Profile</TabsTrigger>
-        <TabsTrigger value="tab3" onClick={() => router.push("/dashboard/Notification")}>Notification</TabsTrigger>
+        <TabsTrigger value="tab1">Home</TabsTrigger>
+        <TabsTrigger value="tab2">Profile</TabsTrigger>
+        <TabsTrigger value="tab3">Notification</TabsTrigger>
       </TabsList>
     </div>
   );

@@ -8,9 +8,7 @@ type Props = {
 };
 
 export default function SidebarDesktop({ totalNilai }: Props) {
-  const { session, user, isLoading, isAuthenticated, signOut, refreshSession } =
-    useSession();
-
+  const { user } = useSession();
   const router = useRouter();
 
   return (
@@ -32,7 +30,7 @@ export default function SidebarDesktop({ totalNilai }: Props) {
         </div>
         <h1 className="font-josefin-sans flex flex-wrap">{user?.name}</h1>
         <TabsList>
-          <TabsTrigger value="tab1" onClick={() => router.push("/dashboard")}>
+          <TabsTrigger value="tab1">
             <div className="flex justify-between w-full gap-2">
               <span>Home</span>
               <img src="/Home.svg" alt="Home" className="w-6 h-6" />
@@ -40,7 +38,6 @@ export default function SidebarDesktop({ totalNilai }: Props) {
           </TabsTrigger>
           <TabsTrigger
             value="tab2"
-            onClick={() => router.push("/dashboard/profile")}
           >
             <div className="flex justify-between w-full gap-2">
               <span>Profile</span>
@@ -49,7 +46,6 @@ export default function SidebarDesktop({ totalNilai }: Props) {
           </TabsTrigger>
           <TabsTrigger
             value="tab3"
-            onClick={() => router.push("/dashboard/notification")}
           >
             <div className="flex justify-between w-full gap-2">
               <span>Notification</span>
