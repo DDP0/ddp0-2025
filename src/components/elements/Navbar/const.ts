@@ -1,14 +1,14 @@
 export const data = [
   {
-    title: "Page 1",
-    href: "/",
+    title: "About",
+    href: "/#about",
   },
   {
-    title: "Page 2",
-    href: "/",
+    title: "Timeline",
+    href: "/#timeline",
   },
   {
-    title: "Page 3",
+    title: "Merch",
     href: "/",
   },
 ];

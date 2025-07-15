@@ -104,7 +104,7 @@ function MobileTimeline() {
 
 export default function Timeline() {
   return (
-    <div className="relative">
+    <section className="relative" id="timeline">
       <h1 className="text-h2 md:text-h1 z-10 font-josefin-sans text-center">
         Timeline
       </h1>
@@ -114,6 +114,6 @@ export default function Timeline() {
       <div className="absolute top-0 -translate-y-[60%] animate-star-float translate-x-[80px] right-0 aspect-[382/262] w-[382px] max-md:w-[300px] max-sm:w-[250px] max-xs:w-[200px]">
         <Image src="/saturn.svg" alt="bg" fill className="object-contain" />
       </div>
-    </div>
+    </section>
   );
 }

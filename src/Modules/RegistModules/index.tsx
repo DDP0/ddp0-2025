@@ -8,8 +8,10 @@ import Background from "./Background";
 
 const RegistrationModules = ({
   isRegisterPage,
+  isMentor = false, // Default to false if not provided
 }: {
   isRegisterPage: boolean;
+  isMentor?: boolean;
 }) => {
   const toast = useToast();
 
@@ -18,7 +20,11 @@ const RegistrationModules = ({
       toast.show("loading", "Sedang mengalihkan ke Google");
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: isRegisterPage ? "/register/form" : "/dashboard", // Redirect to dashboard after successful sign up
+        callbackURL: isMentor
+          ? "/mentor/form"
+          : isRegisterPage
+          ? "/register/form"
+          : "/dashboard", // Redirect to dashboard after successful sign up
       });
     } catch (error) {
       console.error("Google sign up error:", error);
@@ -26,28 +32,31 @@ const RegistrationModules = ({
     }
   };
   return (
-    <main className="relative h-screen overflow-hidden flex flex-col gap-6 max-lg:gap-5 max-md:gap-4 max-sm:gap-2.5 justify-center items-center px-120 max-lg:px-25 max-md:px-20 max-sm:px-8 font-josefin-sans bg-blend-overlay">
+    <main className="relative h-screen overflow-hidden flex flex-col gap-6 max-lg:gap-5 max-md:gap-4 max-sm:gap-2.5 justify-center items-center max-sm:px-8 font-josefin-sans bg-blend-overlay">
       <h1 className="text-h4 max-lg:text-h5 max-md:text-headline">
         Selamat datang di DDP-0!
       </h1>
-      <div className="relative w-full rounded-xl p-[1px] bg-component-border">
+      <div className="relative w-[40%] max-lg:w-[70%] max-md:w-[80%] max-sm:w-full rounded-xl p-[1px] bg-component-border">
         <div className="w-full rounded-xl flex flex-col gap-6 bg-card glass p-16 max-lg:p-14 max-md:p-10 max-sm:px-8 max-sm:py-12">
           <h4 className="text-h4 max-sm:text-h5-mobile text-center">
-            {isRegisterPage ? "Registration" : "Login"}
+            {isMentor ? "Mentor" : isRegisterPage ? "Registration" : "Login"}
           </h4>
           <Button className="w-full" onClick={handleGoogleSignUp}>
             <Google size="size-6 max-sm:size-4" />
             Lanjutkan dengan Google
           </Button>
-          <p className="text-center text-base max-sm:text-sm">
-            {isRegisterPage ? "Sudah memiliki akun?" : "Belum memiliki akun?"}
-            <Link href={isRegisterPage ? "/login" : "/register"}>
-              {" "}
-              <span className="bg-clip-text text-transparent bg-gradient-kiwi">
-                {isRegisterPage ? "Masuk" : "Daftar"}
-              </span>
-            </Link>
-          </p>
+
+          {!isMentor && (
+            <p className="text-center text-base max-sm:text-sm">
+              {isRegisterPage ? "Sudah memiliki akun?" : "Belum memiliki akun?"}
+              <Link href={isRegisterPage ? "/login" : "/register"}>
+                {" "}
+                <span className="bg-clip-text text-transparent bg-gradient-kiwi">
+                  {isRegisterPage ? "Masuk" : "Daftar"}
+                </span>
+              </Link>
+            </p>
+          )}
         </div>
       </div>
       <Background />

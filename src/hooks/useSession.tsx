@@ -2,7 +2,7 @@
 import { authClient } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
 
-interface User {
+export interface User {
   id: string;
   name: string;
   email: string;
@@ -23,7 +23,7 @@ interface User {
   updatedAt: Date;
 }
 
-interface SessionData {
+export interface SessionData {
   id: string;
   userId: string;
   expiresAt: Date;
@@ -34,7 +34,7 @@ interface SessionData {
   updatedAt: Date;
 }
 
-interface Session {
+export interface Session {
   user: User;
   session: SessionData;
 }

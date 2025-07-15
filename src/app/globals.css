@@ -387,6 +387,43 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.data-\[state\=active\]\:border-retro-wave {
+  &[data-state="active"] {
+    border-image: linear-gradient(
+        100deg,
+        rgb(201, 155, 219) 0%,
+        rgb(65, 110, 183) 100%
+      )
+      1;
+    border-image-slice: 1;
+  }
+}
+
+.data-\[state\=active\]\:before\:bg-tabs {
+  &[data-state="active"] {
+    &::before {
+      content: var(--tw-content);
+      background-image: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.4) 0%,
+          rgba(0, 0, 0, 0.4) 100%
+        ),
+        linear-gradient(180deg, #c99bdb 0%, #416eb7 100%);
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .data-\[state\=active\]\:before\:bg-tabs[data-state="active"]::before {
+    background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.4) 100%
+      ),
+      linear-gradient(100deg, #c99bdb 0%, #416eb7 100%);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -399,6 +436,9 @@ body {
   background: var(--color-component-frame);
   color: var(--color-neutral-50);
   font-family: var(--font-josefin-sans), var(--font-sans), sans-serif;
+}
+html {
+  scroll-behavior: smooth;
 }
 
 .animate-start-float {
@@ -649,4 +689,16 @@ body {
   -webkit-animation: marquee 35s linear infinite;
   -moz-animation: marquee 35s linear infinite;
   -o-animation: marquee 35s linear infinite;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.animate-fade-in {
+  animation: fade-in 1s ease-in-out forwards;
 }
