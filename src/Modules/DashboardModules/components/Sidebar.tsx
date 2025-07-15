@@ -25,6 +25,24 @@ function useMediaQuery(query: string) {
 
 export default function Sidebar() {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const [nilai, setNilai] = useState<number>(0);
 
-  return isDesktop ? <SidebarDesktop /> : <SidebarMobile />;
+  useEffect(() =>{
+    const fetchNilai = async () => {
+      try {
+        const response = await fetch("/api/dashboard"); // Adjust the API endpoint as needed
+        const data: {
+          message: string,
+          points: number
+        } = await response.json();
+        setNilai(data.points);
+      } catch (error) {
+        console.error("Failed to fetch nilai:", error);
+      }
+    };
+
+    fetchNilai();
+  },[])
+
+  return isDesktop ? <SidebarDesktop totalNilai={nilai} /> : <SidebarMobile totalNilai={nilai} />;
 }

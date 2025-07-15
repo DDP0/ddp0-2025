@@ -152,6 +152,7 @@ model Tugas {
   description String
   tipe        TipeTugas
   linkTugas   String
+  deadline    DateTime
   submissions Submisi[]
 
   createdAt   DateTime   @default(now())
