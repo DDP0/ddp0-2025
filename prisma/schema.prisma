@@ -130,7 +130,6 @@ model Kelompok {
   id        String     @id @default(cuid())
   name      String
   users     KelompokUser[]
-  tugas     Tugas[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
 }
@@ -153,9 +152,6 @@ model Tugas {
   description String
   tipe        TipeTugas
   linkTugas   String
-  kelompokId  String
-
-  kelompok    Kelompok   @relation(fields: [kelompokId], references: [id], onDelete: Cascade)
   submissions Submisi[]
 
   createdAt   DateTime   @default(now())
