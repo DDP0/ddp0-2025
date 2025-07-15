@@ -5,6 +5,7 @@ import { useSession } from "@/hooks/useSession";
 import { useToast } from "@/hooks/useToast";
 import { registFillDetailsSchema } from "@/model/user.schema";
 import { Label } from "@radix-ui/react-label";
+import { User } from "@/hooks/useSession";
 import {
   Select,
   SelectContent,
@@ -33,8 +34,14 @@ const Gender = [
   { value: "Female", label: "Perempuan" },
 ];
 
-function ViewProfile({ toggle }: { toggle: () => void }) {
-  const { user } = useSession();
+function ViewProfile({
+  toggle,
+  user,
+}: {
+  toggle: () => void;
+  user: User | null;
+}) {
+  // const { user } = useSession();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -43,7 +50,7 @@ function ViewProfile({ toggle }: { toggle: () => void }) {
 
   return (
     <div
-      className={`relative w-full flex justify-center overflow-hidden font-josefin-sans transition-all duration-500 transform ${
+      className={`relative animate-fade-in w-full flex justify-center overflow-hidden font-josefin-sans transition-all duration-500 transform ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
     >
@@ -232,8 +239,14 @@ function ViewProfile({ toggle }: { toggle: () => void }) {
   );
 }
 
-function EditProfile({ toggle }: { toggle: () => void }) {
-  const { user } = useSession();
+function EditProfile({
+  toggle,
+  user,
+}: {
+  toggle: () => void;
+  user: User | null;
+}) {
+  // const { user } = useSession();
   const { show, dismiss } = useToast();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -314,11 +327,9 @@ function EditProfile({ toggle }: { toggle: () => void }) {
     toggle(); // Kembali ke View
   };
 
-  if (!user) return <div>Loading user data...</div>;
-
   return (
     <div
-      className={`relative flex justify-center w-full overflow-hidden font-josefin-sans transition-all duration-500 transform ${
+      className={`relative animate-fade-in flex justify-center w-full overflow-hidden font-josefin-sans transition-all duration-500 transform ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
     >
@@ -469,7 +480,7 @@ function EditProfile({ toggle }: { toggle: () => void }) {
                       e.preventDefault();
                       setJurusan(item);
                     }}
-                    className={`rounded-xl py-2 border-2 text-base transition-all duration-300 hover:scale-105 ${
+                    className={`rounded-xl py-2 border-2 text-base transition-all duration-300 ${
                       jurusan.value === item.value
                         ? "border-[#C99BDB] bg-clip-text bg-gradient-retro-wave text-transparent"
                         : "border-neutral-100 hover:border-[#C99BDB]/50"
@@ -498,7 +509,7 @@ function EditProfile({ toggle }: { toggle: () => void }) {
                       e.preventDefault();
                       setGender(item);
                     }}
-                    className={`rounded-xl py-2 border-2 text-base transition-all duration-300 hover:scale-105 ${
+                    className={`rounded-xl py-2 border-2 text-base transition-all duration-300 ${
                       gender.value === item.value
                         ? "border-[#C99BDB] bg-clip-text bg-gradient-retro-wave text-transparent"
                         : "border-neutral-100 hover:border-[#C99BDB]/50"
@@ -545,6 +556,7 @@ function EditProfile({ toggle }: { toggle: () => void }) {
 }
 
 export default function ProfileTabs() {
+  const { user, isLoading } = useSession();
   const [isEditing, setIsEditing] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -555,7 +567,13 @@ export default function ProfileTabs() {
       setIsAnimating(false);
     }, 150); // Half of the animation duration
   };
-
+  if (isLoading) {
+    return (
+      <div className="h-[50vh] overflow-hidden relative flex items-center justify-center">
+        <div className="loader"></div>
+      </div>
+    );
+  }
   return (
     <div className="relative">
       <div
@@ -564,9 +582,9 @@ export default function ProfileTabs() {
         }`}
       >
         {isEditing ? (
-          <EditProfile toggle={editToggle} />
+          <EditProfile user={user} toggle={editToggle} />
         ) : (
-          <ViewProfile toggle={editToggle} />
+          <ViewProfile user={user} toggle={editToggle} />
         )}
       </div>
     </div>

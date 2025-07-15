@@ -400,17 +400,17 @@ body {
 }
 
 .data-\[state\=active\]\:before\:bg-tabs {
-    &[data-state="active"] {
-        &::before {
-            content: var(--tw-content);
-            background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.4) 100%
-    ),
-    linear-gradient(180deg, #c99bdb 0%, #416eb7 100%);
-        }
+  &[data-state="active"] {
+    &::before {
+      content: var(--tw-content);
+      background-image: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.4) 0%,
+          rgba(0, 0, 0, 0.4) 100%
+        ),
+        linear-gradient(180deg, #c99bdb 0%, #416eb7 100%);
     }
+  }
 }
 
 @media (min-width: 1024px) {
@@ -689,4 +689,16 @@ html {
   -webkit-animation: marquee 35s linear infinite;
   -moz-animation: marquee 35s linear infinite;
   -o-animation: marquee 35s linear infinite;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.animate-fade-in {
+  animation: fade-in 1s ease-in-out forwards;
 }

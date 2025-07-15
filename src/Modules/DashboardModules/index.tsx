@@ -6,9 +6,9 @@ import Background from "../RegistModules/Background";
 
 const DashboardModules = () => {
   return (
-    <main className="min-h-screen flex max-lg:flex-col justify-center items-center">
+    <main className="min-h-screen overflow-hidden relative flex max-lg:flex-col">
       <Tabs defaultValue="tab1">
-        <div className="w-screen py-32 px-5 md:px-10 lg:px-20">
+        <div className="w-screen py-36 px-5 md:px-10 lg:px-20">
           <div className="grid grid-cols-[1fr_4fr] max-lg:grid-cols-1 gap-6 w-full">
             <Sidebar />
 
@@ -22,6 +22,7 @@ const DashboardModules = () => {
       </Tabs>
       <Background />
     </main>
+    // <Loader/>
   );
 };
 export default DashboardModules;

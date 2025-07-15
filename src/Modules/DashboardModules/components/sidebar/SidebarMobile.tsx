@@ -1,7 +1,6 @@
 "use client";
 import { TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useSession } from "@/hooks/useSession";
-import { useRouter } from "next/navigation";
 
 type Props = {
   totalNilai?: number | null;
@@ -9,13 +8,12 @@ type Props = {
 
 export default function SidebarMobile({ totalNilai }: Props) {
   const { user } = useSession();
-  const router = useRouter();
 
   return (
-    <div className="w-full h-fit rounded-lg glass shadow-xl border-[#ffffff59] border-1">
-      <div className="flex flex-row p-4 gap-4 items-center">
+    <div className="w-full h-fit rounded-lg glass shadow-xl border-[#ffffff59] border-1 animate-fade-in">
+      <div className="flex flex-row p-4 gap-4 justify-between items-center">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShvHT9P_015G_hmfucUiqW7fuw4Ht1hkEdBQ&s"
+          src={user?.image || "https://via.placeholder.com/150"}
           alt="Profile Picture"
           className="w-15 h-15 rounded-full"
         />
