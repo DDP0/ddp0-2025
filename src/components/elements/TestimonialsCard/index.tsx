@@ -15,7 +15,7 @@ const TestimonialCard = ({
   return (
     <div className="relative max-w-md w-full scale-[0.95] sm:scale-100 transition-transform duration-300 ease-in-out">
       {/* Main Card */}
-      <div className="relative z-0 flex flex-col justify-start items-center bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-6 sm:p-8 pb-25 shadow-2xl ring-1 ring-white/10 min-h-[22rem] overflow-hidden before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:pointer-events-none before:bg-[radial-gradient(circle,rgba(255,255,255,0.1)_0%,transparent_80%)] before:opacity-40 before:blur-md">
+      <div className="relative z-0 flex flex-col justify-start items-center bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-6 sm:p-8 pb-14 shadow-2xl ring-1 ring-white/10 min-h-[22rem] overflow-hidden before:content-[''] before:absolute before:inset-0 before:rounded-2xl before:pointer-events-none before:bg-[radial-gradient(circle,rgba(255,255,255,0.1)_0%,transparent_80%)] before:opacity-40 before:blur-md">
         {/* Quote Symbol */}
         <div className="text-5xl sm:text-6xl font-serif mb-4 sm:mb-6">
           <Image src="/testimonial_quotes.svg" width={60} height={60} alt="" />
