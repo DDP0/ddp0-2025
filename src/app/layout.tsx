@@ -44,6 +44,7 @@ export default function RootLayout({
           src="https://cloud.umami.is/script.js"
           data-website-id="3a9dc2d9-3cdd-4302-aaff-089589c632ad"
         ></script>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${josefinSans.variable} ${spectral.variable} antialiased`}
