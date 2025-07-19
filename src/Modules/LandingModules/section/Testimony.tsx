@@ -2,45 +2,32 @@ import TestimonialCard from "@/components/elements/TestimonialsCard";
 import Image from "next/image";
 const testimonies = [
   {
-    img: "https://i.pinimg.com/736x/26/99/f9/2699f9f1c925eeb2e35741286c15c6b0.jpg",
-    name: "Bilal Lalala",
+    img: "/testimony/faiq.jpg",
+    name: "Ahmad Faiq Fawwaz",
     desc: "Ilmu Komputer '24",
     testimony:
-      "Bagiku mengikuti DDP 0 adalah pengalaman yang amazing spiderman andrew garfield dolor sit amet, consectetur adipiscing elit.",
+      "DDP-0 IS FUN!! apalagi ddp-0 ini sangat membantu bagi gw yang 0 besar dalam dunia perkodingan saat pertama kali masuk pacil dan gw juga bisa dapet insight dari mentor gw yang asik 😆",
   },
   {
-    img: "https://i.pinimg.com/736x/26/99/f9/2699f9f1c925eeb2e35741286c15c6b0.jpg",
-    name: "Bill Lalala",
+    img: "/testimony/faiq.jpg",
+    name: "Ahmad Faiq Fawwaz",
     desc: "Ilmu Komputer '24",
     testimony:
-      "Bagiku mengikuti DDP 0 adalah pengalaman yang amazing spiderman andrew garfield dolor sit amet, consectetur adipiscing elit.",
+      "DDP-0 IS FUN!! apalagi ddp-0 ini sangat membantu bagi gw yang 0 besar dalam dunia perkodingan saat pertama kali masuk pacil dan gw juga bisa dapet insight dari mentor gw yang asik 😆",
   },
   {
-    img: "https://i.pravatar.cc/300?img=2",
-    name: "Sarah Putri",
-    desc: "Sistem Informasi '23",
+    img: "/testimony/faiq.jpg",
+    name: "Ahmad Faiq Fawwaz",
+    desc: "Ilmu Komputer '24",
     testimony:
-      "Aku belajar banyak banget! DDP0 ngajarin aku coding dari 0, seru banget!",
+      "DDP-0 IS FUN!! apalagi ddp-0 ini sangat membantu bagi gw yang 0 besar dalam dunia perkodingan saat pertama kali masuk pacil dan gw juga bisa dapet insight dari mentor gw yang asik 😆",
   },
   {
-    img: "https://i.pravatar.cc/300?img=3",
-    name: "Dimas Akbar",
-    desc: "Ilmu Komputer '22",
+    img: "/testimony/faiq.jpg",
+    name: "Ahmad Faiq Fawwaz",
+    desc: "Ilmu Komputer '24",
     testimony:
-      "Pengalamannya luar biasa. Aku jadi ngerti dasar-dasar programming dengan cara yang fun!",
-  },
-  {
-    img: "https://i.pravatar.cc/300?img=4",
-    name: "Nadia Fauzan",
-    desc: "Ilmu Komputer '25",
-    testimony: "Semua tutor dan asisten dosennya keren banget, sabar ngajarin!",
-  },
-  {
-    img: "https://i.pravatar.cc/300?img=5",
-    name: "Reza Maulana",
-    desc: "Teknik Komputer '23",
-    testimony:
-      "Setiap minggu selalu excited buat ikut kelasnya! Materinya jelas dan bermanfaat.",
+      "DDP-0 IS FUN!! apalagi ddp-0 ini sangat membantu bagi gw yang 0 besar dalam dunia perkodingan saat pertama kali masuk pacil dan gw juga bisa dapet insight dari mentor gw yang asik 😆",
   },
 ];
 

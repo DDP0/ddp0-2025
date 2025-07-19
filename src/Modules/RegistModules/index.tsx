@@ -6,7 +6,7 @@ import { useToast } from "@/hooks/useToast";
 import { authClient } from "@/lib/auth-client";
 import Background from "./Background";
 
-const registerDate = new Date("2025-07-23T00:00:00+07:00");
+export const registerDate = new Date("2025-07-23T00:00:00+07:00");
 const nowInJakarta = new Date(
   new Date().toLocaleString("en-US", { timeZone: "Asia/Jakarta" })
 );

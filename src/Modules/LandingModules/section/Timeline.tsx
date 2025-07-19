@@ -3,15 +3,15 @@ import TimelineCardMobile from "../../../components/elements/TimelineCardMobile"
 import Image from "next/image";
 
 const timelineEntries = [
-  ["Registration", "Batch 1", "6 - 13 July 2025"],
-  ["Registration", "Batch 2", "18 - 26 July 2025"],
-  ["Pengumuman", "Kelompok", "00 July 2025"],
-  ["Grand", "Opening", "00 July 2025"],
-  ["Mentoring", "Week 1", "00 - 00 July 2025"],
-  ["Mentoring", "Week 2", "00 - 00 July 2025"],
-  ["Mentoring", "Week 3", "00 - 00 July 2025"],
-  ["Mentoring", "Week 4", "00 - 00 July 2025"],
-  ["Closing", "Ceremony", "00 - 00 July 2025"],
+  ["Website", "Release", "19 July 2025"],
+  ["Open", "Registration", "23 - 31 July 2025"],
+  ["Pengumuman", "Kelompok", "31 July 2025"],
+  ["Grand", "Opening", "2 August 2025"],
+  ["Mentoring", "Week 0", "4 August 2025"],
+  ["Mentoring", "Week 1", "10 August 2025"],
+  ["Mentoring", "Week 2", "18 August 2025"],
+  ["Mentoring", "Week 3", "25 August 2025"],
+  ["Grand", "Closing", "TBA"],
 ];
 
 function DesktopTimeline() {

@@ -1,7 +1,9 @@
 import Countdown from "@/components/elements/Countdown";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Search } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
+import { registerDate } from "@/Modules/RegistModules";
 
 const CountdownSection = () => {
   return (
@@ -21,17 +23,16 @@ const CountdownSection = () => {
 
       <h1 className="text-h2 md:text-h1 z-10">Countdown</h1>
       <div className="flex flex-col gap-4 items-center border border-border/20 rounded-3xl bg-gradient-to-r from-islan-milde-500/20 to-aurora-green-500/20 backdrop-blur-md px-8 md:px-20 py-6 md:py-8">
-        <h1 className="text-h5 opacity-80">Kelompok Mentoring</h1>
-        <Countdown
-          targetDate={new Date("July 30, 2025 23:59:59")}
-          displayDate={true}
-        />
+        <h1 className="text-h5 opacity-80">DDP0 Registration</h1>
+        <Countdown targetDate={registerDate} displayDate={true} />
         {/* <h1 className="opacity-80">28 Jul 2025, 23:59 WIB</h1> */}
-        <Button>
-          <Search />
-          Discover Your Team!
-          <ChevronRight />
-        </Button>
+        <Link href="/register">
+          <Button>
+            <Search />
+            Register Now
+            <ChevronRight />
+          </Button>
+        </Link>
       </div>
     </section>
   );

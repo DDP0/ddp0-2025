@@ -78,7 +78,7 @@ export default function FAQPage() {
     {
       question: "Berapa lama program DDP-0 akan berlangsung?",
       answer:
-        "Program DDP-0 dirancang untuk berlangsung selama 4-6 minggu dengan sesi pembelajaran 2-3 kali per minggu. Durasi ini cukup untuk memberikan pemahaman dasar yang solid tanpa terlalu membebani peserta.",
+        "Program DDP-0 dirancang untuk berlangsung selama 4-6 minggu dengan sesi pembelajaran 1 kali per minggu. Durasi ini cukup untuk memberikan pemahaman dasar yang solid tanpa terlalu membebani peserta.",
     },
     {
       question: "Siapa saja yang dapat mengikuti DDP-0?",
@@ -94,7 +94,7 @@ export default function FAQPage() {
     {
       question: "Seberapa sering mentoring akan diadakan?",
       answer:
-        "Mentoring akan diadakan 2-3 kali per minggu dengan durasi 1.5-2 jam per sesi. Selain itu, tersedia juga sesi konsultasi individual untuk peserta yang membutuhkan bantuan tambahan.",
+        "Mentoring akan diadakan 1 kali per minggu dengan durasi 1.5-2 jam per sesi. Selain itu, tersedia juga sesi konsultasi individual untuk peserta yang membutuhkan bantuan tambahan.",
     },
     {
       question:
