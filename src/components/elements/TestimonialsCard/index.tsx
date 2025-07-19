@@ -22,7 +22,7 @@ const TestimonialCard = ({
         </div>
 
         {/* Testimonial Text */}
-        <div className="text-white/90 text-sm sm:text-base leading-relaxed mb-8 text-center font-josefin-sans">
+        <div className="text-white/90 text-sm sm:text-base h-60 no-scrollbar overflow-y-scroll leading-relaxed mb-8 text-center font-josefin-sans">
           <p>{testimony}</p>
         </div>
       </div>
