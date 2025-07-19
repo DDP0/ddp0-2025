@@ -4,18 +4,32 @@ import TestimonyPage from "./section/Testimony";
 import WhatIsDDP0 from "./section/WhatIsDDP0";
 import Hero from "./section/Hero";
 import Timeline from "./section/Timeline";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 const LandingModules = () => {
   return (
     <main className="flex flex-col gap-40 overflow-hidden">
-      <Hero />
-      <WhatIsDDP0 />
+      <AnimatedSection animation="fadeInUp" delay={200}>
+        <Hero />
+      </AnimatedSection>
+
+      <AnimatedSection animation="fadeInUp" delay={200}>
+        <WhatIsDDP0 />
+      </AnimatedSection>
       <div>
-        <Timeline />
-        <CountdownSection />
+        <AnimatedSection animation="fadeInLeft" delay={100}>
+          <Timeline />
+        </AnimatedSection>
+        <AnimatedSection animation="fadeInRight" delay={300}>
+          <CountdownSection />
+        </AnimatedSection>
       </div>
-      <TestimonyPage />
-      <FAQPage />
+      <AnimatedSection animation="zoomIn" delay={150}>
+        <TestimonyPage />
+      </AnimatedSection>
+      <AnimatedSection animation="fadeInUp" delay={250}>
+        <FAQPage />
+      </AnimatedSection>
     </main>
   );
 };
