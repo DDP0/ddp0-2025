@@ -8,7 +8,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 
 const LandingModules = () => {
   return (
-    <main className="flex flex-col gap-40 overflow-hidden">
+    <main className="flex flex-col gap-40 max-lg:gap-30 max-sm:gap-20 overflow-hidden">
       <AnimatedSection animation="fadeInUp" delay={200}>
         <Hero />
       </AnimatedSection>
