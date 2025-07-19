@@ -691,6 +691,15 @@ html {
   -o-animation: marquee 35s linear infinite;
 }
 
+/* Pause marquee animation on hover */
+.animate-marquee:hover,
+.animate-marquee-enhanced:hover {
+  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  -o-animation-play-state: paused;
+}
+
 @keyframes fade-in {
   0% {
     opacity: 0;

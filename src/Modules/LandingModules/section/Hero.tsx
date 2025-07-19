@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { Scroll } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -134,12 +135,7 @@ const Hero = () => {
                   size="lg"
                   className="text-bodyLarge-mobile md:text-bodyLarge font-semibold px-16 py-4 min-w-[220px] drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:drop-shadow-[0_6px_16px_rgba(0,0,0,0.4)] transition-all duration-300"
                 >
-                  <Image
-                    src="/card.svg"
-                    alt="Background"
-                    width={25}
-                    height={25}
-                  />
+                  <Scroll className="size-5" />
                   Register Now
                 </Button>
               </Link>
