@@ -16,7 +16,7 @@ const timelineEntries = [
 
 function DesktopTimeline() {
   return (
-    <div className="relative pt-[5vh] pr-[7vw] max-md:hidden">
+    <div className="relative bg-component-frame pt-[5vh] pr-[7vw] max-md:hidden">
       <img src="/TimelineDesktopTree.png" alt="" />
 
       <div className="absolute top-[9%] left-[9%]">
