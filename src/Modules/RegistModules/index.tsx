@@ -6,6 +6,11 @@ import { useToast } from "@/hooks/useToast";
 import { authClient } from "@/lib/auth-client";
 import Background from "./Background";
 
+const registerDate = new Date("2025-07-23T00:00:00+07:00");
+const nowInJakarta = new Date(
+  new Date().toLocaleString("en-US", { timeZone: "Asia/Jakarta" })
+);
+
 const RegistrationModules = ({
   isRegisterPage,
   isMentor = false, // Default to false if not provided
@@ -16,6 +21,17 @@ const RegistrationModules = ({
   const toast = useToast();
 
   const handleGoogleSignUp = async () => {
+    if (
+      process.env.NODE_ENV === "production" &&
+      isMentor === false &&
+      nowInJakarta < registerDate
+    ) {
+      toast.show(
+        "warning",
+        "Registrasi DDD-0 Belum dibuka, silakan coba lagi nanti."
+      );
+      return;
+    }
     try {
       toast.show("loading", "Sedang mengalihkan ke Google");
       await authClient.signIn.social({
