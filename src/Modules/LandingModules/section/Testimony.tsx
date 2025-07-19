@@ -47,7 +47,7 @@ const testimonies = [
     img: "/testimony/nathanael.jpg",
     name: "Nathanael Leander",
     desc: "Ilmu Komputer '24",
-    testimony: "Semoga bisa memberikan yang terbaik",
+    testimony: "DDP-0 itu seru banget! Mentor-mentornya asik dan sabar ngajarin dari nol, jadi buat yang belum pernah ngoding sebelumnya, pasti bisa catch up. Selain itu, bisa kenalan sama temen-temen baru juga, jadi makin seru! DDP-0 bikin aku lebih siap buat DDP-1 dan kuliah di Fasilkom UI.",
   },
   {
     img: "/testimony/nadhif.jpeg",
