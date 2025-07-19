@@ -86,7 +86,7 @@ function ViewProfile({
               <Label>
                 <span>Nama Lengkap</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                  {user?.name}
+                  {user?.name || "Belum diisi"}
                 </div>
               </Label>
             </div>
@@ -101,7 +101,7 @@ function ViewProfile({
               <Label>
                 <span>NPM</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                  {user?.NPM}
+                  {user?.NPM || "Belum diisi"}
                 </div>
               </Label>
             </div>
@@ -116,13 +116,13 @@ function ViewProfile({
               <Label>
                 <span>ID Line</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                  {user?.idLine}
+                  {user?.idLine || "Belum diisi"}
                 </div>
               </Label>
               <Label>
                 <span>ID Discord</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                  {user?.idDiscord}
+                  {user?.idDiscord || "Belum diisi"}
                 </div>
               </Label>
             </div>
@@ -137,7 +137,7 @@ function ViewProfile({
               <Label>
                 <span>Screenshot Bukti Masuk Fasilkom (Gdrive)</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                  {user?.buktiMasuk}
+                  {user?.buktiMasuk || "Belum diisi"}
                 </div>
               </Label>
             </div>
@@ -152,7 +152,7 @@ function ViewProfile({
               <Label>
                 <span>Screenshot Bukti Share Instagram (Gdrive)</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                  {user?.buktiShare}
+                  {user?.buktiShare || "Belum diisi"}
                 </div>
               </Label>
             </div>
@@ -176,7 +176,7 @@ function ViewProfile({
               <Label>
                 <span>Jalur Masuk</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                  {user?.jalurMasuk}
+                  {user?.jalurMasuk || "Belum diisi"}
                 </div>
               </Label>
             </div>
@@ -213,7 +213,7 @@ function ViewProfile({
               <Label>
                 <span>Gender</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                  {user?.gender}
+                  {user?.gender || "Belum diisi"}
                 </div>
               </Label>
             </div>
@@ -228,7 +228,7 @@ function ViewProfile({
               <Label>
                 <span>Asal Sekolah</span>
                 <div className="w-full h-fit pl-2 py-1.5 rounded-lg glass shadow-xl border-[#ffffff59] border-1 overflow-hidden">
-                  {user?.asalSekolah}
+                  {user?.asalSekolah || "Belum diisi"}
                 </div>
               </Label>
             </div>

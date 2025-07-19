@@ -48,9 +48,14 @@ const FormMentor = () => {
       },
       body: JSON.stringify(validation.data),
     });
+
     dismiss(toastId);
     if (!res.ok) {
-      show("error", "Terjadi kesalahan saat mengirim data");
+      const errorData = await res.json();
+      show(
+        "error",
+        errorData.error || "Gagal mendaftar sebagai mentor. Silakan coba lagi."
+      );
       return;
     }
     show("success", "Registrasi Mentor berhasil!");
