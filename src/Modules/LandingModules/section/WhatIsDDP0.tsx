@@ -1,40 +1,51 @@
-import Slider from "../components/Slider";
+import Slider from "../../../components/elements/Slider";
 import Image from "next/image";
 
 const images: { src: string; alt: string }[] = [
   {
-    src: "https://i.pinimg.com/736x/26/99/f9/2699f9f1c925eeb2e35741286c15c6b0.jpg",
-    alt: "naruto",
+    src: "/meet/1.jpeg",
+    alt: "meet",
   },
   {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShvHT9P_015G_hmfucUiqW7fuw4Ht1hkEdBQ&s",
-    alt: "sasuke",
+    src: "/meet/2.jpg",
+    alt: "meet",
   },
   {
-    src: "https://image.idntimes.com/post/20220922/sakura-part-1-9d730bb05ed09c5fa3c4c19359d556e9-e316f1df98652bfc8133734fcb73f657.jpg",
-    alt: "sakura",
+    src: "/meet/3.jpg",
+    alt: "meet",
   },
   {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1PBt_YXCxv6KT_lCP3ibXNGmh3W8gzpZmzA&s",
-    alt: "hinata",
+    src: "/meet/4.jpg",
+    alt: "meet",
   },
   {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKmohWiueTYULKV579K89xvLXUFgR2mS51Cw&s",
-    alt: "neji",
+    src: "/meet/5.jpeg",
+    alt: "meet",
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/id/thumb/f/fc/Kakashi_Hatake.jpg/330px-Kakashi_Hatake.jpg",
-    alt: "kakashi",
+    src: "/meet/6.jpg",
+    alt: "meet",
   },
   {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7J2nrg-xT1poe0rGdLmWT84-itHVLP6WvMA&s",
-    alt: "minato",
+    src: "/meet/7.jpg",
+    alt: "meet",
+  },
+  {
+    src: "/meet/8.jpg",
+    alt: "meet",
+  },
+  {
+    src: "/meet/9.jpg",
+    alt: "meet",
   },
 ];
 
 export default function WhatIsDDP0() {
   return (
-    <section id="about" className="relative flex flex-col justify-center gap-13 my-16">
+    <section
+      id="about"
+      className="relative flex flex-col justify-center gap-13 my-16"
+    >
       <div className="flex flex-col relative lg:flex-row justify-center items-center gap-12 w-full px-4">
         <div className="flex flex-col gap-12 lg:gap-14 px-10 w-100 md:w-160 lg:w-117 lg:px-0">
           <h1 className="font-josefin-sans text-h1-mobile md:text-h1 text-center lg:text-left">

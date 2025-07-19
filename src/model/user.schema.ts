@@ -10,7 +10,7 @@ const jalurMasukValues = [
   "Prestasi",
 ] as const;
 
-const jurusanValues = ["IlmuKomputer", "SistemInformasi", "KKI"] as const;
+export const jurusanValues = ["IlmuKomputer", "SistemInformasi", "KKI"] as const;
 
 const genderValues = ["Male", "Female"] as const;
 

@@ -55,8 +55,12 @@ const Navbar = () => {
           {data.map((item, index) => (
             <Link
               key={index}
-              href={item.href}
-              className="px-4 py-2 hover:opacity-50"
+              href={item.isAvailable ? item.href : "#"}
+              className={`px-4 py-2  ${
+                item.isAvailable
+                  ? "hover:opacity-50"
+                  : "opacity-50 cursor-not-allowed"
+              }`}
             >
               {item.title}
             </Link>
@@ -124,13 +128,13 @@ const Navbar = () => {
           <div className="space-y-6 mb-6 font-josefin-sans">
             {data.map((item, index) => (
               <Link
-                href={item.href}
+                href={item.isAvailable ? item.href : "#"}
                 key={index}
-                className={`block text-white text-lg hover:text-gray-300 transition-all duration-200 transform ${
+                className={`block text-white text-lg hover:text-gray-300  transition-all duration-200 transform ${
                   isMenuOpen
-                    ? "translate-x-0 opacity-100"
+                    ? "translate-x-0 opacity-100 "
                     : "-translate-x-4 opacity-0"
-                }`}
+                } ${item.isAvailable ? "" : "text-white/50 cursor-not-allowed"}`}
                 style={{ transitionDelay: isMenuOpen ? "200ms" : "0ms" }}
                 onClick={() => setMenuOpen(false)}
               >

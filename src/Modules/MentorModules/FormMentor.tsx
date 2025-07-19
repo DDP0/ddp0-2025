@@ -3,24 +3,11 @@ import { useState } from "react";
 import Background from "../RegistModules/Background";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/useToast";
 import { useRouter } from "next/navigation";
 import { mentorSchema } from "@/model/mentor.schema";
 
-export const KelompokList = [
-  { value: "1", label: "Kelompok 1" },
-  { value: "2", label: "Kelompok 2" },
-  { value: "3", label: "Kelompok 3" },
-  { value: "4", label: "Kelompok 4" },
-];
 const jurusanList = [
   { value: "IlmuKomputer", label: "Ilmu Komputer" },
   { value: "SistemInformasi", label: "Sistem Informasi" },
@@ -34,7 +21,6 @@ const FormMentor = () => {
   const [npm, setNpm] = useState("");
   const [idLine, setIdLine] = useState("");
   const [idDiscord, setIdDiscord] = useState("");
-  const [kelompok, setKelompok] = useState<string>("");
   const [jurusan, setJurusan] = useState(jurusanList[0]);
   const handleSubmit = async () => {
     const toastId = show("loading", "Sedang memproses data...");
@@ -43,7 +29,6 @@ const FormMentor = () => {
       npm,
       idLine,
       idDiscord,
-      kelompok,
       jurusan: jurusan.value,
     };
     console.log(formData);
@@ -63,9 +48,14 @@ const FormMentor = () => {
       },
       body: JSON.stringify(validation.data),
     });
+
     dismiss(toastId);
     if (!res.ok) {
-      show("error", "Terjadi kesalahan saat mengirim data");
+      const errorData = await res.json();
+      show(
+        "error",
+        errorData.error || "Gagal mendaftar sebagai mentor. Silakan coba lagi."
+      );
       return;
     }
     show("success", "Registrasi Mentor berhasil!");
@@ -97,6 +87,8 @@ const FormMentor = () => {
               placeholder="Enter your NPM"
               label="NPM"
             />
+          </div>
+          <div className="flex flex-col gap-6">
             <div className="grid grid-cols-2 gap-6 w-full">
               <Input
                 className="w-full"
@@ -112,28 +104,6 @@ const FormMentor = () => {
                 placeholder="Enter your Id Discord"
                 label="Id Discord"
               />
-            </div>
-          </div>
-          <div className="flex flex-col gap-6">
-            <div>
-              <Label className="mb-2" htmlFor="jalur">
-                Kelompok
-              </Label>
-              <Select value={kelompok} onValueChange={setKelompok}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Choose your option" />
-                </SelectTrigger>
-                <SelectContent>
-                  {KelompokList.map((kelompokItem) => (
-                    <SelectItem
-                      key={kelompokItem.value}
-                      value={kelompokItem.value}
-                    >
-                      {kelompokItem.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
             </div>
             <div>
               <Label className="mb-2">Jurusan</Label>

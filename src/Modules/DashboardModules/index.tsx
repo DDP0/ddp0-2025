@@ -1,6 +1,6 @@
 import { Tabs } from "@/components/ui/tabs";
 import { TabsContent } from "@radix-ui/react-tabs";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "@/components/elements/Sidebar";
 import ProfileTabs from "./tabs/ProfileTabs";
 import Background from "../RegistModules/Background";
 
