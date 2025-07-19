@@ -1,5 +1,5 @@
-import TimelineCard from "../components/TimelineCard";
-import TimelineCardMobile from "../components/TimelineCardMobile";
+import TimelineCard from "../../../components/elements/TimelineCard";
+import TimelineCardMobile from "../../../components/elements/TimelineCardMobile";
 import Image from "next/image";
 
 const timelineEntries = [
