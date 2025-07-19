@@ -48,7 +48,14 @@ const Notification: React.FC<NotificationProps> = ({ showDescription = false }) 
               );
             })}
           </div>
-          <Button variant="kiwi" className="w-full mt-2" onClick={() => router.push("/notification")}>See more</Button>
+          <div className="w-full flex justify-end mt-2">
+            <span
+              className="font-josefin-sans text-white/80 text-base cursor-pointer flex items-center gap-1 hover:underline"
+              onClick={() => router.push("/notification")}
+            >
+              See more <span className="ml-1">&gt;</span>
+            </span>
+          </div>
         </div>
       </>
     );
@@ -61,23 +68,20 @@ const Notification: React.FC<NotificationProps> = ({ showDescription = false }) 
         {notifications.map((notif) => (
           <div
             key={notif.id}
-            className="flex flex-col md:flex-row items-start gap-4 md:gap-8 rounded-2xl px-6 py-6 bg-black/40 backdrop-blur-xl shadow-xl border border-white/10 w-full"
-            style={{
-              // Use a subtle border and shadow for the bubble, matching dashboard
-              // borderImage: 'linear-gradient(100deg, #fec888 0%, #9ae7b8 100%) 1',
-              // borderStyle: 'solid',
-              // borderWidth: '2px',
-            }}
+            className="self-stretch px-4 py-3 bg-Card/10 rounded-xl shadow-[0px_32px_64px_0px_rgba(0,0,0,0.10)] shadow-[0px_16px_32px_0px_rgba(0,0,0,0.05)] shadow-[0px_4px_8px_0px_rgba(0,0,0,0.05)] shadow-[inset_0px_48px_100px_0px_rgba(255,255,255,0.15)] outline outline-1 outline-offset-[-1px] outline-white/0 backdrop-blur-[10px] inline-flex justify-start items-start gap-4"
           >
-            <img
-              src="/Message-5.png"
-              alt="mail icon"
-              className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0"
-              style={{objectFit: 'contain'}}
-            />
-            <div className="flex-1 flex flex-col items-start text-left">
-              <div className="font-josefin-sans font-bold text-xl md:text-2xl mb-1 text-white">{notif.header}</div>
-              <div className="font-josefin-sans text-base md:text-lg text-white/90 leading-snug">{notif.description}</div>
+            <div className="w-20 h-20 flex justify-center items-center gap-2.5">
+              <div className="flex-1 self-stretch relative">
+                <img
+                  src="/Message-5.png"
+                  alt="mail icon"
+                  className="w-20 h-20 left-0 top-0 absolute overflow-hidden object-contain"
+                />
+              </div>
+            </div>
+            <div className="flex-1 py-3 inline-flex flex-col justify-start items-start gap-1">
+              <div className="justify-start text-Text-White text-xl font-medium font-['Josefin_Sans']">{notif.header}</div>
+              <div className="self-stretch justify-start text-variableid-15-206 text-base font-normal font-['Josefin_Sans']">{notif.description}</div>
             </div>
           </div>
         ))}
