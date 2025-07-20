@@ -57,7 +57,7 @@ const SectionCalendar: React.FC = () => {
   ];
 
   return (
-    <div className="w-full flex flex-col gap-1 sm:gap-2 md:gap-3 lg:gap-4">
+    <div className="w-full flex flex-col gap-2 md:gap-3 lg:gap-4">
       <h4 className="font-josefin-sans text-h4 max-lg:text-h4-mobile">
         Calendar
       </h4>

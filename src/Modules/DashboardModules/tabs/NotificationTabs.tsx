@@ -44,7 +44,7 @@ const NotificationTabs = () => {
   }
 
   return (
-    <div className="animate-fade-in transition-all duration-300 w-full flex flex-col gap-1 sm:gap-2 md:gap-3 lg:gap-4">
+    <div className="animate-fade-in transition-all duration-300 w-full flex flex-col gap-2 md:gap-3 lg:gap-4">
       <h4 className="font-josefin-sans text-h4 max-lg:text-h4-mobile">
         Notifications
       </h4>

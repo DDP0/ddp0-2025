@@ -104,14 +104,18 @@ export const MentorMenteeList = () => {
       try {
         const res = await fetch("/api/dashboard/kelompok");
 
-        const json: ResponseData | { error: string } = await res.json();
+        const json: ResponseData = await res.json();
         if (!res.ok) {
           throw new Error(
-            `${"error" in json ? json.error : "Failed to fetch data"}`
+            `${
+              res.status === 404
+                ? "Kelompok tidak ditemukan"
+                : "Gagal memuat data kelompok"
+            }`
           );
         }
         if (isMounted) {
-          setData(json as ResponseData);
+          setData(json);
           setError(null);
         }
       } catch (err) {
@@ -133,7 +137,7 @@ export const MentorMenteeList = () => {
 
   if (error) {
     return (
-      <div className="h-[40vh] overflow-hidden relative flex flex-col items-center justify-center">
+      <div className="h-[35vh] overflow-hidden relative flex flex-col items-center justify-center">
         <div className="relative aspect-square w-52 max-lg:w-42 max-md:w-35">
           <Image
             src="/kucingdankardus.png"

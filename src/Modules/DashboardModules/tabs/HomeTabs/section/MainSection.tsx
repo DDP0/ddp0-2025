@@ -5,8 +5,7 @@ import { MentorMenteeList } from "../../../components/kelompok";
 import { TodoList } from "../../../components/todo";
 
 export const MainSection = () => {
-  
-  const targetDate = new Date("2025-07-20T00:00:00Z");
+  const targetDate = new Date("2025-07-31T00:00:00Z");
 
   const [expired, setExpired] = useState(() => {
     return new Date() > targetDate;
@@ -27,9 +26,9 @@ export const MainSection = () => {
   return (
     <div className="w-full flex flex-col items-start space-y-12 font-josefin-sans">
       <section className="w-full">
-        <h1 className="text-3xl font-josefin-sans font-semibold mb-4">
+        <h4 className="font-josefin-sans text-h4 max-lg:text-h4-mobile">
           Kelompok
-        </h1>
+        </h4>
         <div className="w-full flex justify-center">
           {!expired ? (
             <Countdown
@@ -46,9 +45,9 @@ export const MainSection = () => {
       </section>
 
       <section className="w-full">
-        <h1 className="text-3xl font-josefin-sans font-semibold mb-4">
+        <h4 className="font-josefin-sans mb-2 text-h4 max-lg:text-h4-mobile">
           To Do List
-        </h1>
+        </h4>
         <div className="w-full flex justify-center">
           <TodoList />
         </div>
