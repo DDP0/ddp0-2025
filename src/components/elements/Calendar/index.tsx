@@ -166,10 +166,10 @@ const Calendar: React.FC<CalendarProps> = ({
   const dayNames = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
   return (
-    <div className="w-full flex flex-col gap-2">
+    <div className="w-full flex flex-col gap-2 max-lg:grid max-lg:grid-cols-[2fr_1fr] max-md:flex">
       <div
         className={cn(
-          "w-full max-w-md mx-auto glass rounded-xl border border-[#ffffff59] shadow-lg p-6",
+          "w-full mx-auto glass rounded-xl border border-[#ffffff59] shadow-lg p-6",
           className
         )}
       >
@@ -251,7 +251,7 @@ const Calendar: React.FC<CalendarProps> = ({
       </div>
 
       {/* Schedule */}
-      <div className="w-full font-josefin-sans text-body-mobile lg:text-body max-w-md mx-auto flex flex-col gap-2 glass rounded-xl border border-[#ffffff59] shadow-lg p-6">
+      <div className="w-full justify-center font-josefin-sans text-body-mobile lg:text-body mx-auto flex flex-col gap-2 glass rounded-xl border border-[#ffffff59] shadow-lg p-6">
         {ranges.map((range, index) => (
           <div key={index} className="flex justify-between">
             <p className="text-transparent bg-clip-text bg-gradient-kiwi">

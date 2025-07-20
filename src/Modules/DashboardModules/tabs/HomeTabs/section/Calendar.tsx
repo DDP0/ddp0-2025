@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import Calendar from "./index";
-import type { DateRange } from "./index";
+import Calendar from "@/components/elements/Calendar";
+import type { DateRange } from "@/components/elements/Calendar";
 
-const CalendarExample: React.FC = () => {
+const SectionCalendar: React.FC = () => {
   const defaultAvailableRanges: DateRange[] = [
     {
       start: new Date(2025, 6, 19),
@@ -58,10 +58,12 @@ const CalendarExample: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col gap-1 sm:gap-2 md:gap-3 lg:gap-4">
-      <h4 className="font-josefin-sans text-h4 max-lg:text-h4-mobile">Calendar</h4>
+      <h4 className="font-josefin-sans text-h4 max-lg:text-h4-mobile">
+        Calendar
+      </h4>
       <Calendar availableRanges={defaultAvailableRanges} />
     </div>
   );
 };
 
-export default CalendarExample;
+export default SectionCalendar;
