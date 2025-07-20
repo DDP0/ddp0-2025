@@ -59,7 +59,8 @@ model User {
   sessions Session[]
   kelompokUsers KelompokUser[]
   submissions   Submisi[]
-
+  gradedSubmissions Submisi[] @relation("GradedSubmissions")
+  
   @@map("user")
 }
 
@@ -166,9 +167,12 @@ model Submisi {
   link      String
   nilai     Int?     // Nilai opsional
   feedback  String? 
+  gradedBy  String? // ID of the user who graded the submission
+
 
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   tugas     Tugas    @relation(fields: [tugasId], references: [id], onDelete: Cascade)
+  grader    User?    @relation(fields: [gradedBy], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -176,9 +180,12 @@ model Submisi {
   @@unique([userId, tugasId])
 }
 
-model notification{
+model Notification{
   id        String   @id @default(cuid())
   title     String
   content   String
   link      String?
+  createdAt DateTime @default(now())
+
+  @@map("notification")
 }

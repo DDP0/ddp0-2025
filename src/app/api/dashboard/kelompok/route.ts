@@ -24,16 +24,39 @@ export async function GET(request: NextRequest) {
         { status: 401 }
       );
     }
+    // const mentorRecords = await prisma.kelompokUser.findMany({
+    //   where: { isMentor: true },
+    //   include: { user: true },
+    // });
+
+    // const menteeRecords = await prisma.kelompokUser.findMany({
+    //   where: { isMentor: false },
+    //   include: { user: true },
+    // });
+
+    // const mentors = mentorRecords.map((mk: KelompokUser) => ({
+    //   name: mk.user.name,
+    //   lineId: mk.user.idLine || "",
+    // }));
+    // const mentees = menteeRecords.map((mk: KelompokUser) => mk.user.name);
+    const kelompok = await prisma.kelompokUser.findFirst({
+      where: { userId: session.user.id },
+    });
+    if (!kelompok) {
+      return NextResponse.json(
+        { error: "Kelompok not found for the user" },
+        { status: 404 }
+      );
+    }
     const mentorRecords = await prisma.kelompokUser.findMany({
-      where: { isMentor: true },
+      where: { kelompokId: kelompok?.kelompokId, isMentor: true },
       include: { user: true },
     });
-
     const menteeRecords = await prisma.kelompokUser.findMany({
-      where: { isMentor: false },
+      where: { kelompokId: kelompok?.kelompokId, isMentor: false },
       include: { user: true },
     });
-
+    
     const mentors = mentorRecords.map((mk: KelompokUser) => ({
       name: mk.user.name,
       lineId: mk.user.idLine || "",

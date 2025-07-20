@@ -1,12 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Countdown } from "../components/countdown";
-import { MentorMenteeList } from "../components/kelompok";
-import { TodoList } from "../components/todo";
+import { Countdown } from "../../../components/countdown";
+import { MentorMenteeList } from "../../../components/kelompok";
+import { TodoList } from "../../../components/todo";
 
-export const HomeTabs = () => {
+export const MainSection = () => {
   
-  const targetDate = new Date("2025-10-10T00:00:00Z");
+  const targetDate = new Date("2025-07-20T00:00:00Z");
 
   const [expired, setExpired] = useState(() => {
     return new Date() > targetDate;
@@ -25,7 +25,7 @@ export const HomeTabs = () => {
   }, [expired, targetDate]);
 
   return (
-    <div className="w-full flex flex-col items-start space-y-12">
+    <div className="w-full flex flex-col items-start space-y-12 font-josefin-sans">
       <section className="w-full">
         <h1 className="text-3xl font-josefin-sans font-semibold mb-4">
           Kelompok

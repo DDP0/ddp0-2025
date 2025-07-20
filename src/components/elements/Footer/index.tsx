@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="flex relative z-50 max-md:gap-4 max-md:flex-col justify-between items-center px-16 py-8 bg-black">
+    <footer className="flex relative text-white z-50 max-md:gap-4 max-md:flex-col justify-between items-center px-16 py-8 bg-black">
       <div className="md:space-y-4">
         <div className="flex items-center gap-4 w-fit font-spectral text-3xl">
           <img src="/logo-footer.webp" alt="logo" className="w-8" />

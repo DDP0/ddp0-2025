@@ -8,15 +8,15 @@ import Loader from "@/components/elements/Loader";
 
 export type TodoStatus =
   | "not_submitted"
-  | "submitted" 
-  | "on_going" 
+  | "submitted"
+  | "on_going"
   | "coming_soon";
 
 export interface TodoItemData {
   id: string;
   title: string;
   description: string;
-  status: TodoStatus; 
+  status: TodoStatus;
   linkTugas: string;
   submission?: {
     id: string;
@@ -43,14 +43,30 @@ export function useFetchTugas() {
       const { tugas } = await res.json();
 
       setItems(
-        tugas.map((t: any) => ({
-          id: t.id,
-          title: t.title,
-          description: t.description,
-          linkTugas: t.linkTugas,
-          status: t.submissionStatus as TodoStatus,
-          submission: t.submission,
-        }))
+        tugas.map(
+          (t: {
+            id: string;
+            title: string;
+            description: string;
+            linkTugas: string;
+            submissionStatus: string;
+            submission?: {
+              id: string;
+              nilai: number | null;
+              link: string;
+              feedback: string | null;
+              createdAt: string;
+              updatedAt: string;
+            } | null;
+          }) => ({
+            id: t.id,
+            title: t.title,
+            description: t.description,
+            linkTugas: t.linkTugas,
+            status: t.submissionStatus as TodoStatus,
+            submission: t.submission,
+          })
+        )
       );
       setLoading(false);
     };
@@ -59,7 +75,6 @@ export function useFetchTugas() {
 
   return { items, loading };
 }
-
 
 const STATUS_ICON: Record<TodoStatus, React.ReactNode> = {
   not_submitted: (
@@ -115,7 +130,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
   const taskUrl = linkTugas;
 
   return (
-    <div className="flex items-start mb-6">
+    <div className="w-full flex items-center mb-6">
       <div className="flex-shrink-0">{STATUS_ICON[status]}</div>
 
       <div className="flex-1 ml-4">
