@@ -3,8 +3,8 @@ import { TabsContent } from "@radix-ui/react-tabs";
 import Sidebar from "@/components/elements/Sidebar";
 import ProfileTabs from "./tabs/ProfileTabs";
 import Background from "../RegistModules/Background";
-import HomeTabs from "./tabs/HomeTabs";
 import NotificationTabs from "./tabs/NotificationTabs";
+import HomeTabs from "./tabs/HomeTabs";
 
 const DashboardModules = () => {
   return (
