@@ -56,7 +56,7 @@ const Navbar = () => {
             <Link
               key={index}
               href={item.isAvailable ? item.href : "#"}
-              className={`px-4 py-2  ${
+              className={`px-4 py-2 font-josefin-sans  ${
                 item.isAvailable
                   ? "hover:opacity-50"
                   : "opacity-50 cursor-not-allowed"
