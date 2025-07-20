@@ -3,6 +3,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Copy } from "lucide-react";
 import Loader from "@/components/elements/Loader";
+import { useToast } from "@/hooks/useToast";
+import Image from "next/image";
 
 interface Mentor {
   name: string;
@@ -38,14 +40,16 @@ const copyIconStyle = {
 } as const;
 
 const MentorItem = React.memo(({ mentor }: { mentor: Mentor }) => {
+  const { show } = useToast();
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(mentor.lineId);
+    show("success", "Line ID copied to clipboard!");
   }, [mentor.lineId]);
 
   return (
-    <div className="flex gap-4">
+    <div className="grid grid-cols-[2fr_1fr] max-md:grid-cols-2 gap-4">
       <div
-        className="w-[70%] bg-[#1010101A] backdrop-blur-xl border rounded-lg px-4 py-3 hover:bg-[#ffffff12] transition-all duration-300 transform"
+        className="w-full bg-[#1010101A] backdrop-blur-xl border rounded-lg px-4 py-3 hover:bg-[#ffffff12] transition-all duration-300 transform"
         style={cardBaseStyle}
       >
         <span className="text-white font-josefin-sans font-[400] ">
@@ -53,7 +57,7 @@ const MentorItem = React.memo(({ mentor }: { mentor: Mentor }) => {
         </span>
       </div>
       <div
-        className="w-[30%] bg-[#1010101A] backdrop-blur-xl border rounded-lg px-4 py-3 flex justify-between items-center hover:bg-[#ffffff12] transition-all duration-300 transform"
+        className="w-full bg-[#1010101A] backdrop-blur-xl border rounded-lg px-4 py-2 flex justify-between items-center hover:bg-[#ffffff12] transition-all duration-300 transform"
         style={cardBaseStyle}
       >
         <span className="text-white font-josefin-sans font-[400]">
@@ -61,7 +65,7 @@ const MentorItem = React.memo(({ mentor }: { mentor: Mentor }) => {
         </span>
         <button
           onClick={handleCopy}
-          className="p-1 hover:bg-white/20 rounded cursor-pointer"
+          className="p-1  rounded cursor-pointer"
           aria-label={`Copy ${mentor.lineId}`}
         >
           <Copy
@@ -100,13 +104,14 @@ export const MentorMenteeList = () => {
       try {
         const res = await fetch("/api/dashboard/kelompok");
 
+        const json: ResponseData | { error: string } = await res.json();
         if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
+          throw new Error(
+            `${"error" in json ? json.error : "Failed to fetch data"}`
+          );
         }
-        const json: ResponseData = await res.json();
-
         if (isMounted) {
-          setData(json);
+          setData(json as ResponseData);
           setError(null);
         }
       } catch (err) {
@@ -127,7 +132,21 @@ export const MentorMenteeList = () => {
   }, []);
 
   if (error) {
-    return <p className="text-red-400">Error: {error}</p>;
+    return (
+      <div className="h-[40vh] overflow-hidden relative flex flex-col items-center justify-center">
+        <div className="relative aspect-square w-52 max-lg:w-42 max-md:w-35">
+          <Image
+            src="/kucingdankardus.png"
+            alt="No notifications"
+            fill
+            className="object-contain"
+          />
+        </div>
+        <p className="font-josefin-sans text-headline max-md:text-headline-mobile">
+          {error}
+        </p>
+      </div>
+    );
   }
 
   if (isLoading || !data) {
@@ -139,7 +158,6 @@ export const MentorMenteeList = () => {
       className="w-full rounded-xl p-6 space-y-8 backdrop-blur-md"
       style={containerStyle}
     >
-
       <div className="space-y-4">
         <h2 className="text-lg font-josefin-sans font-[500]">Mentor</h2>
         <div className="flex flex-col gap-4">
@@ -151,7 +169,6 @@ export const MentorMenteeList = () => {
           ))}
         </div>
       </div>
-
 
       <div className="space-y-4">
         <h2 className="text-lg font-josefin-sans font-500">Mentee</h2>

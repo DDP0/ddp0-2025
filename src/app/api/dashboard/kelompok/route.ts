@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
     });
     if (!kelompok) {
       return NextResponse.json(
-        { error: "Kelompok not found for the user" },
+        { error: "Kelompok tidak ditemukan" },
         { status: 404 }
       );
     }

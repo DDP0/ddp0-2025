@@ -191,7 +191,7 @@ export const TodoList: React.FC = () => {
     setOpenMap((prev) => ({ ...prev, [id]: !prev[id] }));
 
   return (
-    <div className="w-full px-4">
+    <div className="w-full">
       {items.map((item) => (
         <TodoItem
           key={item.id}
