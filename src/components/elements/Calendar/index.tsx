@@ -4,7 +4,7 @@ import React, { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface DateRange {
+export interface DateRange {
   start: Date;
   end: Date;
   label: string;
@@ -255,8 +255,13 @@ const Calendar: React.FC<CalendarProps> = ({
         {ranges.map((range, index) => (
           <div key={index} className="flex justify-between">
             <p className="text-transparent bg-clip-text bg-gradient-kiwi">
-              {range.start.getDate()} - {range.end.getDate()}{" "}
-              {monthNames[range.start.getMonth()]}
+              {range.start.getDate() === range.end.getDate()
+                ? `${range.start.getDate()} ${
+                    monthNames[range.start.getMonth()]
+                  }`
+                : `${range.start.getDate()} - ${range.end.getDate()} ${
+                    monthNames[range.start.getMonth()]
+                  }`}
             </p>
             <p>{range.label}</p>
           </div>
