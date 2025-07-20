@@ -4,6 +4,7 @@ import Sidebar from "@/components/elements/Sidebar";
 import ProfileTabs from "./tabs/ProfileTabs";
 import Background from "../RegistModules/Background";
 import HomeTabs from "./tabs/HomeTabs";
+import NotificationTabs from "./tabs/NotificationTabs";
 
 const DashboardModules = () => {
   return (
@@ -19,7 +20,9 @@ const DashboardModules = () => {
             <TabsContent className="w-full" value="tab2">
               <ProfileTabs />
             </TabsContent>
-            <TabsContent value="tab3">This is Notification</TabsContent>
+            <TabsContent value="tab3">
+              <NotificationTabs />
+            </TabsContent>
           </div>
         </div>
       </Tabs>
