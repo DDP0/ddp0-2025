@@ -62,12 +62,12 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-        <div className="hidden lg:flex items-center justify-end space-x-4 px-3 md:px-6">
+        <div className="hidden lg:flex items-center justify-end space-x-4 px-3 md:px-6 font-josefin-sans">
           {isAuthenticated && !isLoading ? (
             <div className="flex items-center space-x-6 justify-center">
               <Button variant="default" className="py-1" onClick={handleLogin}>
                 <User2Icon />
-                {user?.name ? user.name.split(" ").slice(0, 2).join(" ") : ""}
+                {user?.name ? user.name.split(" ").slice(0, 0).join(" ") : ""}
               </Button>
               <span
                 className="text-red-500 font-josefin-sans font-semibold cursor-pointer hover:opacity-50"
@@ -77,7 +77,11 @@ const Navbar = () => {
               </span>
             </div>
           ) : (
-            <Button variant="kiwi" className="py-1" onClick={handleLogin}>
+            <Button
+              variant="kiwi"
+              className="py-1 font-josefin-sans"
+              onClick={handleLogin}
+            >
               Login
             </Button>
           )}
@@ -156,7 +160,7 @@ const Navbar = () => {
             ) : (
               <Button
                 variant="kiwi"
-                className={`py-2 w-full  transition-all duration-200 transform  ${
+                className={`py-2 w-full  transition-all duration-200 transform font-josefin-sans ${
                   isMenuOpen
                     ? "translate-x-0 opacity-100"
                     : "-translate-x-4 opacity-0"
