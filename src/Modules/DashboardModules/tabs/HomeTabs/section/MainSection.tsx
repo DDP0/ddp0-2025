@@ -25,9 +25,9 @@ export const MainSection = () => {
 
   return (
     <div className="w-full flex flex-col items-start space-y-12 font-josefin-sans">
-      <section className="w-full">
-        <h4 className="font-josefin-sans text-h4 max-lg:text-h4-mobile">
-          Kelompok
+      <section className="w-full flex flex-col gap-4">
+        <h4 className="font-josefin-sans text-center text-h4 max-lg:text-h4-mobile">
+          {new Date() < targetDate ? "Pengumuman Kelompok" : "Kelompok"}
         </h4>
         <div className="w-full flex justify-center">
           {!expired ? (
