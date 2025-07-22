@@ -8,7 +8,7 @@ type Props = {
   totalNilai?: number | null;
 };
 
-export default function SidebarDesktop({ isMentor = true, totalNilai }: Props) {
+export default function SidebarDesktop({ isMentor, totalNilai }: Props) {
   const { user } = useSession();
 
   return (

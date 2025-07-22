@@ -12,14 +12,15 @@ const buttonVariants = cva(
         default:
           "bg-card/10 hover:bg-card-hover/30 active:bg-card-pressed/50 disabled:bg-card-disabled/50",
         blue: "bg-[#81beff4d] hover:bg-[#b3dfff4d] active:bg-[#ccecff4d] disabled:bg-[#e5f6ff4d]",
+        green:
+          "bg-[#9ae7b84d] hover:bg-[#c6F7cf4d] active:bg-[#dafcde4d] disabled:bg-[#edfdec4d]",
         lilac:
           "bg-[#c99bdb4d] hover:bg-[#f6d5ff4d] active:bg-[#fde5ff4d] disabled:bg-[#ffeefe4d]",
         yellow:
           "bg-[#fec8884d] hover:bg-[#fee4b74d] active:bg-[#feefcf4d] disabled:bg-[#fef8e74d]",
         retro:
           "bg-gradient-retro-button hover:bg-gradient-retro-button-hover active:bg-gradient-retro-button-pressed disabled:bg-gradient-retro-button-disabled",
-        kiwi:
-          "bg-gradient-kiwi-button hover:bg-gradient-kiwi-button-hover active:bg-gradient-kiwi-button-pressed disabled:bg-gradient-retro-kiwi-disabled",
+        kiwi: "bg-gradient-kiwi-button hover:bg-gradient-kiwi-button-hover active:bg-gradient-kiwi-button-pressed disabled:bg-gradient-retro-kiwi-disabled",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
