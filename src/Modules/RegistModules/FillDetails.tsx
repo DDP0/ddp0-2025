@@ -130,15 +130,7 @@ const RegistFillDetails = () => {
             </div>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-white">
-                Screenshot bukti masuk Fasilkom (Gdrive) —{" "}
-                <a
-                  href="https://google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline text-blue-300 hover:text-blue-600"
-                >
-                  Lihat panduan
-                </a>
+                Screenshot bukti masuk Fasilkom (Gdrive)
               </label>
               <Input
                 value={screenshotBuktiMasuk}
@@ -151,10 +143,10 @@ const RegistFillDetails = () => {
               <label className="block text-sm font-medium text-white">
                 Screenshot bukti share Instagram (Gdrive) —{" "}
                 <a
-                  href="https://google.com"
+                  href="https://docs.google.com/document/d/1xAMlEJV1hfA81-CFM2ukc6T41bSLlk2nz4Tj8QkIqtM/edit?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline text-blue-300 hover:text-blue-600"
+                  className="underline text-blue-300 hover:text-blue-100"
                 >
                   Lihat panduan
                 </a>
