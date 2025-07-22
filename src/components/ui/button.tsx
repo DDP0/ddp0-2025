@@ -18,8 +18,7 @@ const buttonVariants = cva(
           "bg-[#fec8884d] hover:bg-[#fee4b74d] active:bg-[#feefcf4d] disabled:bg-[#fef8e74d]",
         retro:
           "bg-gradient-retro-button hover:bg-gradient-retro-button-hover active:bg-gradient-retro-button-pressed disabled:bg-gradient-retro-button-disabled",
-        kiwi:
-          "bg-gradient-kiwi-button hover:bg-gradient-kiwi-button-hover active:bg-gradient-kiwi-button-pressed disabled:bg-gradient-retro-kiwi-disabled",
+        kiwi: "bg-gradient-kiwi-button hover:bg-gradient-kiwi-button-hover active:bg-gradient-kiwi-button-pressed disabled:bg-gradient-retro-kiwi-disabled",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
@@ -53,7 +52,7 @@ function Button({
       <Comp
         data-slot="button"
         className={cn(
-          "cursor-pointer glass text-[18px] max-sm:text-[16px]",
+          "cursor-pointer glass text-[18px] max-sm:text-[16px] font-josefin-sans",
           buttonVariants({ variant, size, className })
         )}
         {...props}

@@ -3,6 +3,7 @@ import { registFillDetailsSchema } from "@/model/user.schema";
 import { mentorSchema } from "@/model/mentor.schema";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
+import { addUserToSheet } from "@/lib/googleSheets";
 
 export async function POST(request: NextRequest) {
   try {
@@ -99,7 +100,24 @@ export async function POST(request: NextRequest) {
         fillDetails: true,
       },
     });
-
+    if (process.env.NODE_ENV === "production") {
+      const userdata = {
+        id: updatedUser.id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        NPM: updatedUser.NPM ?? undefined,
+        idLine: updatedUser.idLine ?? undefined,
+        idDiscord: updatedUser.idDiscord ?? undefined,
+        buktiMasuk: updatedUser.buktiMasuk ?? undefined,
+        buktiShare: updatedUser.buktiShare ?? undefined,
+        jalurMasuk: updatedUser.jalurMasuk ?? undefined,
+        jurusan: updatedUser.jurusan ?? undefined,
+        gender: updatedUser.gender ?? undefined,
+        asalSekolah: updatedUser.asalSekolah ?? undefined,
+        createdAt: updatedUser.createdAt,
+      };
+      addUserToSheet(userdata);
+    }
     return NextResponse.json(
       { message: "User registration successful", user: updatedUser },
       { status: 200 }

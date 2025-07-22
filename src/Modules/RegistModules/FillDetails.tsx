@@ -128,18 +128,43 @@ const RegistFillDetails = () => {
                 label="Id Discord"
               />
             </div>
-            <Input
-              value={screenshotBuktiMasuk}
-              onChange={(e) => setScreenshotBuktiMasuk(e.target.value)}
-              placeholder="Enter Gdrive link"
-              label="Screenshot bukti masuk Fasilkom (Gdrive)"
-            />
-            <Input
-              value={screenshotBuktiShareIG}
-              onChange={(e) => setScreenshotBuktiShareIG(e.target.value)}
-              placeholder="Enter Gdrive link"
-              label="Screenshot bukti share Instagram (Gdrive)"
-            />
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-white">
+                Screenshot bukti masuk Fasilkom (Gdrive) —{" "}
+                <a
+                  href="https://google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-blue-300 hover:text-blue-600"
+                >
+                  Lihat panduan
+                </a>
+              </label>
+              <Input
+                value={screenshotBuktiMasuk}
+                onChange={(e) => setScreenshotBuktiMasuk(e.target.value)}
+                placeholder="Enter Gdrive link"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-white">
+                Screenshot bukti share Instagram (Gdrive) —{" "}
+                <a
+                  href="https://google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-blue-300 hover:text-blue-600"
+                >
+                  Lihat panduan
+                </a>
+              </label>
+              <Input
+                value={screenshotBuktiShareIG}
+                onChange={(e) => setScreenshotBuktiShareIG(e.target.value)}
+                placeholder="Enter Gdrive link"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-6">
             <div>
