@@ -5,8 +5,13 @@ import ProfileTabs from "./tabs/ProfileTabs";
 import Background from "../RegistModules/Background";
 import NotificationTabs from "./tabs/NotificationTabs";
 import HomeTabs from "./tabs/HomeTabs";
+import HomeTabsMentor from "../MentorModules/tabs/HomeTabsMentor";
 
-const DashboardModules = () => {
+interface Props {
+  isMentor?: boolean;
+}
+
+const DashboardModules = ({ isMentor = true }: Props) => {
   return (
     <main className="min-h-screen overflow-hidden relative flex max-lg:flex-col">
       <Tabs defaultValue="tab1">
@@ -14,15 +19,31 @@ const DashboardModules = () => {
           <div className="grid grid-cols-[1fr_4fr] max-lg:grid-cols-1 gap-6 w-full">
             <Sidebar />
 
-            <TabsContent value="tab1">
-              <HomeTabs />
-            </TabsContent>
-            <TabsContent className="w-full" value="tab2">
-              <ProfileTabs />
-            </TabsContent>
-            <TabsContent value="tab3">
-              <NotificationTabs />
-            </TabsContent>
+            {isMentor ? (
+              <>
+                <TabsContent value="tab1">
+                  <HomeTabsMentor />
+                </TabsContent>
+                <TabsContent className="w-full" value="tab2">
+                  <ProfileTabs />
+                </TabsContent>
+                <TabsContent value="tab3">
+                  <NotificationTabs />
+                </TabsContent>
+              </>
+            ) : (
+              <>
+                <TabsContent value="tab1">
+                  <HomeTabs />
+                </TabsContent>
+                <TabsContent className="w-full" value="tab2">
+                  <ProfileTabs />
+                </TabsContent>
+                <TabsContent value="tab3">
+                  <NotificationTabs />
+                </TabsContent>
+              </>
+            )}
           </div>
         </div>
       </Tabs>
