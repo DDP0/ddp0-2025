@@ -67,7 +67,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-6 justify-center">
               <Button variant="default" className="py-1" onClick={handleLogin}>
                 <User2Icon />
-                {user?.email || ""}
+                {user?.name ? user.name.split(" ").slice(0, 2).join(" ") : ""}
               </Button>
               <span
                 className="text-red-500 font-josefin-sans font-semibold cursor-pointer hover:opacity-50"
@@ -151,7 +151,7 @@ const Navbar = () => {
                 onClick={handleLogin}
               >
                 <User2Icon className="mb-px h-4 w-4" />
-                {user?.email || ""}
+                {user?.name ? user.name.split(" ").slice(0, 2).join(" ") : ""}
               </Button>
             ) : (
               <Button
