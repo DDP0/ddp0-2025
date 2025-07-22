@@ -36,19 +36,15 @@ const Navbar = () => {
       <nav className="bg-card glass grid grid-cols-2 lg:grid-cols-[1fr_2fr_1fr] m-[1.5px] text-white items-center justify-between py-4 max-sm:py-3 px-4 max-sm:px-3 rounded-full">
         <Link href={"/"} className="flex items-center space-x-4 px-3 md:px-6">
           <Image
-            src="/logo.svg"
+            src="/logo-new.png"
             alt="DDP0 Logo"
             width={25}
             height={25}
             className=""
           />
-          <Image
-            src="/DDP-0.svg"
-            alt="DDP-0 Logo"
-            width={70}
-            height={70}
-            className="hidden lg:block"
-          />
+          <span className="font-spectral text-h4 hidden lg:block bg-gradient-logo bg-clip-text text-transparent">
+            DDP-0
+          </span>
         </Link>
 
         <div className="hidden lg:flex items-center justify-center space-x-4 px-3 md:px-6">
@@ -71,7 +67,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-6 justify-center">
               <Button variant="default" className="py-1" onClick={handleLogin}>
                 <User2Icon />
-                {user?.email || ""}
+                {user?.name ? user.name.split(" ").slice(0, 2).join(" ") : ""}
               </Button>
               <span
                 className="text-red-500 font-josefin-sans font-semibold cursor-pointer hover:opacity-50"
@@ -134,7 +130,9 @@ const Navbar = () => {
                   isMenuOpen
                     ? "translate-x-0 opacity-100 "
                     : "-translate-x-4 opacity-0"
-                } ${item.isAvailable ? "" : "text-white/50 cursor-not-allowed"}`}
+                } ${
+                  item.isAvailable ? "" : "text-white/50 cursor-not-allowed"
+                }`}
                 style={{ transitionDelay: isMenuOpen ? "200ms" : "0ms" }}
                 onClick={() => setMenuOpen(false)}
               >
@@ -153,7 +151,7 @@ const Navbar = () => {
                 onClick={handleLogin}
               >
                 <User2Icon className="mb-px h-4 w-4" />
-                {user?.email || ""}
+                {user?.name ? user.name.split(" ").slice(0, 2).join(" ") : ""}
               </Button>
             ) : (
               <Button

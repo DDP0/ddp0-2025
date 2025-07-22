@@ -198,6 +198,15 @@
       rgba(65, 110, 183, 0.5) 100%
     );
 
+  --background-image-gradient-logo: linear-gradient(
+    137deg,
+    #9079a2 1.56%,
+    #657eae 31.22%,
+    #7b79a5 51.64%,
+    #332836 98.44%,
+    #8f7da6 98.44%
+  );
+
   --background-image-gradient-retro-wave: linear-gradient(
     100deg,
     #c99bdb 0%,

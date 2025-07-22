@@ -3,8 +3,8 @@ const Footer = () => {
     <footer className="flex relative text-white z-50 max-md:gap-4 max-md:flex-col justify-between items-center px-16 py-8 bg-black">
       <div className="md:space-y-4">
         <div className="flex items-center gap-4 w-fit font-spectral text-3xl">
-          <img src="/logo-footer.webp" alt="logo" className="w-8" />
-          <span className="bg-gradient-retro-wave bg-clip-text text-transparent">
+          <img src="/logo-new.png" alt="logo" className="w-8" />
+          <span className="bg-gradient-logo bg-clip-text text-transparent">
             DDP-0
           </span>
         </div>

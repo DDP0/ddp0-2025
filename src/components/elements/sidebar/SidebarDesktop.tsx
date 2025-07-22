@@ -17,7 +17,7 @@ export default function SidebarDesktop({ totalNilai }: Props) {
           <div className="flex flex-col justify-center items-center">
             <div className="relative w-25 h-25 rounded-full translate-y-2 -z-10 overflow-hidden">
               <Image
-                src={user?.image || "https://via.placeholder.com/150"}
+                src={user?.image || "/avatar.png"}
                 alt="Profile Picture"
                 fill
                 className="object-contain"
