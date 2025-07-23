@@ -47,7 +47,9 @@ const RegistFillDetails = () => {
   const [jurusan, setJurusan] = useState(jurusanList[0]);
   const [gender, setGender] = useState(Gender[0]);
   const [asalSekolah, setAsalSekolah] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSubmit = async () => {
+    setIsSubmitting(true);
     const toastId = show("loading", "Sedang memproses data...");
     const formData = {
       namaLengkap,
@@ -69,6 +71,7 @@ const RegistFillDetails = () => {
         show("error", error.message);
       }
       console.log("Validation errors:", validation.error.errors);
+      setIsSubmitting(false);
       return;
     }
     const res = await fetch("/api/user", {
@@ -81,10 +84,12 @@ const RegistFillDetails = () => {
     dismiss(toastId);
     if (!res.ok) {
       show("error", "Terjadi kesalahan saat mengirim data");
+      setIsSubmitting(false);
       return;
     }
     show("success", "Registrasi berhasil!");
     router.push("/dashboard");
+    setIsSubmitting(false);
   };
 
   return (
@@ -231,6 +236,7 @@ const RegistFillDetails = () => {
             variant={"kiwi"}
             className="py-4 px-6 max-sm:py-2 max-sm:px-4"
             onClick={handleSubmit}
+            disabled={isSubmitting}
           >
             Register Now
           </Button>
