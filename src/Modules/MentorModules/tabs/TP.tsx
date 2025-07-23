@@ -1,0 +1,311 @@
+"use client";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { useState, useRef } from "react";
+import type { FormEvent, KeyboardEvent, ClipboardEvent } from "react";
+
+interface MenteeGrade {
+  menteeName: string;
+  submittedOn: string;
+  submissionUrl: string;
+  grade: string;
+}
+
+interface TP {
+  id: number;
+  grades: MenteeGrade[];
+}
+
+const tpsData: TP[] = [
+  {
+    id: 1,
+    grades: [
+      {
+        menteeName: "Andrew Sanjay Hasian Panjaitan",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Vazha Khayri",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Muhamad Hakim Nizami",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Naufal Zafran Fadil",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+    ],
+  },
+  {
+    id: 2,
+    grades: [
+      {
+        menteeName: "Andrew Sanjay Hasian Panjaitan",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Vazha Khayri",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Muhamad Hakim Nizami",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Naufal Zafran Fadil",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "",
+        grade: "",
+      },
+    ],
+  },
+];
+
+const TP: React.FC = () => {
+  const [tps, setTps] = useState<TP[]>(() =>
+    tpsData.map((tp) => ({
+      id: tp.id,
+      grades: tp.grades.map((grade) => ({ ...grade })),
+    }))
+  );
+  const [editing, setEditing] = useState<{
+    [tpIdx: number]: { [gradeIdx: number]: boolean };
+  }>({});
+  const [draftValues, setDraftValues] = useState<{
+    [tpIdx: number]: { [gradeIdx: number]: string };
+  }>({});
+  const editableRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  const clampAndSanitize = (text: string): string => {
+    const numericOnly = text.replace(/[^0-9]/g, "");
+    const number = parseInt(numericOnly) || 0;
+    const clampedNumber = Math.min(105, Math.max(0, number));
+    return numericOnly === "" ? "" : clampedNumber.toString();
+  };
+
+  const getKey = (tpIdx: number, gradeIdx: number) => `${tpIdx}-${gradeIdx}`;
+
+  const handleInput = (
+    tpIdx: number,
+    gradeIdx: number,
+    e: FormEvent<HTMLDivElement>
+  ) => {
+    const target = e.target as HTMLDivElement;
+    const finalValue = clampAndSanitize(target.textContent || "");
+
+    if (target.textContent !== finalValue) {
+      target.textContent = finalValue;
+
+      const range = document.createRange();
+      const selection = window.getSelection();
+      if (selection) {
+        range.selectNodeContents(target);
+        range.collapse(false);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+    }
+
+    setDraftValues((prev) => ({
+      ...prev,
+      [tpIdx]: { ...prev[tpIdx], [gradeIdx]: finalValue },
+    }));
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (
+      [8, 9, 27, 13, 46].includes(e.keyCode) ||
+      (e.ctrlKey && [65, 67, 86, 88].includes(e.keyCode)) ||
+      (e.keyCode >= 35 && e.keyCode <= 39)
+    )
+      return;
+
+    if (
+      (e.shiftKey || e.keyCode < 48 || e.keyCode > 57) &&
+      (e.keyCode < 96 || e.keyCode > 105)
+    )
+      e.preventDefault();
+  };
+
+  const handlePaste = (
+    tpIdx: number,
+    gradeIdx: number,
+    e: ClipboardEvent<HTMLDivElement>
+  ) => {
+    e.preventDefault();
+    const paste = e.clipboardData?.getData("text") || "";
+    const finalValue = clampAndSanitize(paste);
+    const ref = editableRefs.current[getKey(tpIdx, gradeIdx)];
+    if (ref) ref.textContent = finalValue;
+
+    setDraftValues((prev) => ({
+      ...prev,
+      [tpIdx]: { ...prev[tpIdx], [gradeIdx]: finalValue },
+    }));
+  };
+
+  const cancelEdit = (tpIdx: number, gradeIdx: number) => {
+    setEditing((prev) => ({
+      ...prev,
+      [tpIdx]: { ...prev[tpIdx], [gradeIdx]: false },
+    }));
+    const ref = editableRefs.current[getKey(tpIdx, gradeIdx)];
+    if (ref) ref.textContent = tps[tpIdx].grades[gradeIdx].grade;
+    setDraftValues((prev) => ({
+      ...prev,
+      [tpIdx]: {
+        ...prev[tpIdx],
+        [gradeIdx]: tps[tpIdx].grades[gradeIdx].grade,
+      },
+    }));
+  };
+
+  const startEdit = (tpIdx: number, gradeIdx: number) => {
+    const current = tps[tpIdx].grades[gradeIdx].grade;
+    setDraftValues((prev) => ({
+      ...prev,
+      [tpIdx]: { ...prev[tpIdx], [gradeIdx]: current },
+    }));
+    setEditing((prev) => ({
+      ...prev,
+      [tpIdx]: { ...prev[tpIdx], [gradeIdx]: true },
+    }));
+    setTimeout(() => {
+      const ref = editableRefs.current[getKey(tpIdx, gradeIdx)];
+      if (ref) ref.textContent = current;
+    });
+  };
+
+  const saveEdit = (tpIdx: number, gradeIdx: number) => {
+    const newValue = draftValues[tpIdx]?.[gradeIdx] || "";
+    const updatedTPs = [...tps];
+    updatedTPs[tpIdx].grades[gradeIdx].grade = newValue;
+    setTps(updatedTPs);
+
+    setEditing((prev) => ({
+      ...prev,
+      [tpIdx]: { ...prev[tpIdx], [gradeIdx]: false },
+    }));
+  };
+
+  return (
+    <div className="animate-fade-in transition-all duration-300">
+      {tps.map((tp, tpIdx) => (
+        <div key={tpIdx} className="pb-2">
+          <h1 className="font-josefin-sans text-h4 font-semibold mb-4">
+            TP {tp.id}
+          </h1>
+          {tp.grades.map((grade, gradeIdx) => {
+            const isEdit = editing[tpIdx]?.[gradeIdx] || false;
+            const value = tps[tpIdx].grades[gradeIdx].grade;
+            const draft = draftValues[tpIdx]?.[gradeIdx] || "";
+
+            return (
+              <div
+                key={gradeIdx}
+                className={`${
+                  grade.submissionUrl === "" && "opacity-50"
+                } w-full flex justify-between h-fit rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-3 font-josefin-sans text-bodyLarge mb-3`}
+              >
+                <div className="flex flex-col justify-between">
+                  <h2 className="text-bodyLarge">{grade.menteeName}</h2>
+                  <h3 className="text-footnote">
+                    {grade.submissionUrl === ""
+                      ? "Not Submitted"
+                      : "Submitted On " + grade.submittedOn}
+                  </h3>
+                </div>
+                <div
+                  className={`${
+                    isEdit
+                      ? "grid-cols-[1fr_auto_1fr]"
+                      : "grid-cols-[auto_1fr_1fr]"
+                  } grid gap-2`}
+                >
+                  {isEdit ? (
+                    <>
+                      <div
+                        ref={(el) => {
+                          editableRefs.current[getKey(tpIdx, gradeIdx)] = el;
+                        }}
+                        contentEditable
+                        className="rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-2 outline-none text-center flex justify-center items-center focus:border-white focus:bg-[#ffffff59]/30"
+                        suppressContentEditableWarning
+                        onInput={(e) => handleInput(tpIdx, gradeIdx, e)}
+                        onKeyDown={handleKeyDown}
+                        onPaste={(e) => handlePaste(tpIdx, gradeIdx, e)}
+                        style={{ lineHeight: "normal" }}
+                      />
+                      <Button
+                        className="p-2 bg-[#d536364d]/80 hover:bg-[#d536364d] active:bg-[#d536368a]"
+                        onClick={() => cancelEdit(tpIdx, gradeIdx)}
+                      >
+                        <Image
+                          src="/close.svg"
+                          alt="Cancel"
+                          width={24}
+                          height={24}
+                        />
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <a target="_blank" href={grade.submissionUrl}>
+                        <Button
+                          className="p-2"
+                          disabled={grade.submissionUrl === ""}
+                        >
+                          <Image
+                            src="/arrow_down.svg"
+                            alt="Download"
+                            width={24}
+                            height={24}
+                          />
+                        </Button>
+                      </a>
+                      <div className="rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-2 outline-none text-center flex justify-center items-center">
+                        {value === "" ? "-" : value}
+                      </div>
+                    </>
+                  )}
+                  <Button
+                    className="px-2 py-2 h-full w-20"
+                    variant={
+                      isEdit ? "green" : value === "" ? "yellow" : "blue"
+                    }
+                    onClick={() =>
+                      isEdit
+                        ? saveEdit(tpIdx, gradeIdx)
+                        : startEdit(tpIdx, gradeIdx)
+                    }
+                    disabled={grade.submissionUrl === ""}
+                  >
+                    {isEdit ? "Save" : value === "" ? "Grade" : "Edit"}
+                  </Button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default TP;

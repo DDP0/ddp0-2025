@@ -7,6 +7,8 @@ import NotificationTabs from "./tabs/NotificationTabs";
 import HomeTabs from "./tabs/HomeTabs";
 import HomeTabsMentor from "../MentorModules/tabs/HomeTabsMentor";
 import Lab from "../MentorModules/tabs/Lab";
+import MiniQuiz from "../MentorModules/tabs/MiniQuiz";
+import TP from "../MentorModules/tabs/TP";
 
 interface Props {
   isMentor?: boolean;
@@ -26,13 +28,13 @@ const DashboardModules = ({ isMentor = true }: Props) => {
                   <HomeTabsMentor />
                 </TabsContent>
                 <TabsContent value="tab2">
-                  <ProfileTabs />
+                  <MiniQuiz />
                 </TabsContent>
                 <TabsContent value="tab3">
                   <Lab />
                 </TabsContent>
                 <TabsContent value="tab4">
-                  <NotificationTabs />
+                  <TP />
                 </TabsContent>
               </>
             ) : (

@@ -149,6 +149,7 @@ model KelompokUser {
 
 model Tugas {
   id          String     @id @default(cuid())
+  index       Int
   title       String
   description String
   tipe        TipeTugas

@@ -11,50 +11,137 @@ interface MenteeGrade {
   grade: string;
 }
 
-interface LabType {
+interface Lab {
   id: number;
   grades: MenteeGrade[];
 }
 
-const baseGrades = [
+const labsData: Lab[] = [
   {
-    menteeName: "Andrew Sanjay Hasian Panjaitan",
-    submittedOn: "26 February 2025",
-    submissionUrl: "https://shurkou.com",
-    grade: "",
+    id: 1,
+    grades: [
+      {
+        menteeName: "Andrew Sanjay Hasian Panjaitan",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Vazha Khayri",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Muhamad Hakim Nizami",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Naufal Zafran Fadil",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+    ],
   },
   {
-    menteeName: "Vazha Khayri",
-    submittedOn: "26 February 2025",
-    submissionUrl: "https://shurkou.com",
-    grade: "",
+    id: 2,
+    grades: [
+      {
+        menteeName: "Andrew Sanjay Hasian Panjaitan",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Vazha Khayri",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Muhamad Hakim Nizami",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Naufal Zafran Fadil",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "",
+        grade: "",
+      },
+    ],
   },
   {
-    menteeName: "Muhamad Hakim Nizami",
-    submittedOn: "26 February 2025",
-    submissionUrl: "https://shurkou.com",
-    grade: "",
+    id: 3,
+    grades: [
+      {
+        menteeName: "Andrew Sanjay Hasian Panjaitan",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Vazha Khayri",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Muhamad Hakim Nizami",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "",
+        grade: "",
+      },
+      {
+        menteeName: "Naufal Zafran Fadil",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+    ],
   },
   {
-    menteeName: "Naufal Zafran Fadil",
-    submittedOn: "26 February 2025",
-    submissionUrl: "https://shurkou.com",
-    grade: "",
+    id: 4,
+    grades: [
+      {
+        menteeName: "Andrew Sanjay Hasian Panjaitan",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Vazha Khayri",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Muhamad Hakim Nizami",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+      {
+        menteeName: "Naufal Zafran Fadil",
+        submittedOn: "25 Agustus 2025",
+        submissionUrl: "https://shurkou.com",
+        grade: "",
+      },
+    ],
   },
-];
-
-const initialLabs: LabType[] = [
-  { id: 1, grades: baseGrades },
-  ...Array.from({ length: 3 }, (_, i) => ({
-    id: i + 2,
-    grades: baseGrades.map((g) => ({
-      ...g,
-    })),
-  })),
 ];
 
 const Lab: React.FC = () => {
-  const [labs, setLabs] = useState(initialLabs);
+  const [labs, setLabes] = useState<Lab[]>(() =>
+    labsData.map((lab) => ({
+      id: lab.id,
+      grades: lab.grades.map((grade) => ({ ...grade })),
+    }))
+  );
   const [editing, setEditing] = useState<{
     [labIdx: number]: { [gradeIdx: number]: boolean };
   }>({});
@@ -167,7 +254,7 @@ const Lab: React.FC = () => {
     const newValue = draftValues[labIdx]?.[gradeIdx] || "";
     const updatedLabs = [...labs];
     updatedLabs[labIdx].grades[gradeIdx].grade = newValue;
-    setLabs(updatedLabs);
+    setLabes(updatedLabs);
 
     setEditing((prev) => ({
       ...prev,
@@ -190,12 +277,16 @@ const Lab: React.FC = () => {
             return (
               <div
                 key={gradeIdx}
-                className="w-full flex justify-between h-fit rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-3 font-josefin-sans text-bodyLarge mb-3"
+                className={`${
+                  grade.submissionUrl === "" && "opacity-50"
+                } w-full flex justify-between h-fit rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-3 font-josefin-sans text-bodyLarge mb-3`}
               >
                 <div className="flex flex-col justify-between">
                   <h2 className="text-bodyLarge">{grade.menteeName}</h2>
                   <h3 className="text-footnote">
-                    Submitted On {grade.submittedOn}
+                    {grade.submissionUrl === ""
+                      ? "Not Submitted"
+                      : "Submitted On " + grade.submittedOn}
                   </h3>
                 </div>
                 <div
@@ -234,7 +325,10 @@ const Lab: React.FC = () => {
                   ) : (
                     <>
                       <a target="_blank" href={grade.submissionUrl}>
-                        <Button className="p-2">
+                        <Button
+                          className="p-2"
+                          disabled={grade.submissionUrl === ""}
+                        >
                           <Image
                             src="/arrow_down.svg"
                             alt="Download"
@@ -258,6 +352,7 @@ const Lab: React.FC = () => {
                         ? saveEdit(labIdx, gradeIdx)
                         : startEdit(labIdx, gradeIdx)
                     }
+                    disabled={grade.submissionUrl === ""}
                   >
                     {isEdit ? "Save" : value === "" ? "Grade" : "Edit"}
                   </Button>
