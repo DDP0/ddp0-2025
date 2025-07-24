@@ -33,6 +33,11 @@ export async function GET(request: NextRequest) {
         { status: 404 }
       );
     }
+
+    const kelompokDetails = await prisma.kelompok.findUnique({
+      where: { id: kelompok.kelompokId },
+    });
+
     const mentorRecords = await prisma.kelompokUser.findMany({
       where: { kelompokId: kelompok?.kelompokId, isMentor: true },
       include: { user: true },
@@ -44,11 +49,18 @@ export async function GET(request: NextRequest) {
 
     const mentors = mentorRecords.map((mk: KelompokUser) => ({
       name: mk.user.name,
-      lineId: mk.user.idLine || "",
+      idLine: mk.user.idLine || "",
     }));
-    const mentees = menteeRecords.map((mk: KelompokUser) => mk.user.name);
+    const mentees = menteeRecords.map((mk: KelompokUser) => ({
+      name: mk.user.name,
+      idLine: mk.user.idLine || "",
+    }));
 
-    return NextResponse.json({ mentors, mentees });
+    return NextResponse.json({
+      name: kelompokDetails?.name || "Kelompok Misterius",
+      mentors,
+      mentees,
+    });
   } catch (error) {
     console.error("Error fetching kelompok data:", error);
     return NextResponse.json({ error: "Failed to load data" }, { status: 500 });

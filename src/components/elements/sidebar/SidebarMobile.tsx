@@ -5,9 +5,10 @@ import Image from "next/image";
 
 type Props = {
   totalNilai?: number | null;
+  isMentor: boolean;
 };
 
-export default function SidebarMobile({ totalNilai }: Props) {
+export default function SidebarMobile({ totalNilai, isMentor }: Props) {
   const { user } = useSession();
 
   return (
@@ -30,11 +31,20 @@ export default function SidebarMobile({ totalNilai }: Props) {
           </div>
         </div>
       </div>
-      <TabsList>
-        <TabsTrigger value="tab1">Home</TabsTrigger>
-        <TabsTrigger value="tab2">Profile</TabsTrigger>
-        <TabsTrigger value="tab3">Notification</TabsTrigger>
-      </TabsList>
+      {isMentor ? (
+        <TabsList>
+          <TabsTrigger value="tab1">Home</TabsTrigger>
+          <TabsTrigger value="tab2">Mini Quiz</TabsTrigger>
+          <TabsTrigger value="tab3">Lab</TabsTrigger>
+          <TabsTrigger value="tab4">TP</TabsTrigger>
+        </TabsList>
+      ) : (
+        <TabsList>
+          <TabsTrigger value="tab1">Home</TabsTrigger>
+          <TabsTrigger value="tab2">Profile</TabsTrigger>
+          <TabsTrigger value="tab3">Notification</TabsTrigger>
+        </TabsList>
+      )}
     </div>
   );
 }
