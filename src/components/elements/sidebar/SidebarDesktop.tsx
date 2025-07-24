@@ -4,11 +4,11 @@ import { useSession } from "@/hooks/useSession";
 import Image from "next/image";
 
 type Props = {
-  isMentor?: boolean;
   totalNilai?: number | null;
+  isMentor?: boolean;
 };
 
-export default function SidebarDesktop({ isMentor, totalNilai }: Props) {
+export default function SidebarDesktop({ totalNilai, isMentor }: Props) {
   const { user } = useSession();
 
   return (

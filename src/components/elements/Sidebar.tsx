@@ -47,6 +47,6 @@ export default function Sidebar({ isMentor }: { isMentor: boolean }) {
   return isDesktop ? (
     <SidebarDesktop totalNilai={nilai} isMentor={isMentor} />
   ) : (
-    <SidebarMobile totalNilai={nilai} />
+    <SidebarMobile totalNilai={nilai} isMentor={isMentor} />
   );
 }
