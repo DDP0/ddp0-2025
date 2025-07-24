@@ -22,7 +22,6 @@ interface Mentee {
 
 export const MainSectionMentor = () => {
   const toast = useToast();
-  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [data, setData] = useState<Data | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -56,12 +55,10 @@ export const MainSectionMentor = () => {
     fetchKelompokData();
   }, []);
 
-  const handleCopy = async (text: string, index: number) => {
+  const handleCopy = async (text: string) => {
     try {
-      toast.show("success", "Berhasil copy Id Line");
       await navigator.clipboard.writeText(text);
-      setCopiedIndex(index);
-      setTimeout(() => setCopiedIndex(null), 1500);
+      toast.show("success", "Berhasil copy Id Line");
     } catch (err) {
       toast.show("loading", "Gagal copy Id Line");
       console.error("Failed to copy:", err);
@@ -114,7 +111,7 @@ export const MainSectionMentor = () => {
                       alt="Copy"
                       width={14}
                       height={14}
-                      onClick={() => handleCopy(mentee.idLine, index)}
+                      onClick={() => handleCopy(mentee.idLine)}
                     />
                   </div>
                 </div>
