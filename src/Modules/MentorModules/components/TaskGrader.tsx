@@ -334,21 +334,17 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
   return (
     <div className="animate-fade-in transition-all duration-300">
       {loading && (
-        <div className="text-center py-8">
-          <p className="font-josefin-sans text-bodyLarge">
-            Loading {displayName.toLowerCase()} data...
-          </p>
+        <div className="h-[50vh] overflow-hidden relative flex items-center justify-center">
+          <div className="loader"></div>
         </div>
       )}
 
       {error && <EmptyStateToDo message={error} />}
 
       {!loading && !error && tasks.length === 0 && (
-        <div className="text-center py-8">
-          <p className="font-josefin-sans text-bodyLarge">
-            No {displayName.toLowerCase()} submissions found.
-          </p>
-        </div>
+        <EmptyStateToDo
+          message={`No ${displayName.toLowerCase()} submissions found.`}
+        />
       )}
 
       {!loading &&
@@ -390,11 +386,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                       </h3>
                     </div>
                     <div
-                      className={`${
-                        isEdit
-                          ? "grid-cols-[1fr_auto_1fr]"
-                          : "grid-cols-[auto_1fr_1fr]"
-                      } shrink-0 grid gap-1 sm:gap-2 max-sm:text-small`}
+                      className={`flex shrink-0 gap-1 sm:gap-2 max-sm:text-small`}
                     >
                       {isEdit ? (
                         <>
@@ -404,7 +396,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                                 el;
                             }}
                             contentEditable
-                            className="rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-1 sm:p-2 outline-none text-center flex justify-center items-center focus:border-white focus:bg-[#ffffff59]/30"
+                            className="rounded-xl w-12 glass shadow-xl border-[#ffffff59] border-1 p-1 sm:p-2 outline-none text-center flex justify-center items-center focus:border-white focus:bg-[#ffffff59]/30"
                             suppressContentEditableWarning
                             onInput={(e) => handleInput(taskIdx, gradeIdx, e)}
                             onKeyDown={handleKeyDown}
@@ -441,9 +433,11 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                               </div>
                             </Button>
                           </a>
-                          <div className="rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-1 sm:p-2 outline-none text-center flex justify-center items-center">
-                            {value === "" ? "-" : value}
-                          </div>
+                          {value !== "" && (
+                            <div className="rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-1 sm:p-2 outline-none text-center flex justify-center items-center">
+                              {value}
+                            </div>
+                          )}
                         </>
                       )}
                       <Button
