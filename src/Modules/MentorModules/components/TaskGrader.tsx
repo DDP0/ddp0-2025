@@ -436,8 +436,8 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                                 width={24}
                                 height={24}
                               />
-                              <div className="max-sm:hidden scale-0 origin-right transition group-hover:scale-100 absolute -left-26 bg-neutral-900 px-3 py-2 rounded-full">
-                                Download
+                              <div className="max-sm:hidden scale-0 origin-right transition group-hover:scale-100 absolute -left-1 -translate-x-full bg-neutral-900 px-3 py-2 rounded-full">
+                                View Submission
                               </div>
                             </Button>
                           </a>
