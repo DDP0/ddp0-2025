@@ -33,6 +33,8 @@ export async function GET(request: NextRequest) {
         { status: 404 }
       );
     }
+
+    const nomor = kelompok.
     const mentorRecords = await prisma.kelompokUser.findMany({
       where: { kelompokId: kelompok?.kelompokId, isMentor: true },
       include: { user: true },
@@ -46,9 +48,12 @@ export async function GET(request: NextRequest) {
       name: mk.user.name,
       lineId: mk.user.idLine || "",
     }));
-    const mentees = menteeRecords.map((mk: KelompokUser) => mk.user.name);
+    const mentees = menteeRecords.map((mk: KelompokUser) => ({
+      name: mk.user.name,
+      lineId: mk.useridLine || "",
+    }));
 
-    return NextResponse.json({ mentors, mentees });
+    return NextResponse.json({nomor, mentors, mentees });
   } catch (error) {
     console.error("Error fetching kelompok data:", error);
     return NextResponse.json({ error: "Failed to load data" }, { status: 500 });

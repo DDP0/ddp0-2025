@@ -104,6 +104,7 @@ export async function GET(request: NextRequest) {
               : "",
             submissionUrl: submission?.link || "",
             grade: submission?.nilai ? submission.nilai.toString() : "",
+            feedback: submission?.feedback || "",
             submissionId: submission?.id || null,
           };
         });
