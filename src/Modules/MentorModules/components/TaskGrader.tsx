@@ -447,7 +447,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                         </>
                       )}
                       <Button
-                        className="px-2 py-2 h-full w-12 sm:w-20"
+                        className="px-2 py-2 h-full"
                         variant={
                           isEdit ? "green" : value === "" ? "yellow" : "blue"
                         }
@@ -464,7 +464,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                             : isEdit
                             ? "Save"
                             : value === ""
-                            ? "Grade"
+                            ? "Grade Now"
                             : "Edit"}
                         </span>
                       </Button>
