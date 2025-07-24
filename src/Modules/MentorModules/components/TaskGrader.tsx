@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { EmptyStateToDo } from "@/Modules/DashboardModules/components/empty-state-todo";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import type { FormEvent, KeyboardEvent, ClipboardEvent } from "react";
@@ -54,15 +55,13 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
       try {
         setLoading(true);
         const response = await fetch(`/api/grade?type=${taskType}`);
-
         if (!response.ok) {
+          const errorData = await response.json();
           throw new Error(
-            `Failed to fetch ${displayName.toLowerCase()} data: ${
-              response.status
-            }`
+            errorData.error ||
+              `Failed to fetch ${displayName.toLowerCase()} data`
           );
         }
-
         const data: Task[] = await response.json();
         setTasks(data);
         setError(null);
@@ -342,13 +341,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
         </div>
       )}
 
-      {error && (
-        <div className="text-center py-8">
-          <p className="font-josefin-sans text-bodyLarge text-red-500">
-            Error: {error}
-          </p>
-        </div>
-      )}
+      {error && <EmptyStateToDo message={error} />}
 
       {!loading && !error && tasks.length === 0 && (
         <div className="text-center py-8">
@@ -369,7 +362,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
               const isEdit = editing[taskIdx]?.[gradeIdx] || false;
               const isSaving = saving[taskIdx]?.[gradeIdx] || false;
               const value = tasks[taskIdx].grades[gradeIdx].grade;
-              const draft = draftValues[taskIdx]?.[gradeIdx] || "";
+              // const draft = draftValues[taskIdx]?.[gradeIdx] || "";
 
               const isFeedbackEdit =
                 editingFeedback[taskIdx]?.[gradeIdx] || false;

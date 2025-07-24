@@ -28,7 +28,10 @@ export async function GET(request: NextRequest) {
     });
 
     if (!kelompokUser) {
-      return NextResponse.json({ error: "User not found" }, { status: 401 });
+      return NextResponse.json(
+        { error: "you need to have a group first" },
+        { status: 401 }
+      );
     }
 
     if (!kelompokUser.isMentor) {
