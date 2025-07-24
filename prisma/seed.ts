@@ -9,6 +9,8 @@ import {
 
 const prisma = new PrismaClient();
 
+// hasil copilot
+
 async function main() {
   console.log("🌱 Starting seed...");
 

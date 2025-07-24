@@ -14,7 +14,7 @@ interface Props {
   isMentor?: boolean;
 }
 
-const DashboardModules = ({ isMentor = true }: Props) => {
+const DashboardModules = ({ isMentor = false }: Props) => {
   return (
     <main className="min-h-screen overflow-hidden relative flex max-lg:flex-col">
       <Tabs defaultValue="tab1">

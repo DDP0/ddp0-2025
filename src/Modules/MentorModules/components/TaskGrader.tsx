@@ -387,7 +387,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                 >
                   <div className="flex justify-between h-fit">
                     <div className="flex flex-col justify-between">
-                      <h2 className="text-body sm:text-bodyLarge truncate">
+                      <h2 className="text-body sm:text-bodyLarge truncate max-sm:max-w-40">
                         {grade.menteeName}
                       </h2>
                       <h3 className="text-small">
@@ -478,7 +478,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                     </div>
                   </div>
                   {grade.submissionUrl === "" || (
-                    <div className="space-y-1 sm:space-y-2">
+                    <div className="space-y-1 sm:space-y-2 max-sm:text-small">
                       Feedback
                       <div className="flex gap-1 sm:gap-2">
                         {isFeedbackEdit ? (
@@ -528,7 +528,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                           </>
                         ) : (
                           <>
-                            <div className="w-full text-left rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-1 sm:p-2 outline-none flex ">
+                            <div className="w-full text-left rounded-sm sm:rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-1 sm:p-2 outline-none flex ">
                               {feedbackValue || (
                                 <span className={feedbackValue || "opacity-50"}>
                                   No feedback provided
