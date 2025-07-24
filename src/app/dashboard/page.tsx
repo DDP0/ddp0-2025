@@ -3,7 +3,7 @@ import { ProtectedRoute } from "@/components/ProtectedRoute";
 
 export default async function DashboardPage() {
   return (
-    <ProtectedRoute>
+    <ProtectedRoute isDashboard={true}>
       <DashboardModules />
     </ProtectedRoute>
   );

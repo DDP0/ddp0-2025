@@ -2,6 +2,7 @@
 import { useToast } from "@/hooks/useToast";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { EmptyStateToDo } from "@/Modules/DashboardModules/components/empty-state-todo";
 
 interface Data {
   name: string;
@@ -21,7 +22,6 @@ interface Mentee {
 
 export const MainSectionMentor = () => {
   const toast = useToast();
-  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [data, setData] = useState<Data | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -32,12 +32,12 @@ export const MainSectionMentor = () => {
       try {
         setLoading(true);
         const response = await fetch("/api/dashboard/kelompok");
-
-        if (!response.ok) {
-          throw new Error(`Failed to fetch kelompok data: ${response.status}`);
-        }
-
         const kelompokData = await response.json();
+        if (!response.ok) {
+          throw new Error(
+            kelompokData.error || "Failed to fetch kelompok data"
+          );
+        }
         setData(kelompokData);
         setError(null);
       } catch (err) {
@@ -55,12 +55,10 @@ export const MainSectionMentor = () => {
     fetchKelompokData();
   }, []);
 
-  const handleCopy = async (text: string, index: number) => {
+  const handleCopy = async (text: string) => {
     try {
-      toast.show("success", "Berhasil copy Id Line");
       await navigator.clipboard.writeText(text);
-      setCopiedIndex(index);
-      setTimeout(() => setCopiedIndex(null), 1500);
+      toast.show("success", "Berhasil copy Id Line");
     } catch (err) {
       toast.show("loading", "Gagal copy Id Line");
       console.error("Failed to copy:", err);
@@ -70,20 +68,12 @@ export const MainSectionMentor = () => {
   return (
     <>
       {loading && (
-        <div className="text-center py-8">
-          <p className="font-josefin-sans text-bodyLarge">
-            Loading kelompok data...
-          </p>
+        <div className="h-[50vh] overflow-hidden relative flex items-center justify-center">
+          <div className="loader"></div>
         </div>
       )}
 
-      {error && (
-        <div className="text-center py-8">
-          <p className="font-josefin-sans text-bodyLarge text-red-500">
-            Error: {error}
-          </p>
-        </div>
-      )}
+      {error && <EmptyStateToDo message={error} />}
 
       {!loading && !error && data && (
         <>
@@ -121,7 +111,7 @@ export const MainSectionMentor = () => {
                       alt="Copy"
                       width={14}
                       height={14}
-                      onClick={() => handleCopy(mentee.idLine, index)}
+                      onClick={() => handleCopy(mentee.idLine)}
                     />
                   </div>
                 </div>

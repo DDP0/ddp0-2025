@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { EmptyStateToDo } from "@/Modules/DashboardModules/components/empty-state-todo";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import type { FormEvent, KeyboardEvent, ClipboardEvent } from "react";
@@ -54,15 +55,13 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
       try {
         setLoading(true);
         const response = await fetch(`/api/grade?type=${taskType}`);
-
         if (!response.ok) {
+          const errorData = await response.json();
           throw new Error(
-            `Failed to fetch ${displayName.toLowerCase()} data: ${
-              response.status
-            }`
+            errorData.error ||
+              `Failed to fetch ${displayName.toLowerCase()} data`
           );
         }
-
         const data: Task[] = await response.json();
         setTasks(data);
         setError(null);
@@ -335,27 +334,17 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
   return (
     <div className="animate-fade-in transition-all duration-300">
       {loading && (
-        <div className="text-center py-8">
-          <p className="font-josefin-sans text-bodyLarge">
-            Loading {displayName.toLowerCase()} data...
-          </p>
+        <div className="h-[50vh] overflow-hidden relative flex items-center justify-center">
+          <div className="loader"></div>
         </div>
       )}
 
-      {error && (
-        <div className="text-center py-8">
-          <p className="font-josefin-sans text-bodyLarge text-red-500">
-            Error: {error}
-          </p>
-        </div>
-      )}
+      {error && <EmptyStateToDo message={error} />}
 
       {!loading && !error && tasks.length === 0 && (
-        <div className="text-center py-8">
-          <p className="font-josefin-sans text-bodyLarge">
-            No {displayName.toLowerCase()} submissions found.
-          </p>
-        </div>
+        <EmptyStateToDo
+          message={`No ${displayName.toLowerCase()} submissions found.`}
+        />
       )}
 
       {!loading &&
@@ -369,7 +358,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
               const isEdit = editing[taskIdx]?.[gradeIdx] || false;
               const isSaving = saving[taskIdx]?.[gradeIdx] || false;
               const value = tasks[taskIdx].grades[gradeIdx].grade;
-              const draft = draftValues[taskIdx]?.[gradeIdx] || "";
+              // const draft = draftValues[taskIdx]?.[gradeIdx] || "";
 
               const isFeedbackEdit =
                 editingFeedback[taskIdx]?.[gradeIdx] || false;
@@ -397,11 +386,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                       </h3>
                     </div>
                     <div
-                      className={`${
-                        isEdit
-                          ? "grid-cols-[1fr_auto_1fr]"
-                          : "grid-cols-[auto_1fr_1fr]"
-                      } shrink-0 grid gap-1 sm:gap-2 max-sm:text-small`}
+                      className={`flex shrink-0 gap-1 sm:gap-2 max-sm:text-small`}
                     >
                       {isEdit ? (
                         <>
@@ -411,7 +396,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                                 el;
                             }}
                             contentEditable
-                            className="rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-1 sm:p-2 outline-none text-center flex justify-center items-center focus:border-white focus:bg-[#ffffff59]/30"
+                            className="rounded-xl w-12 glass shadow-xl border-[#ffffff59] border-1 p-1 sm:p-2 outline-none text-center flex justify-center items-center focus:border-white focus:bg-[#ffffff59]/30"
                             suppressContentEditableWarning
                             onInput={(e) => handleInput(taskIdx, gradeIdx, e)}
                             onKeyDown={handleKeyDown}
@@ -443,18 +428,20 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                                 width={24}
                                 height={24}
                               />
-                              <div className="max-sm:hidden scale-0 origin-right transition group-hover:scale-100 absolute -left-26 bg-neutral-900 px-3 py-2 rounded-full">
-                                Download
+                              <div className="max-sm:hidden scale-0 origin-right transition group-hover:scale-100 absolute -left-1 -translate-x-full bg-neutral-900 px-3 py-2 rounded-full">
+                                View Submission
                               </div>
                             </Button>
                           </a>
-                          <div className="rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-1 sm:p-2 outline-none text-center flex justify-center items-center">
-                            {value === "" ? "-" : value}
-                          </div>
+                          {value !== "" && (
+                            <div className="rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-1 sm:p-2 outline-none text-center flex justify-center items-center">
+                              {value}
+                            </div>
+                          )}
                         </>
                       )}
                       <Button
-                        className="px-2 py-2 h-full w-12 sm:w-20"
+                        className="px-2 py-2 h-full"
                         variant={
                           isEdit ? "green" : value === "" ? "yellow" : "blue"
                         }
@@ -471,7 +458,7 @@ const TaskGrader: React.FC<TaskGraderProps> = ({ taskType, displayName }) => {
                             : isEdit
                             ? "Save"
                             : value === ""
-                            ? "Grade"
+                            ? "Grade Now"
                             : "Edit"}
                         </span>
                       </Button>
