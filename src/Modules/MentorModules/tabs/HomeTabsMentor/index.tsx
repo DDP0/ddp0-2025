@@ -1,5 +1,5 @@
-import SectionCalendarMentor from "./section/CalendarMentor";
 import { MainSectionMentor } from "./section/MainSectionMentor";
+import SectionCalendar from "@/Modules/DashboardModules/tabs/HomeTabs/section/Calendar";
 
 const HomeTabsMentor = () => {
   return (
@@ -8,7 +8,7 @@ const HomeTabsMentor = () => {
         <MainSectionMentor />
       </div>
       <div className="w-full">
-        <SectionCalendarMentor />
+        <SectionCalendar />
       </div>
     </div>
   );
