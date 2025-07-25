@@ -23,17 +23,17 @@ function useMediaQuery(query: string) {
   return matches;
 }
 
-export default function Sidebar() {
+export default function Sidebar({ isMentor }: { isMentor: boolean }) {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const [nilai, setNilai] = useState<number>(0);
 
-  useEffect(() =>{
+  useEffect(() => {
     const fetchNilai = async () => {
       try {
         const response = await fetch("/api/dashboard"); // Adjust the API endpoint as needed
         const data: {
-          message: string,
-          points: number
+          message: string;
+          points: number;
         } = await response.json();
         setNilai(data.points);
       } catch (error) {
@@ -42,7 +42,11 @@ export default function Sidebar() {
     };
 
     fetchNilai();
-  },[])
+  }, []);
 
-  return isDesktop ? <SidebarDesktop totalNilai={nilai} /> : <SidebarMobile totalNilai={nilai} />;
+  return isDesktop ? (
+    <SidebarDesktop totalNilai={nilai} isMentor={isMentor} />
+  ) : (
+    <SidebarMobile totalNilai={nilai} isMentor={isMentor} />
+  );
 }

@@ -12,6 +12,8 @@ const buttonVariants = cva(
         default:
           "bg-card/10 hover:bg-card-hover/30 active:bg-card-pressed/50 disabled:bg-card-disabled/50",
         blue: "bg-[#81beff4d] hover:bg-[#b3dfff4d] active:bg-[#ccecff4d] disabled:bg-[#e5f6ff4d]",
+        green:
+          "bg-[#9ae7b84d] hover:bg-[#c6F7cf4d] active:bg-[#dafcde4d] disabled:bg-[#edfdec4d]",
         lilac:
           "bg-[#c99bdb4d] hover:bg-[#f6d5ff4d] active:bg-[#fde5ff4d] disabled:bg-[#ffeefe4d]",
         yellow:
