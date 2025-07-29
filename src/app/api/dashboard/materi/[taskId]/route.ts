@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 // GET: Fetch task info and current user's submission
 export async function GET(
   request: NextRequest,
-  context: { params: { taskId: string } }
+  { params }: { params: Promise<{ taskId: string }> }
 ) {
   try {
     const session = await auth.api.getSession({ headers: request.headers });
@@ -16,7 +16,7 @@ export async function GET(
         { status: 401 }
       );
     }
-    const { taskId } = context.params;
+    const taskId = (await params).taskId;
     const tugas = await prisma.tugas.findUnique({
       where: { id: taskId },
       include: {
@@ -47,7 +47,7 @@ export async function GET(
 // POST: Submit/Update user's submission (upload a link, only one submission per user per task)
 export async function POST(
   request: NextRequest,
-  context: { params: { taskId: string } }
+  { params }: { params: Promise<{ taskId: string }> }
 ) {
   try {
     const session = await auth.api.getSession({ headers: request.headers });
@@ -59,7 +59,7 @@ export async function POST(
       );
     }
     const userId = session.user.id;
-    const { taskId } = context.params;
+    const taskId = (await params).taskId;
     const { link } = await request.json();
 
     // Upsert submission (user can only have one submission per task)
