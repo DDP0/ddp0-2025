@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
         tipe: taskType,
       },
       orderBy: {
-        index: "asc",
+        week: "asc",
       },
     });
 
@@ -81,7 +81,7 @@ export async function GET(request: NextRequest) {
         },
         tugas: {
           select: {
-            index: true,
+            week: true,
             title: true,
           },
         },
@@ -113,7 +113,7 @@ export async function GET(request: NextRequest) {
         });
 
       return {
-        id: tugas.index,
+        id: tugas.week,
         title: tugas.title,
         grades: grades,
       };
