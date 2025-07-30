@@ -10,9 +10,9 @@ export const data = [
     isAvailable: true,
   },
   {
-    title: "Timeline",
-    href: "/#timeline",
-    isAvailable: true,
+    title: "Leaderboard",
+    href: "/leaderboard",
+    isAvailable: false,
   },
   {
     title: "Merch",
