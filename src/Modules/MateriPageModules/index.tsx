@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import type { WeekWithTasks } from "./types";
 import { ModuleCard } from "./components/ModuleCard";
 import Loader from "@/components/elements/Loader";
+import Background from "../RegistModules/Background";
 
 export default function MateriPageModules() {
   const [weeks, setWeeks] = useState<WeekWithTasks[]>([]);
@@ -19,6 +20,7 @@ export default function MateriPageModules() {
 
   return (
     <div className="min-h-screen relative text-white px-4 py-10 sm:px-5 md:px-10 lg:px-20 pt-40 overflow-y-hidden">
+      <Background />
       {weeks.map((weekData, i) => {
         // Separate tasks by type for this week
         const materi = weekData.tasks.find((t) => t.tipe === "MATERI");
