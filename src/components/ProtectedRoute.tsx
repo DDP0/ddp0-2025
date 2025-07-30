@@ -44,5 +44,6 @@ export function ProtectedRoute({
   if (isDashboard) {
     return <DashboardModules isMentor={user?.role === "Mentor"} />;
   }
+
   return <>{children}</>;
 }
