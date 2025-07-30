@@ -36,7 +36,7 @@ export default function MateriPageModules() {
               <div className="relative flex flex-col items-center mr-6 min-w-[40px] ">
                 {/* Week Circle */}
                 <div className="relative -translate-x-2 lg:translate-x-0  z-10 w-14 h-14 rounded-2xl flex items-center justify-center bg-[#494949] border border-[#cfcfcfb1]">
-                  <span className="text-white text-lg font-bold">
+                  <span className="text-white max-md:text-lg text-2xl font-bold leading-tight">
                     {weekData.week}
                   </span>
                 </div>

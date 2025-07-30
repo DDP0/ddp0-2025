@@ -1,6 +1,7 @@
 import type { TaskWithStatus } from "../types";
 import { useRouter } from "next/navigation";
 type ModuleCardVariant = "materi" | "miniQuiz" | "lab" | "tp";
+import Image from "next/image";
 
 export function ModuleCard({
   task,
@@ -17,7 +18,7 @@ export function ModuleCard({
   }[task.status];
 
   const cardClasses =
-    "w-full rounded-xl glass shadow-xl border border-[#ffffff22] bg-black/40 backdrop-blur-md ring-1 ring-white/10";
+    "w-full rounded-xl glass shadow-xl border border-[#ffffff22] glass ring-1 ring-white/10";
   const router = useRouter();
 
   return (
@@ -35,11 +36,19 @@ export function ModuleCard({
       {/* Thumbnail/image if exists */}
       {task.thumbnail && (
         <div className="flex-shrink-0 flex items-center">
-          <img
+          {/* <img
             src={task.thumbnail}
             alt={task.title}
-            className="rounded-md object-cover w-16 h-12 sm:w-28 sm:h-20"
-          />
+            className="rounded-md object-cover h-full w-full"
+          /> */}
+          <div className="relative aspect-[213/120] h-full">
+            <Image
+              src={task.thumbnail}
+              alt={task.title}
+              fill
+              className="object-cover rounded-md"
+            />
+          </div>
         </div>
       )}
 
@@ -58,6 +67,8 @@ export function ModuleCard({
               day: "2-digit",
               month: "long",
               year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
             })}
           </div>
         )}
