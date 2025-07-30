@@ -152,8 +152,13 @@ export default function TaskPage() {
         <div className="rounded-xl w-full glass shadow-xl border border-[#ffffff7d] bg-black/40 backdrop-blur-md ring-1 ring-white/50 p-4 sm:p-6">
           <div>
             <div className="mb-2 font-semibold">Deskripsi Tugas:</div>
-            <div className="text-gray-300 mb-2 whitespace-pre-line">
-              {tugas.description}
+            <div className="text-gray-300 mb-2">
+              {tugas.description.split("\\n").map((line, index) => (
+                <span key={index}>
+                  {line}
+                  {index < tugas.description.split("\\n").length - 1 && <br />}
+                </span>
+              ))}
             </div>
           </div>
           <div className="flex flex-col gap-2">
