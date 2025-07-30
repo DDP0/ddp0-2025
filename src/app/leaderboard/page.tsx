@@ -24,7 +24,7 @@ const Page = async () => {
     }
 
     const leaderboard: LeaderboardResponse[] = await data.json();
-    return <LeaderboardModule leaderboardData={[]} />;
+    return <LeaderboardModule leaderboardData={leaderboard} />;
   } catch (error) {
     console.error("Error fetching leaderboard:", error);
     return <LeaderboardModule leaderboardData={[]} />;
