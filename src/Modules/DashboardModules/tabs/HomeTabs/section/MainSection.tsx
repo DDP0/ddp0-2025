@@ -5,7 +5,7 @@ import { MentorMenteeList } from "../../../components/kelompok";
 import { TodoList } from "../../../components/todo";
 
 export const MainSection = () => {
-  const targetDate = new Date("2025-07-31T00:00:00Z");
+  const targetDate = new Date("2025-07-31T13:30:00+07:00");
 
   const [expired, setExpired] = useState(() => {
     return new Date() > targetDate;
