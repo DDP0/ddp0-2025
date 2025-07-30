@@ -143,6 +143,8 @@ export default function TaskPage() {
               day: "2-digit",
               month: "long",
               year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
             })}
           </div>
         </div>
@@ -150,13 +152,24 @@ export default function TaskPage() {
         <div className="rounded-xl w-full glass shadow-xl border border-[#ffffff7d] bg-black/40 backdrop-blur-md ring-1 ring-white/50 p-4 sm:p-6">
           <div>
             <div className="mb-2 font-semibold">Deskripsi Tugas:</div>
-            <div className="text-gray-300 mb-2 whitespace-pre-line">
-              {tugas.description}
+            <div className="text-gray-300 mb-2">
+              {tugas.description.split("\\n").map((line, index) => (
+                <span key={index}>
+                  {line}
+                  {index < tugas.description.split("\\n").length - 1 && <br />}
+                </span>
+              ))}
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <InfoRow label="Submission status" value={status} status={status} />
             <InfoRow label="Grade" value={grade} />
+            {status === "Graded" && (
+              <InfoRow
+                label="Feedback"
+                value={submission?.feedback || "No feedback"}
+              />
+            )}
             <InfoRow label="Last modified" value={lastModified} />
             <InfoRow
               label="File submission"
@@ -318,7 +331,7 @@ export default function TaskPage() {
                         const res = await fetch(
                           `/api/dashboard/materi/${taskId}`,
                           {
-                            method: "POST",
+                            method: "DELETE",
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({ link: "" }),
                           }
@@ -373,7 +386,10 @@ function InfoRow({
     valueBg = "bg-green-300/30 border-green-200";
   }
   if (label === "Grade" && value !== "Not graded") {
-    valueBg = "bg-yellow-200/30 border-yellow-100";
+    valueBg = "bg-green-300/30 border-green-200";
+  }
+  if (label === "Feedback" && value !== "No Feedback") {
+    valueBg = "bg-green-300/30 border-green-200";
   }
   return (
     <div className="flex flex-row gap-2  text-sm md:text-md">

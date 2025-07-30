@@ -85,3 +85,37 @@ export async function POST(
     return NextResponse.json({ error: "Failed to submit" }, { status: 500 });
   }
 }
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ taskId: string }> }
+) {
+  try {
+    const session = await auth.api.getSession({ headers: request.headers });
+
+    if (!session) {
+      return NextResponse.json(
+        { error: "Unauthorized - User not authenticated" },
+        { status: 401 }
+      );
+    }
+    const userId = session.user.id;
+    const taskId = (await params).taskId;
+
+    // Delete submission
+    await prisma.submisi.delete({
+      where: {
+        userId_tugasId: {
+          userId,
+          tugasId: taskId,
+        },
+      },
+    });
+
+    return NextResponse.json({ message: "Submission deleted successfully" });
+  } catch {
+    return NextResponse.json(
+      { error: "Failed to delete submission" },
+      { status: 500 }
+    );
+  }
+}
