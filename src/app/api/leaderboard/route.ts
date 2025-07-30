@@ -63,9 +63,7 @@ export async function GET() {
       .sort((a, b) => b.totalScore - a.totalScore) // Sort by totalScore in descending order (highest first)
       .slice(0, 10); // Get top 10
 
-    return NextResponse.json({
-      leaderboard,
-    });
+    return NextResponse.json(leaderboard);
   } catch (error) {
     console.error("Error fetching leaderboard:", error);
     return NextResponse.json(
