@@ -159,6 +159,12 @@ export default function TaskPage() {
           <div className="flex flex-col gap-2">
             <InfoRow label="Submission status" value={status} status={status} />
             <InfoRow label="Grade" value={grade} />
+            {status === "Graded" && (
+              <InfoRow
+                label="Feedback"
+                value={submission?.feedback || "No feedback"}
+              />
+            )}
             <InfoRow label="Last modified" value={lastModified} />
             <InfoRow
               label="File submission"
@@ -320,7 +326,7 @@ export default function TaskPage() {
                         const res = await fetch(
                           `/api/dashboard/materi/${taskId}`,
                           {
-                            method: "POST",
+                            method: "DELETE",
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({ link: "" }),
                           }
@@ -375,7 +381,10 @@ function InfoRow({
     valueBg = "bg-green-300/30 border-green-200";
   }
   if (label === "Grade" && value !== "Not graded") {
-    valueBg = "bg-yellow-200/30 border-yellow-100";
+    valueBg = "bg-green-300/30 border-green-200";
+  }
+  if (label === "Feedback" && value !== "No Feedback") {
+    valueBg = "bg-green-300/30 border-green-200";
   }
   return (
     <div className="flex flex-row gap-2  text-sm md:text-md">

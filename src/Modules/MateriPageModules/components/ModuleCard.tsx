@@ -24,7 +24,13 @@ export function ModuleCard({
   return (
     <div
       className={`flex items-stretch p-3 sm:p-6 min-h-[110px] sm:min-h-[140px] h-[110px] sm:h-[140px] ${cardClasses} hover:bg-opacity-80 cursor-pointer transition-all duration-200 font-josefin-sans`}
-      onClick={() => router.push(`/dashboard/materi/${task.id}`)}
+      onClick={() => {
+        if (variant === "materi") {
+          router.push(task.linkTugas);
+          return;
+        }
+        router.push(`/dashboard/materi/${task.id}`);
+      }}
       tabIndex={0}
       role="button"
       onKeyDown={(e) => {
@@ -76,7 +82,13 @@ export function ModuleCard({
 
       {/* Status and Arrow */}
       <div className="flex flex-col items-end justify-between gap-2 flex-shrink-0 pl-1">
-        {task.tipe !== "MATERI" && (
+        {task.tipe === "MATERI" ? (
+          <span
+            className={`font-medium text-xs sm:text-sm ${statusColor} text-right`}
+          >
+            Materi
+          </span>
+        ) : (
           <span
             className={`font-medium text-xs sm:text-sm ${statusColor} text-right`}
           >
