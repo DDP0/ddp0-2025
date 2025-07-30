@@ -19,7 +19,7 @@ export default function MateriPageModules() {
   if (loading) return <Loader />;
 
   return (
-    <div className="min-h-screen relative text-white px-4 py-10 sm:px-5 md:px-10 lg:px-20 pt-40 overflow-y-hidden">
+    <div className="min-h-screen relative text-white px-4 py-10 sm:px-5 md:px-10 lg:px-20 pt-40 overflow-y-hidden font-josefin-sans">
       <Background />
       {weeks.map((weekData, i) => {
         // Separate tasks by type for this week
