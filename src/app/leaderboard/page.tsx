@@ -37,7 +37,12 @@ const Page = async () => {
     );
   } catch (error) {
     console.error("Error fetching leaderboard:", error);
-    return <LeaderboardModule leaderboardData={[]} />;
+    return (
+      <LeaderboardModule
+        leaderboardData={[]}
+        lastUpdated={new Date().toISOString()}
+      />
+    );
   }
 };
 
