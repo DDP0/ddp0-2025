@@ -21,6 +21,7 @@ type Task = {
   description: string;
   tipe: string;
   deadline: string;
+  releaseDate: string;
   linkTugas: string;
   createdAt: string;
 };
@@ -131,7 +132,8 @@ export default function TaskPage() {
         <div className="text-sm md:text-lg text-gray-300 mb-4">
           <div>
             Released :{" "}
-            {new Date(tugas.createdAt).toLocaleDateString("id-ID", {
+            {new Date(tugas.releaseDate).toLocaleDateString("en-US", {
+              timeZone: "Asia/Jakarta",
               day: "2-digit",
               month: "long",
               year: "numeric",
@@ -139,10 +141,10 @@ export default function TaskPage() {
           </div>
           <div>
             Deadline :{" "}
-            {new Date(tugas.deadline).toLocaleDateString("id-ID", {
+            {new Date(tugas.deadline).toLocaleDateString("en-US", {
+              timeZone: "Asia/Jakarta",
               day: "2-digit",
               month: "long",
-              year: "numeric",
               hour: "2-digit",
               minute: "2-digit",
             })}
