@@ -155,6 +155,7 @@ model Tugas {
   description String
   tipe        TipeTugas
   linkTugas   String
+  releaseDate DateTime    @default(now())
   deadline    DateTime
   submissions Submisi[]
   thumbnail   String?

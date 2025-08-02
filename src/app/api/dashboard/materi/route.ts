@@ -40,6 +40,12 @@ export async function GET(request: NextRequest) {
     }
 
     const tugasList = await prisma.tugas.findMany({
+      where: {
+        releaseDate: {
+          lte: new Date(),
+        },
+      },
+      orderBy: { week: "asc" },
       include: {
         submissions: {
           where: { userId: session.user.id },
@@ -55,7 +61,6 @@ export async function GET(request: NextRequest) {
           },
         },
       },
-      orderBy: { week: "asc" },
     });
 
     const now = new Date();
@@ -71,7 +76,6 @@ export async function GET(request: NextRequest) {
       } else {
         status = "On Going";
       }
-
       return {
         id: tugas.id,
         week: tugas.week,

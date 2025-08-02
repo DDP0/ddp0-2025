@@ -39,17 +39,12 @@ export function ModuleCard({
         }
       }}
     >
-      {/* Thumbnail/image if exists */}
-      {task.thumbnail && (
-        <div className="flex-shrink-0 flex items-center">
-          {/* <img
-            src={task.thumbnail}
-            alt={task.title}
-            className="rounded-md object-cover h-full w-full"
-          /> */}
+
+      {task.tipe === "MATERI" && (
+        <div className="flex-shrink-0 max-sm:hidden flex items-center">
           <div className="relative aspect-[213/120] h-full">
             <Image
-              src={task.thumbnail}
+              src="/thumbnail.png"
               alt={task.title}
               fill
               className="object-cover rounded-md"
@@ -59,22 +54,22 @@ export function ModuleCard({
       )}
 
       {/* Content */}
-      <div className="flex-1 flex flex-col justify-end items-start min-w-0 pl-4 ">
+      <div className="flex-1 flex flex-col justify-evenly items-start min-w-0 pl-4 ">
         <h3 className="font-semibold text-base lg:text-lg text-white mb-1 sm:mb-2 ">
           {task.title}
         </h3>
-        <p className="text-xs sm:text-sm text-gray-300 mb-1 sm:mb-3 leading-relaxed line-clamp-3">
+        <p className="text-xs sm:text-sm text-gray-300 mb-1 sm:mb-3 leading-relaxed line-clamp-2">
           {task.description}
         </p>
         {task.deadline && (
           <div className="text-xs text-gray-400">
             Deadline:{" "}
-            {new Date(task.deadline).toLocaleDateString("id-ID", {
+            {new Date(task.deadline).toLocaleDateString("en-US", {
+              timeZone: "Asia/Jakarta",
               day: "2-digit",
               month: "long",
-              year: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
+              hour: "numeric",
+              minute: "numeric",
             })}
           </div>
         )}
