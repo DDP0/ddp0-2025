@@ -128,7 +128,6 @@ const TodoItem: React.FC<TodoItemProps> = ({
   isOpen,
   onToggle,
 }) => {
-
   return (
     <div className="w-full flex items-center mb-6">
       <div className="flex-shrink-0">{STATUS_ICON[status]}</div>
