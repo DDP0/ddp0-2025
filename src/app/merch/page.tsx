@@ -1,4 +1,4 @@
-import MerchandisePage from "@/Modules/MerchModules";
+import MerchandisePage from "@/Modules/MerchModules/MerchCatalogueModule";
 
 
 const Page = () => {

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import CocoLineAdd from "./components/CocoLineAdd";
 import Image from "next/image";
-import { merchs } from "./data/const";
+import { merchs } from "../data/const";
 import MerchCard from "./components/MerchCard";
 
 const carouselItems = [
