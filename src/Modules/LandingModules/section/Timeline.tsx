@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const timelineEntries = [
   ["Website", "Release", "19 July 2025"],
-  ["Open", "Registration", "23 - 31 July 2025"],
+  ["Open", "Registration", "23 - 30 July 2025"],
   ["Pengumuman", "Kelompok", "31 July 2025"],
-  ["Grand", "Opening", "2 August 2025"],
+  ["Grand", "Opening", "1 August 2025"],
   ["Mentoring", "Week 0", "4 August 2025"],
   ["Mentoring", "Week 1", "10 August 2025"],
   ["Mentoring", "Week 2", "18 August 2025"],

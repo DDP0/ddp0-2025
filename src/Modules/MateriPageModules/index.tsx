@@ -20,7 +20,7 @@ export default function MateriPageModules() {
   if (loading) return <Loader />;
 
   return (
-    <div className="min-h-screen relative text-white px-4 py-10 sm:px-5 md:px-10 lg:px-20 pt-40 overflow-y-hidden font-josefin-sans">
+    <div className="min-h-screen relative overflow-x-hidden text-white px-4 py-10 sm:px-5 md:px-10 lg:px-20 pt-40 overflow-y-hidden font-josefin-sans">
       <Background />
       {weeks.length === 0 ? (
         <EmptyStateToDo message="Tidak ada materi yang tersedia" />

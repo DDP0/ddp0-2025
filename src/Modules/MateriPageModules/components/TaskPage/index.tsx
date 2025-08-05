@@ -169,7 +169,11 @@ export default function TaskPage() {
             {status === "Graded" && (
               <InfoRow
                 label="Feedback"
-                value={submission?.feedback || "No feedback"}
+                value={
+                  <div className="whitespace-pre-line">
+                    {submission?.feedback || "No feedback"}
+                  </div>
+                }
               />
             )}
             <InfoRow label="Last modified" value={lastModified} />

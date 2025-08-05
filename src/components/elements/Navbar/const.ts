@@ -12,7 +12,7 @@ export const data = [
   {
     title: "Leaderboard",
     href: "/leaderboard",
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     title: "Merch",

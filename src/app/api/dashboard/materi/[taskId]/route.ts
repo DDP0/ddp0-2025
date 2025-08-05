@@ -59,6 +59,14 @@ export async function POST(
       );
     }
     const userId = session.user.id;
+
+    if (session.user.role !== "User") {
+      return NextResponse.json(
+        { error: "Mentor dilarang submit bang" },
+        { status: 403 }
+      );
+    }
+
     const taskId = (await params).taskId;
     const { link } = await request.json();
 
