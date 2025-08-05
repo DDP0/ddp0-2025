@@ -41,7 +41,7 @@ export const merchs: MerchEntry[] = [
     price: "Rpxxx.xxx",
     images: [],
     sizes: "S M L XL".split(" "),
-    thumbImage: ""
+    thumbImage: undefined,
   },
   {
     id: "5",
@@ -50,7 +50,7 @@ export const merchs: MerchEntry[] = [
     price: "Rpxxx.xxx",
     images: [],
     sizes: "S M L XL".split(" "),
-    thumbImage: ""
+    thumbImage: undefined,
   },
   {
     id: "6",
@@ -59,6 +59,6 @@ export const merchs: MerchEntry[] = [
     price: "Rpxxx.xxx",
     images: [],
     sizes: "S M L XL".split(" "),
-    thumbImage: ""
+    thumbImage: undefined,
   },
 ]

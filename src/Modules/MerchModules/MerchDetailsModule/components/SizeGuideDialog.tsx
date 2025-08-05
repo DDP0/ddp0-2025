@@ -7,11 +7,11 @@ import { generalData } from "../../data/const";
 export default function SizeGuideDialog() {
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button variant={'blue'} className="gap-3">Size Guide <CocoLineArrow /></Button>
       </DialogTrigger>
       <DialogContent className="bg-black glass fill text-accent border-[0.5px]" showCloseButton={false}>
-        <div className="p-4 flex flex-col justify-between gap-4 text-end">
+        <div className=" flex flex-col justify-between gap-4 text-end">
           <DialogClose asChild>
             <Button className="w-10 h-10 p-0">
               <CocoLineClose size="size-8" />

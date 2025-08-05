@@ -12,7 +12,7 @@ export type MerchEntry = {
   description: string,
   price: string,
   images: string[], // url for each image, maximum of 4 image
-  thumbImage: string, // url
+  thumbImage?: string, // url
   sizes: string[],
   connectedMerchIds?: string[]
 }
