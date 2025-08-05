@@ -16,7 +16,7 @@ export const data = [
   },
   {
     title: "Merch",
-    href: "/",
-    isAvailable: false,
+    href: "/merch",
+    isAvailable: true,
   },
 ];
