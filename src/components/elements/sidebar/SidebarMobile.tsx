@@ -26,7 +26,7 @@ export default function SidebarMobile({ totalNilai, isMentor }: Props) {
         <div className="bg-gradient-kiwi self-start p-[1px] rounded-lg">
           <div className="bg-card glass rounded-lg px-2">
             <span className="font-josefin-sans text-transparent bg-gradient-kiwi bg-clip-text text-caption-mobile">
-              {totalNilai ?? 0}
+              {isMentor ? "Mentor" : totalNilai ?? 0}
             </span>
           </div>
         </div>
