@@ -82,6 +82,11 @@ export default function SidebarDesktop({ totalNilai, isMentor }: Props) {
                     </div>
                   </div>
                 </TabsTrigger>
+                <Link href="/dashboard/materi" className="w-full">
+                  <Button className="font-josefin-sans w-full" variant={"kiwi"}>
+                    Materi & Tugas
+                  </Button>
+                </Link>
               </>
             ) : (
               <>
@@ -116,7 +121,9 @@ export default function SidebarDesktop({ totalNilai, isMentor }: Props) {
                   </div>
                 </TabsTrigger>
                 <Link href="/dashboard/materi" className="w-full">
-                  <Button className="font-josefin-sans w-full" variant={"kiwi"}>Materi & Tugas</Button>
+                  <Button className="font-josefin-sans w-full" variant={"kiwi"}>
+                    Materi & Tugas
+                  </Button>
                 </Link>
               </>
             )}
