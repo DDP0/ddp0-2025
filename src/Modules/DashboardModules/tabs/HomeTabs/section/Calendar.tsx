@@ -25,8 +25,8 @@ const SectionCalendar: React.FC = () => {
       available: true,
     },
     {
-      start: new Date(2025, 7, 2),
-      end: new Date(2025, 7, 2),
+      start: new Date(2025, 7, 1),
+      end: new Date(2025, 7, 1),
       label: "Grand Opening",
       available: true,
     },

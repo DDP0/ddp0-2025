@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import { EmptyStateToDo } from "./empty-state-todo";
 import Loader from "@/components/elements/Loader";
+import Link from "next/link";
 
 export type TodoStatus =
   | "not_submitted"
@@ -120,15 +121,13 @@ const STATUS_ICON: Record<TodoStatus, React.ReactNode> = {
 };
 
 const TodoItem: React.FC<TodoItemProps> = ({
+  id,
   title,
   description,
   status,
-  linkTugas,
   isOpen,
   onToggle,
 }) => {
-  const taskUrl = linkTugas;
-
   return (
     <div className="w-full flex items-center mb-6">
       <div className="flex-shrink-0">{STATUS_ICON[status]}</div>
@@ -136,7 +135,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
       <div className="flex-1 ml-4">
         <button
           onClick={onToggle}
-          className={`w-full text-left py-4 px-6 bg-[#ffffff1a] glass border border-neutral-050/20 flex justify-between items-center transition-all duration-300 hover:bg-gray-700/50 ${
+          className={`w-full text-left py-4 cursor-pointer px-6 bg-[#ffffff1a] glass border border-neutral-050/20 flex justify-between items-center transition-all duration-300 hover:bg-gray-700/50 ${
             isOpen ? "rounded-t-2xl" : "rounded-2xl"
           }`}
         >
@@ -164,14 +163,13 @@ const TodoItem: React.FC<TodoItemProps> = ({
               </p>
             </div>
             <div className="flex justify-end">
-              <a
-                href={taskUrl}
-                target="_blank"
+              <Link
+                href={"/dashboard/materi/" + id}
                 rel="noopener noreferrer"
                 className="inline-block px-4 py-2 bg-[#ffffff1a] glass hover:bg-gray-600/70 border border-neutral-050/20 rounded-xl text-white font-medium transition-all duration-200backdrop-blur-sm"
               >
                 Task Detail
-              </a>
+              </Link>
             </div>
           </div>
         </div>

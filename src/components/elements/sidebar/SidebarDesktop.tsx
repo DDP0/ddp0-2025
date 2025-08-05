@@ -2,11 +2,14 @@
 import { TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useSession } from "@/hooks/useSession";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type Props = {
   totalNilai?: number | null;
   isMentor?: boolean;
 };
+// tess
 
 export default function SidebarDesktop({ totalNilai, isMentor }: Props) {
   const { user } = useSession();
@@ -79,6 +82,11 @@ export default function SidebarDesktop({ totalNilai, isMentor }: Props) {
                     </div>
                   </div>
                 </TabsTrigger>
+                <Link href="/dashboard/materi" className="w-full">
+                  <Button className="font-josefin-sans w-full" variant={"kiwi"}>
+                    Materi & Tugas
+                  </Button>
+                </Link>
               </>
             ) : (
               <>
@@ -112,6 +120,11 @@ export default function SidebarDesktop({ totalNilai, isMentor }: Props) {
                     </div>
                   </div>
                 </TabsTrigger>
+                <Link href="/dashboard/materi" className="w-full">
+                  <Button className="font-josefin-sans w-full" variant={"kiwi"}>
+                    Materi & Tugas
+                  </Button>
+                </Link>
               </>
             )}
           </TabsList>

@@ -1,187 +1,138 @@
 "use client";
-
-import React, { useCallback, useEffect, useState } from "react";
-import { Copy } from "lucide-react";
-import Loader from "@/components/elements/Loader";
 import { useToast } from "@/hooks/useToast";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { EmptyStateToDo } from "@/Modules/DashboardModules/components/empty-state-todo";
+
+interface Data {
+  name: string;
+  mentors: Mentor[];
+  mentees: Mentee[];
+}
 
 interface Mentor {
   name: string;
-  lineId: string;
+  idLine: string;
 }
 
-interface ResponseData {
-  mentors: Mentor[];
-  mentees: string[];
+interface Mentee {
+  name: string;
+  idLine: string;
 }
-
-const cardBaseStyle = {
-  border: "1px solid rgba(255, 255, 255, 0.2)",
-  borderImageSource:
-    "linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), linear-gradient(35.22deg, rgba(255, 255, 255, 0) 33.61%, #FFFFFF 89.19%)",
-  backdropFilter: "blur(20px)",
-  boxShadow:
-    "0px 32px 64px 0px #0000001A, 0px 16px 32px 0px #0000000D, 0px 4px 8px 0px #0000000D, 0px 48px 100px 0px #FFFFFF26 inset",
-} as const;
-
-const containerStyle = {
-  background: "var(--Card, #1010101A)",
-  border: "1px solid rgba(255, 255, 255, 0.5)",
-  borderImageSource:
-    "linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), linear-gradient(35.22deg, rgba(255, 255, 255, 0) 33.61%, #FFFFFF 89.19%)",
-  backdropFilter: "blur(20px)",
-  boxShadow:
-    "0px 32px 64px 0px #0000001A, 0px 16px 32px 0px #0000000D, 0px 4px 8px 0px #0000000D, 0px 48px 100px 0px #FFFFFF26 inset",
-} as const;
-
-const copyIconStyle = {
-  transform: "scaleX(-1) scaleY(1.2)",
-} as const;
-
-const MentorItem = React.memo(({ mentor }: { mentor: Mentor }) => {
-  const { show } = useToast();
-  const handleCopy = useCallback(() => {
-    navigator.clipboard.writeText(mentor.lineId);
-    show("success", "Line ID copied to clipboard!");
-  }, [mentor.lineId]);
-
-  return (
-    <div className="grid grid-cols-[2fr_1fr] max-md:grid-cols-2 gap-4">
-      <div
-        className="w-full bg-[#1010101A] backdrop-blur-xl border rounded-lg px-4 py-3 hover:bg-[#ffffff12] transition-all duration-300 transform"
-        style={cardBaseStyle}
-      >
-        <span className="text-white font-josefin-sans font-[400] ">
-          {mentor.name}
-        </span>
-      </div>
-      <div
-        className="w-full bg-[#1010101A] backdrop-blur-xl border rounded-lg px-4 py-2 flex justify-between items-center hover:bg-[#ffffff12] transition-all duration-300 transform"
-        style={cardBaseStyle}
-      >
-        <span className="text-white font-josefin-sans font-[400]">
-          {mentor.lineId}
-        </span>
-        <button
-          onClick={handleCopy}
-          className="p-1  rounded cursor-pointer"
-          aria-label={`Copy ${mentor.lineId}`}
-        >
-          <Copy
-            size={20}
-            className="text-white opacity-80"
-            style={copyIconStyle}
-          />
-        </button>
-      </div>
-    </div>
-  );
-});
-
-MentorItem.displayName = "MentorItem";
-
-const MenteeItem = React.memo(({ mentee }: { mentee: string }) => (
-  <div
-    className="bg-[#1010101A] backdrop-blur-xl border rounded-lg px-4 py-3 hover:bg-[#ffffff12] transition-all duration-300 transform"
-    style={cardBaseStyle}
-  >
-    <span className="text-white font-josefin-sans font-400">{mentee}</span>
-  </div>
-));
-
-MenteeItem.displayName = "MenteeItem";
 
 export const MentorMenteeList = () => {
-  const [data, setData] = useState<ResponseData | null>(null);
+  const toast = useToast();
+  const [data, setData] = useState<Data | null>(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
 
+  // Fetch kelompok data from API
   useEffect(() => {
-    let isMounted = true;
-
-    const fetchData = async () => {
+    const fetchKelompokData = async () => {
       try {
-        const res = await fetch("/api/dashboard/kelompok");
-
-        const json: ResponseData = await res.json();
-        if (!res.ok) {
+        setLoading(true);
+        const response = await fetch("/api/dashboard/kelompok");
+        const kelompokData = await response.json();
+        if (!response.ok) {
           throw new Error(
-            `${
-              res.status === 404
-                ? "Kelompok tidak ditemukan"
-                : "Gagal memuat data kelompok"
-            }`
+            kelompokData.error || "Failed to fetch kelompok data"
           );
         }
-        if (isMounted) {
-          setData(json);
-          setError(null);
-        }
+        setData(kelompokData);
+        setError(null);
       } catch (err) {
-        if (isMounted) {
-          setError(err instanceof Error ? err.message : "An error occurred");
-          setData(null);
-        }
+        console.error("Error fetching kelompok data:", err);
+        setError(
+          err instanceof Error
+            ? err.message
+            : "An error occurred while fetching kelompok data"
+        );
       } finally {
-        if (isMounted) {
-          setIsLoading(false);
-        }
+        setLoading(false);
       }
     };
-    fetchData();
-    return () => {
-      isMounted = false;
-    };
+
+    fetchKelompokData();
   }, []);
 
-  if (error) {
-    return (
-      <div className="h-[35vh] overflow-hidden relative flex flex-col items-center justify-center">
-        <div className="relative aspect-square w-52 max-lg:w-42 max-md:w-35">
-          <Image
-            src="/kucingdankardus.png"
-            alt="No notifications"
-            fill
-            className="object-contain"
-          />
-        </div>
-        <p className="font-josefin-sans text-headline max-md:text-headline-mobile">
-          {error}
-        </p>
-      </div>
-    );
-  }
-
-  if (isLoading || !data) {
-    return <Loader />;
-  }
+  const handleCopy = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.show("success", "Berhasil copy Id Line");
+    } catch (err) {
+      toast.show("loading", "Gagal copy Id Line");
+      console.error("Failed to copy:", err);
+    }
+  };
 
   return (
-    <div
-      className="w-full rounded-xl p-6 space-y-8 backdrop-blur-md"
-      style={containerStyle}
-    >
-      <div className="space-y-4">
-        <h2 className="text-lg font-josefin-sans font-[500]">Mentor</h2>
-        <div className="flex flex-col gap-4">
-          {data.mentors.map((mentor, idx) => (
-            <MentorItem
-              key={`${mentor.name}-${mentor.lineId}-${idx}`}
-              mentor={mentor}
-            />
-          ))}
+    <>
+      {loading && (
+        <div className="h-[50vh] overflow-hidden relative flex items-center justify-center">
+          <div className="loader"></div>
         </div>
-      </div>
+      )}
 
-      <div className="space-y-4">
-        <h2 className="text-lg font-josefin-sans font-500">Mentee</h2>
-        <div className="space-y-3">
-          {data.mentees.map((mentee, idx) => (
-            <MenteeItem key={`${mentee}-${idx}`} mentee={mentee} />
-          ))}
-        </div>
-      </div>
-    </div>
+      {error && <EmptyStateToDo message={error} />}
+
+      {!loading && !error && data && (
+        <>
+          {/* <h1 className="font-josefin-sans text-h4 font-semibold mb-2 sm:mb-4">
+            {data.name}
+          </h1> */}
+          <div className="w-full h-fit rounded-lg sm:rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-3 sm:p-6 font-josefin-sans text-body sm:text-bodyLarge">
+            <div className="grid space-y-1.5 sm:space-y-3">
+              <h2>Mentor</h2>
+              {data.mentors.map((mentor, index) => (
+                <div
+                  key={index}
+                  className="grid grid-cols-[1fr_auto] sm:grid-cols-[2fr_1fr] gap-1.5 sm:gap-3"
+                >
+                  <div className="w-full h-fit rounded-lg sm:rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-2 sm:p-3 truncate">
+                    {mentor.name}
+                  </div>
+                  <div className=" flex justify-between w-full h-fit rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-2 sm:p-3">
+                    <span className="max-sm:hidden">{mentor.idLine}</span>
+                    <Image
+                      className="cursor-pointer shrink-0"
+                      src="/rectangle.svg"
+                      alt="Copy"
+                      width={14}
+                      height={14}
+                      onClick={() => handleCopy(mentor.idLine)}
+                    />
+                  </div>
+                </div>
+              ))}
+              <div className="grid grid-cols-[1fr_auto] sm:grid-cols-[2fr_1fr] gap-1.5 sm:gap-3">
+                <h2>Mentee</h2>
+                <h2 className="max-sm:hidden">Id Line</h2>
+              </div>
+              {data.mentees.map((mentee, index) => (
+                <div
+                  key={index}
+                  className="grid grid-cols-[1fr_auto] sm:grid-cols-[2fr_1fr] gap-1.5 sm:gap-3"
+                >
+                  <div className="w-full h-fit rounded-lg sm:rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-2 sm:p-3 truncate">
+                    {mentee.name}
+                  </div>
+                  <div className=" flex justify-between w-full h-fit rounded-xl glass shadow-xl border-[#ffffff59] border-1 p-2 sm:p-3">
+                    <span className="max-sm:hidden">{mentee.idLine}</span>
+                    <Image
+                      className="cursor-pointer shrink-0"
+                      src="/rectangle.svg"
+                      alt="Copy"
+                      width={14}
+                      height={14}
+                      onClick={() => handleCopy(mentee.idLine)}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+    </>
   );
 };

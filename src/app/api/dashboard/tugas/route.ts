@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
-import { prisma }               from "@/lib/prisma";
-import { auth }                 from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+import { auth } from "@/lib/auth";
 
 // Anda bisa mendefinisikan type ini jika ingin stricter:
 type TodoStatus = "submitted" | "not_submitted" | "on_going";
@@ -20,6 +20,12 @@ export async function GET(request: NextRequest) {
     }
 
     const tugasList = await prisma.tugas.findMany({
+      where: {
+        releaseDate: {
+          lte: new Date(),
+        },
+        tipe: { not: "MATERI" },
+      },
       include: {
         submissions: {
           where: { userId: session.user.id },
@@ -55,10 +61,10 @@ export async function GET(request: NextRequest) {
       }
 
       return {
-        id:               tugas.id,
-        title:            tugas.title,
-        description:      tugas.description,
-        linkTugas:        tugas.linkTugas,
+        id: tugas.id,
+        title: tugas.title,
+        description: tugas.description,
+        linkTugas: tugas.linkTugas,
         submissionStatus: status,
         submission,
       };
@@ -67,9 +73,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ tugas: tugasWithStatus });
   } catch (error) {
     console.error("Error fetching tugas data:", error);
-    return NextResponse.json(
-      { error: "Failed to load data" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to load data" }, { status: 500 });
   }
 }
