@@ -5,6 +5,8 @@ import MerchCardLite from "./components/MerchCardLite";
 import { generalData, merchs } from "../data/const";
 import Link from "next/link";
 import { MerchEntry } from "../data/types";
+import SizeGuideDialog from "./components/SizeGuideDialog";
+import ImageCarousel from "./components/ImageCarousel";
 
 export default function MerchDetailsPage({ data }: { data: MerchEntry }) {
   return (
@@ -19,17 +21,7 @@ export default function MerchDetailsPage({ data }: { data: MerchEntry }) {
       {/* Main Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Image and Thumbnails */}
-        <div>
-          <div className="bg-gray-300 h-[400px] rounded-lg relative flex items-center justify-center">
-            <button className="absolute left-2 text-2xl">&#10094;</button>
-            <button className="absolute right-2 text-2xl">&#10095;</button>
-          </div>
-          <div className="flex gap-4 mt-4 items-center justify-center">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="h-[80px] w-[80px] bg-gray-300 rounded-md" />
-            ))}
-          </div>
-        </div>
+        <ImageCarousel images={data.images}/>
 
         {/* Product Info */}
         <div>
@@ -48,8 +40,8 @@ export default function MerchDetailsPage({ data }: { data: MerchEntry }) {
                   </div>
                 </div>
               ))}
-
-              <Button variant={'blue'} className="gap-3">Size Guide <CocoLineArrow /></Button>
+              
+              <SizeGuideDialog/>
             </div>
           </div>
 

@@ -1,8 +1,8 @@
 import { GeneralMerchData, MerchEntry } from "./types";
 
 export const generalData: GeneralMerchData = {
-  formLink: "",
-  sizeGuideImage: ""
+  formLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  sizeGuideImage: "https://i.scdn.co/image/ab67616d0000b273e27ec71c111b88de91a51600"
 }
 
 export const merchs: MerchEntry[] = [
@@ -30,7 +30,7 @@ export const merchs: MerchEntry[] = [
     name: "Lorem Ipsum",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta et tortor id placerat. Etiam congue\nconsequat turpis, eget semper erat lobortis eleifend.",
     price: "Rpxxx.xxx",
-    images: ["https://awsimages.detik.net.id/community/media/visual/2024/05/28/serial-anime-sakamoto-days-1.webp?w=700&q=90"],
+    images: ["https://awsimages.detik.net.id/community/media/visual/2024/05/28/serial-anime-sakamoto-days-1.webp?w=700&q=90", "https://cdn.wallpapersafari.com/11/5/6l2KIf.jpg"],
     sizes: "S M L XL".split(" "),
     thumbImage: "https://awsimages.detik.net.id/community/media/visual/2024/05/28/serial-anime-sakamoto-days-1.webp?w=700&q=90"
   },
