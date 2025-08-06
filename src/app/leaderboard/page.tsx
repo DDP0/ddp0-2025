@@ -20,7 +20,7 @@ const Page = async () => {
     const data = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/leaderboard`,
       {
-        next: { revalidate: 60 }, // Revalidate every 1 hour
+        next: { revalidate: 3600 }, // Revalidate every 1 hour
       }
     );
 
