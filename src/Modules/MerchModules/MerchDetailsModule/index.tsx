@@ -36,25 +36,27 @@ export default function MerchDetailsPage({ data }: { data: MerchEntry }) {
             </p>
           </div>
 
-          <div className="mb-4">
-            <p className="mb-2 font-josefin-sans font-semibold text-lg md:text-2xl">
-              Ukuran
-            </p>
-            <div className="flex items-center gap-3 flex-wrap">
-              {data.sizes.map((size, i) => (
-                <div
-                  key={i}
-                  className="bg-gradient-to-br from-[#FEC888] to-[#9AE7B8] p-[0.5px] rounded-sm w-[36px] md:w-[45px] flex justify-center items-center"
-                >
-                  <div className="bg-[#0E0E17] rounded-sm p-2 md:p-4 text-white w-full text-center font-josefin-sans font-medium flex flex-col justify-center items-center">
-                    <p className="mb-[-25%]">{size}</p>
+          {data.sizes.length > 0 && (
+            <div className="mb-4">
+              <p className="mb-2 font-josefin-sans font-semibold text-lg md:text-2xl">
+                Ukuran
+              </p>
+              <div className="flex items-center gap-3 flex-wrap">
+                {data.sizes.map((size, i) => (
+                  <div
+                    key={i}
+                    className="bg-gradient-to-br from-[#FEC888] to-[#9AE7B8] p-[0.5px] rounded-sm w-[36px] md:w-[45px] flex justify-center items-center"
+                  >
+                    <div className="bg-[#0E0E17] rounded-sm p-2 md:p-4 text-white w-full text-center font-josefin-sans font-medium flex flex-col justify-center items-center">
+                      <p className="mb-[-25%]">{size}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
 
-              <SizeGuideDialog />
+                <SizeGuideDialog />
+              </div>
             </div>
-          </div>
+          )}
 
           <p className="text-sm leading-relaxed text-gray-300 mb-6 text-center">
             {data.description}

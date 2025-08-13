@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import CocoLineArrow from "./CocoLineArrowRight"; // adjust path if needed
 
@@ -30,7 +30,7 @@ export default function ImageCarousel({ images }: { images: string[] }) {
             key={selectedIndex}
             src={images[selectedIndex]}
             alt={`image-${selectedIndex}`}
-            className="h-full w-full object-cover transition-all duration-500 ease-in-out"
+            className="max-h-full max-w-full object-contain transition-all duration-500 ease-in-out"
           />
         </div>
 
@@ -44,18 +44,22 @@ export default function ImageCarousel({ images }: { images: string[] }) {
       </div>
 
       {/* Thumbnails */}
-      <div className="flex gap-4 mt-4 items-center justify-center">
-        {images.slice(0, 4).map((img, i) => (
+      <div className="flex flex-wrap gap-2 mt-4 items-center justify-center max-w-full">
+        {images.map((img, i) => (
           <div
             key={i}
-            className={`h-[80px] w-[80px] rounded-md overflow-hidden cursor-pointer transition border-2 ${
+            className={`h-[60px] w-[60px] sm:h-[70px] sm:w-[70px] rounded-md overflow-hidden cursor-pointer transition border-2 ${
               i === selectedIndex
                 ? "border-blue-500 scale-105"
                 : "border-transparent hover:border-blue-300"
             }`}
             onClick={() => setSelectedIndex(i)}
           >
-            <img src={img} alt={`thumb-${i}`} className="h-full w-full object-cover" />
+            <img
+              src={img}
+              alt={`thumb-${i}`}
+              className="h-full w-full object-cover"
+            />
           </div>
         ))}
       </div>
