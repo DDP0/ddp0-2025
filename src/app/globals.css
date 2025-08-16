@@ -680,6 +680,7 @@ html {
 }
 
 /* Enhanced marquee animation with better browser support */
+.animate-marquee-nonstop,
 .animate-marquee-enhanced {
   animation: marquee-enhanced 35s linear infinite;
   display: flex;
@@ -698,6 +699,7 @@ html {
 
 /* Ensure smooth animation */
 .animate-marquee,
+.animate-marquee-nonstop,
 .animate-marquee-enhanced {
   animation: marquee 35s linear infinite;
   -webkit-animation: marquee 35s linear infinite;
@@ -712,6 +714,30 @@ html {
   -webkit-animation-play-state: paused;
   -moz-animation-play-state: paused;
   -o-animation-play-state: paused;
+}
+
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 35s linear infinite;
+  display: flex;
+  width: fit-content;
+  will-change: transform;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 35s linear infinite;
+  -webkit-animation: marquee-reverse 35s linear infinite;
+  -moz-animation: marquee-reverse 35s linear infinite;
+  -o-animation: marquee-reverse 35s linear infinite;
 }
 
 @keyframes fade-in {
