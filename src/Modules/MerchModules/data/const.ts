@@ -1,9 +1,8 @@
 import { GeneralMerchData, MerchEntry } from "./types";
 
 export const generalData: GeneralMerchData = {
-  formLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  sizeGuideImage:
-    "https://i.scdn.co/image/ab67616d0000b273e27ec71c111b88de91a51600",
+  formLink: "https://ristek.link/MerchandiseDDP0",
+  sizeGuideImage: "/merch/sizechart.png",
 };
 
 export const merchs: MerchEntry[] = [
@@ -11,8 +10,8 @@ export const merchs: MerchEntry[] = [
     id: "1",
     name: "Totebag",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta et tortor id placerat. Etiam congue\nconsequat turpis, eget semper erat lobortis eleifend.",
-    price: "Rpxxx.xxx",
+      "Tas kanvas berkualitas tinggi dengan desain DDP-0 yang stylish dan fungsional. Sempurna untuk membawa laptop, buku, dan kebutuhan sehari-hari dengan gaya yang unik.",
+    price: "Rp50.000",
     images: ["/merch/mockup.png", "/merch/totebag.webp"],
     sizes: [],
     thumbImage: "/merch/mockup.png",
@@ -22,8 +21,8 @@ export const merchs: MerchEntry[] = [
     id: "2",
     name: "Sticker",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta et tortor id placerat. Etiam congue\nconsequat turpis, eget semper erat lobortis eleifend.",
-    price: "Rpxxx.xxx",
+      "Koleksi stiker eksklusif DDP-0 dengan berbagai desain lucu dan kreatif. Tahan air dan berkualitas tinggi, cocok untuk laptop, botol minum, atau apapun yang ingin kamu hias!",
+    price: "Rp10.000/lembar",
     images: [
       "/merch/stickers/24_7 debugging.png",
       "/merch/stickers/code.png",
@@ -52,8 +51,8 @@ export const merchs: MerchEntry[] = [
     id: "3",
     name: "Notebook",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta et tortor id placerat. Etiam congue\nconsequat turpis, eget semper erat lobortis eleifend.",
-    price: "Rpxxx.xxx",
+      "Notebook premium dengan desain cover yang elegan dan kertas berkualitas tinggi. Ideal untuk mencatat kode, algoritma, atau ide-ide brilliant mu dalam perjalanan belajar programming.",
+    price: "Rp25.000",
     images: [
       "/merch/book/cover blkg.png",
       "/merch/book/cover depan.png",
@@ -67,7 +66,7 @@ export const merchs: MerchEntry[] = [
     id: "4",
     name: "Kaos",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta et tortor id placerat. Etiam congue\nconsequat turpis, eget semper erat lobortis eleifend.",
+      "Kaos cotton combed berkualitas tinggi dengan desain DDP-0 yang keren dan nyaman dipakai. Tersedia dalam berbagai ukuran untuk style casual yang programming-friendly.",
     price: "Rpxxx.xxx",
     images: ["/merch/clothes/kaos1.png", "/merch/clothes/kaos2.png"],
     sizes: ["S", "M", "L", "XL"],
@@ -77,8 +76,8 @@ export const merchs: MerchEntry[] = [
     id: "5",
     name: "Keychain",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta et tortor id placerat. Etiam congue\nconsequat turpis, eget semper erat lobortis eleifend.",
-    price: "Rpxxx.xxx",
+      "Gantungan kunci lucu dengan karakter DDP-0 yang menggemaskan. Bahan akrilik berkualitas tinggi yang tahan lama, sempurna sebagai aksesoris atau hadiah untuk fellow programmers.",
+    price: "Rp10.000/pcs",
     images: [
       "/merch/keychain/Balon.png",
       "/merch/keychain/Code.png",

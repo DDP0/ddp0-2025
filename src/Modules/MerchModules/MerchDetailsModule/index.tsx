@@ -7,10 +7,12 @@ import Link from "next/link";
 import { MerchEntry } from "../data/types";
 import SizeGuideDialog from "./components/SizeGuideDialog";
 import ImageCarousel from "./components/ImageCarousel";
+import Background from "@/Modules/RegistModules/Background";
 
 export default function MerchDetailsPage({ data }: { data: MerchEntry }) {
   return (
-    <div className="min-h-screen bg-[#0E0E17] text-white px-8 py-12 font-sans pt-[140px]">
+    <div className="min-h-screen bg-[#0E0E17] text-white px-8 py-12 font-sans pt-[140px] relative">
+      <Background />
       {/* Breadcrumb */}
       <div className="text-sm mb-8">
         <Link href={"/merch"} className="flex flex-row items-center w-fit">
@@ -58,17 +60,15 @@ export default function MerchDetailsPage({ data }: { data: MerchEntry }) {
             </div>
           )}
 
-          <p className="text-sm leading-relaxed text-gray-300 mb-6 text-center">
+          <p className="text-sm leading-relaxed text-gray-300 mb-6">
             {data.description}
           </p>
 
-          <div className="w-full text-center pt-8">
-            <Button disabled={true} variant={"kiwi"}>
-              {/* <Link href={generalData.formLink} target="_blank"> */}
+          <Button variant={"kiwi"}>
+            <Link href={generalData.formLink} target="_blank">
               Beli Sekarang
-              {/* </Link> */}
-            </Button>
-          </div>
+            </Link>
+          </Button>
         </div>
       </div>
 
