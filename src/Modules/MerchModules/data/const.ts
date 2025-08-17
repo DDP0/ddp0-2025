@@ -51,7 +51,7 @@ export const merchs: MerchEntry[] = [
     id: "3",
     name: "Notebook",
     description:
-      "Notebook premium dengan desain cover yang elegan dan kertas berkualitas tinggi. Ideal untuk mencatat kode, algoritma, atau ide-ide brilliant mu dalam perjalanan belajar programming.",
+      "Notebook premium dengan desain cover yang elegan dan kertas berkualitas tinggi. Ideal untuk mencatat kode, algoritma.",
     price: "Rp25.000",
     images: [
       "/merch/book/cover blkg.png",

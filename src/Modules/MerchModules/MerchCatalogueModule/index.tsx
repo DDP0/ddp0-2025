@@ -9,7 +9,7 @@ import { generalData } from "../data/const";
 const carouselItems = [
   <Image
     key={"clothes-front"}
-    src="/merch/clothes-front.webp"
+    src="/merch/clothes-front.png"
     alt="hehe"
     width={"252"}
     height={"252"}
@@ -17,7 +17,7 @@ const carouselItems = [
   />,
   <Image
     key={"keychain-front"}
-    src="/merch/keychain-front.webp"
+    src="/merch/keychain-front.png"
     alt="hehe"
     width={"252"}
     height={"252"}
@@ -25,7 +25,7 @@ const carouselItems = [
   />,
   <Image
     key={"pc-front"}
-    src="/merch/pc-front.webp"
+    src="/merch/pc-front.png"
     alt="hehe"
     width={"252"}
     height={"252"}
@@ -36,7 +36,7 @@ const carouselItems = [
 const carouselItemsBack = [
   <Image
     key={"pc-back"}
-    src="/merch/pc-back.webp"
+    src="/merch/pc-back.png"
     alt="hehe"
     width={"252"}
     height={"252"}
@@ -44,7 +44,7 @@ const carouselItemsBack = [
   />,
   <Image
     key={"keychain-back"}
-    src="/merch/keychain-back.webp"
+    src="/merch/keychain-back.png"
     alt="hehe"
     width={"252"}
     height={"252"}
@@ -52,7 +52,7 @@ const carouselItemsBack = [
   />,
   <Image
     key={"clothes-back"}
-    src="/merch/clothes-back.webp"
+    src="/merch/clothes-back.png"
     alt="hehe"
     width={"252"}
     height={"252"}
