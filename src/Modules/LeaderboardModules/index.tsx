@@ -1,6 +1,7 @@
 import { LeaderboardResponse } from "@/app/leaderboard/page";
 import Background from "../RegistModules/Background";
 import { EmptyStateToDo } from "../DashboardModules/components/empty-state-todo";
+import Image from "next/image";
 
 const LeaderboardModule = ({
   leaderboardData,
@@ -82,7 +83,7 @@ const LeaderboardModule = ({
               </p>
             </div>
             <div className="relative aspect-square w-24 max-lg:w-18 max-md:w-14 rounded-full bg-gradient-kiwi self-center overflow-hidden">
-              <img
+              <Image
                 src={top2?.user?.profilePicture || "/avatar.png"}
                 alt={top2?.user?.name || "User Profile"}
                 fill
@@ -132,7 +133,7 @@ const LeaderboardModule = ({
               </p>
             </div>
             <div className="relative aspect-square w-24 max-lg:w-18 max-md:w-14 rounded-full bg-gradient-kiwi self-center overflow-hidden">
-              <img
+              <Image
                 src={top1?.user?.profilePicture || "/avatar.png"}
                 alt={top1?.user?.name || "User Profile"}
                 fill
@@ -179,7 +180,7 @@ const LeaderboardModule = ({
               </p>
             </div>
             <div className="relative aspect-square w-24 max-lg:w-18 max-md:w-14 rounded-full bg-gradient-kiwi self-center overflow-hidden">
-              <img
+              <Image
                 src={top3?.user?.profilePicture || "/avatar.png"}
                 alt={top3?.user?.name || "User Profile"}
                 fill
