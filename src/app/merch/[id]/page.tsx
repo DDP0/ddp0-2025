@@ -1,12 +1,12 @@
-import { notFound } from 'next/navigation';
-import MerchDetailsPage from '@/Modules/MerchModules/MerchDetailsModule';
-import { merchs } from '@/Modules/MerchModules/data/const';
-import { MerchEntry } from '@/Modules/MerchModules/data/types';
+import { notFound } from "next/navigation";
+import MerchDetailsPage from "@/Modules/MerchModules/MerchDetailsModule";
+import { merchs } from "@/Modules/MerchModules/data/const";
+import { MerchEntry } from "@/Modules/MerchModules/data/types";
 
 type PageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
 export default async function MerchDetails({ params }: PageProps) {
