@@ -1,13 +1,12 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import CocoLineAdd from "./components/CocoLineAdd";
-import Image from "next/image";
 import { merchs } from "../data/const";
 import MerchCard from "./components/MerchCard";
 import { generalData } from "../data/const";
 
 const carouselItems = [
-  <Image
+  <img
     key={"clothes-front"}
     src="/merch/clothes-front.png"
     alt="hehe"
@@ -15,7 +14,7 @@ const carouselItems = [
     height={"252"}
     sizes="auto"
   />,
-  <Image
+  <img
     key={"keychain-front"}
     src="/merch/keychain-front.png"
     alt="hehe"
@@ -23,7 +22,7 @@ const carouselItems = [
     height={"252"}
     sizes="auto"
   />,
-  <Image
+  <img
     key={"pc-front"}
     src="/merch/pc-front.png"
     alt="hehe"
@@ -34,7 +33,7 @@ const carouselItems = [
 ];
 
 const carouselItemsBack = [
-  <Image
+  <img
     key={"pc-back"}
     src="/merch/pc-back.png"
     alt="hehe"
@@ -42,7 +41,7 @@ const carouselItemsBack = [
     height={"252"}
     sizes="auto"
   />,
-  <Image
+  <img
     key={"keychain-back"}
     src="/merch/keychain-back.png"
     alt="hehe"
@@ -50,7 +49,7 @@ const carouselItemsBack = [
     height={"252"}
     sizes="auto"
   />,
-  <Image
+  <img
     key={"clothes-back"}
     src="/merch/clothes-back.png"
     alt="hehe"
