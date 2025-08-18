@@ -67,7 +67,7 @@ export const merchs: MerchEntry[] = [
     name: "Kaos",
     description:
       "Kaos cotton combed berkualitas tinggi dengan desain DDP-0 yang keren dan nyaman dipakai. Tersedia dalam berbagai ukuran untuk style casual yang programming-friendly.",
-    price: "Rp80.000",
+    price: "Rp90.000",
     images: ["/merch/clothes/kaos1.png", "/merch/clothes/kaos2.png"],
     sizes: ["XS","S","M","L","XL","XXL","3XL","4XL","5XL"],
     thumbImage: "/merch/clothes/kaos1.png",
